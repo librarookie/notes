@@ -45,6 +45,16 @@
     | 导出环境 | conda env export > environment.yaml |
     | 导入环境 | conda env create -f environment.yaml |
 
+## 镜像
+
+* pip 国内源配置
+
+    [Python pip配置国内源](https://www.cnblogs.com/cure/p/14930238.html "Python pip配置国内源")
+
+* conda 镜像配置
+
+    [Anaconda 镜像配置](https://www.cnblogs.com/cure/p/15376578.html "Anaconda 镜像配置")
+
 </br></br>
 
 reference
