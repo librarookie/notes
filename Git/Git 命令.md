@@ -51,8 +51,8 @@
     |git branch branch_name|创建分支|
     |git branch -d branch_name|删除本地分支|
     |git push origin -d branch_name|删除远程分支|
-    |git checker branch_name|切换分支|
-    |git checker -b branch_name|创建新分支并立即切换到该分支下|
+    |git checkout branch_name|切换分支|
+    |git checkout -b branch_name|创建新分支并立即切换到该分支下|
     |git merge branch_name|合并回到你的主分支|
 
 * 标签[^1]命令
