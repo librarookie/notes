@@ -14,14 +14,15 @@
     |git commit [-m "content"]|从暂存区提交到本地仓库（-m 附加注释）|
     |git commit -am "content"|提交修改文件并提交到本地仓库|
     |git clone|拷贝一份远程仓库，也就是下载一个项目|
+    |git pull|推送到远程库|
+    |git push|推送到远程库|
     |git diff|比较文件的不同，即暂存区和工作区的差异|
     |git log|查看历史提交记录|
     |git remote -v|查看远程仓库|
     |git blame file|以列表形式查看指定文件的历史修改记录|
     |git pull origin master|拉取（同步）master分支|
-    |git push|推送到远程库|
     |git push -u origin master -f |第一次强行推送到远程库|
-    |git config --unset |第一次强行推送到远程库|
+    |git config --unset config_name|取消配置|
 
 </br>
 
@@ -57,7 +58,7 @@
     |git tag -a tag_name -m "content"|创建带注解标签|
     |git tag -d tag_name|删除标签|
     |git show tag_name|查看此版本所修改的内容|
-    |git push -u origin_name tag_name |将标签推送到远程仓库|
+    |git push -u origin tag_name |将标签推送到远程仓库|
 
 </br>
 
@@ -69,6 +70,7 @@
     |git branch -r|查看远程分支|
     |git branch -a|查看全部分支|
     |git branch branch_name|创建分支|
+    |git branch -u branch_name origin/branch_name|关联远程分支|
     |git branch -d branch_name|删除本地分支|
     |git push origin -d branch_name|删除远程分支|
     |git checkout branch_name|切换分支|
@@ -82,18 +84,18 @@
     |Key|Value|
     |----|----|
     |git remore [-v]|查看远程库|
-    |git remore add origin_name url|同步远程分支|
-    |git remore remove origin_name|同步远程分支|
+    |git remore add origin url|同步远程分支|
+    |git remore remove origin|同步远程分支|
     |git remore rename origin_old origin_new|修改遥控名|
-    |git remote set-head origin_name branch_name|设置遥控分支|
-    |git remote set-head origin_name -a|设置遥控自动选择分支|
-    |git remote set-head -d origin_name|删除遥控|
-    |git remore set-branches origin_name branch_name|设置分支|
-    |git remore set-branches --add origin_name branch_name|添加分支|
-    |git remore set-url [--push] origin_name newurl [oldurl]|修改遥控地址|
-    |git remore set-url --add origin_name newurl|添加遥控|
-    |git remore set-url --delete origin_name url|修改遥控名|
-    |git remore update [origin_name]|同步远程分支|
+    |git remote set-head origin branch_name|设置遥控分支|
+    |git remote set-head origin -a|设置遥控自动选择分支|
+    |git remote set-head -d origin|删除遥控|
+    |git remore set-branches origin branch_name|设置分支|
+    |git remore set-branches --add origin branch_name|添加分支|
+    |git remore set-url [--push] origin newurl [oldurl]|修改遥控地址|
+    |git remore set-url --add origin newurl|添加遥控|
+    |git remore set-url --delete origin url|修改遥控名|
+    |git remore update [origin]|同步远程分支|
 
 </br>
 
@@ -102,8 +104,8 @@
     |Key|Value|
     |----|----|
     |git config --list|查看配置|
-    |git config remore.pushDefault origin_name|多个遥控时设置默认推送遥控|
-    |git config --unset remore.pushDefault [origin_name]|多个遥控时设置默认推送遥控|
+    |git config remore.pushDefault origin|多个遥控时设置默认推送遥控|
+    |git config --unset remore.pushDefault [origin]|多个遥控时设置默认推送遥控|
     |git config --global core.editor nano|设置默认编辑器如： nano|
     |git config --global color.ui true|彩色输出|
     |git config --global core.quotepath false|中文文件名显示（避免中文显示成数字）|
