@@ -306,7 +306,7 @@ sudo rm -rf appimagetool-x86_64.AppImage
 * 方式三、给`AppImage`文件创建图标
   
   由于默认启动需要进入AppImage目录，启动比较繁琐，所以推荐给AppImage文件创建`软连接`和`图标`，创建方法参考：
-  https://www.cnblogs.com/cure/p/15127991.html
+    <https://www.cnblogs.com/cure/p/15127991.html>
 
 </br></br>
 
