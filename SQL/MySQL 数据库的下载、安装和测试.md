@@ -53,25 +53,25 @@ OS Version:　系统的细版本（如：Ubuntu 18.04，Ubuntu20.04）
     * 方案一：一个一个来安装（这样子能够搞懂依赖的关系）
 
         ```java
-        sudo dpkg -i mysql-common_5.7.31-1ubuntu18.04_amd64.deb　　　　// libmysqlclient20_5.7.31和libmysqlclient-dev_5.7.31 依赖common
+        sudo dpkg -i mysql-common_5.7.31-1ubuntu18.04_amd64.deb     // libmysqlclient20_5.7.31和libmysqlclient-dev_5.7.31 依赖common
 
         sudo dpkg -i libmysqlclient20_5.7.31-1ubuntu18.04_amd64.deb
 
         sudo dpkg -i libmysqlclient-dev_5.7.31-1ubuntu18.04_amd64.deb
 
-        sudo dpkg -i libmysqld-dev_5.7.31-1ubuntu18.04_amd64.deb　　　　// libmysqld-dev_5.7.31依赖libmysqlclient20_5.7.31和libmysqlclient-dev_5.7.31
+        sudo dpkg -i libmysqld-dev_5.7.31-1ubuntu18.04_amd64.deb    // libmysqld-dev_5.7.31依赖libmysqlclient20_5.7.31和libmysqlclient-dev_5.7.31
 
         sudo dpkg -i mysql-community-source_5.7.31-1ubuntu18.04_amd64.deb 
 
-        sudo apt-get install libaio1 libmecab2　　　　　　　　// community-client依赖libaio1，community-server依赖libmecab2
-        sudo apt-get install -f 　　　　　　　　　　　　　　　　　// 如果上面依赖包安装后还不行就执行，该命令是解决系统全局所有依赖包问题
+        sudo apt-get install libaio1 libmecab2      // community-client依赖libaio1，community-server依赖libmecab2
+        sudo apt-get install -f     // 如果上面依赖包安装后还不行就执行，该命令是解决系统全局所有依赖包问题
 
         sudo dpkg -i mysql-community-client_5.7.31-1ubuntu18.04_amd64.deb 
 
         // ubuntu 18.04 安装mysql-community-server时，除了上面依赖，还依赖mysql-client（sudo dpkg -i mysql-client_5.7.31-1ubuntu18.04_amd64.deb）
-        sudo dpkg -i mysql-community-server_5.7.31-1ubuntu18.04_amd64.deb　　// 安装时这个包时，会让输入两次MySQL密码，装完这步 MySQL就就可以登录了
+        sudo dpkg -i mysql-community-server_5.7.31-1ubuntu18.04_amd64.deb       // 安装时这个包时，会让输入两次MySQL密码，装完这步 MySQL就就可以登录了
         
-        sudo dpkg -i mysql-server_5.7.31-1ubuntu18.04_amd64.deb　　　　// mysql-server依赖community-server
+        sudo dpkg -i mysql-server_5.7.31-1ubuntu18.04_amd64.deb     // mysql-server依赖community-server
         ```
 
     * 方案二： 如果不想这么麻烦，可以一次性安装
@@ -79,12 +79,12 @@ OS Version:　系统的细版本（如：Ubuntu 18.04，Ubuntu20.04）
       * 依赖处理一: 可以一次性按顺序输入安装包名字，然后处理依赖，再安装（按向上建可以切换到之前输入过的命令）
 
         ```java
-        sudo apt-get install -f　　　　// 处理依赖问题
+        sudo apt-get install -f     // 处理依赖问题
         ```
 
       * 依赖处理二: 提前安装所需依赖包，再一次性安装
 
-        > sudo apt-get install libaio1 libmecab2　　// 安装依赖包libaio1 libmecab2
+        > sudo apt-get install libaio1 libmecab2    // 安装依赖包libaio1 libmecab2
 
         一次性按顺序输入安装包名字，进行安装（上面两个依赖处理，使用其一即可）
 
