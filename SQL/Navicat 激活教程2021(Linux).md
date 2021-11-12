@@ -268,9 +268,10 @@
         i45HIr7T1g69Cm9g3bN1DBpM/Zio8idBw3LOFGXFQjXj0nPfy9yRGuxaUBQkWXSOWa5EAv7S9Z1sljlkZP6cKdfDGYsBb/4N1W5Oj1qogzNtRo5LGwKe9Re3zPY3SO8RXACfpNaKjdjpoOQa9GjQ/igDVH8r1k+Oc7nEnRPZBm0w9aJIM9kS42lbjynVuOJMZIotZbk1NloCodNyRQw3vEEP7kq6bRZsQFp2qF/mr+hIPH8lo/WF3hh+2NivdrzmrKKhPnoqSgSsEttL9a6ueGOP7Io3j2lAFqb9hEj1uC3tPRpYcBpTZX7GAloAENSasFwMdBIdszifDrRW42wzXw==
         ```
 
-    5. 将生成的 **激活码(Activation Code)**粘贴到navicat激活即可
-    ![1](https://img2020.cnblogs.com/blog/1957451/202108/1957451-20210807110227177-511565493.png)
-    ![1](https://img2020.cnblogs.com/blog/1957451/202108/1957451-20210807110325748-1625232312.png)
+    5. 将生成的 **激活码(Activation Code)** 粘贴到navicat激活即可
+
+        ![1](https://img2020.cnblogs.com/blog/1957451/202108/1957451-20210807110227177-511565493.png)
+        ![1](https://img2020.cnblogs.com/blog/1957451/202108/1957451-20210807110325748-1625232312.png)
 
 </br>
 
