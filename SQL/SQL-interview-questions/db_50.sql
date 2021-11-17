@@ -1,98 +1,98 @@
 -- database
 
 -- 1.学生表
--- student(s_id, s_name, s_age, s_sex) --s_id 学生编号,s_name 学生姓名,s_age 出生年月,s_sex 学生性别
+-- Student(s_id, s_name, s_age, s_sex) --s_id 学生编号,s_name 学生姓名,s_age 出生年月,s_sex 学生性别
 
 -- 2.课程表
--- course(c_id, c_name, t_id) --c_id --c_id 课程编号,c_name 课程名称,t_id 教师编号
+-- Course(c_id, c_name, t_id) --c_id --c_id 课程编号,c_name 课程名称,t_id 教师编号
 
 -- 3.教师表
--- teacher(t_id, t_name) --t_id 教师编号,t_name 教师姓名
+-- Teacher(t_id, t_name) --t_id 教师编号,t_name 教师姓名
 
 -- 4.成绩表
--- credits(s_id, c_id, score) --s_id 学生编号,c_id 课程编号,score 分数
+-- Score(s_id, c_id, s_score) --s_id 学生编号,c_id 课程编号,s_score 分数
 
 
 -- 添加测试数据
 -- 1.学生表
 
-create table student(s_id varchar(10), s_name nvarchar(10), s_age datetime, s_sex nvarchar(10));
+create table Student(s_id varchar(10), s_name nvarchar(10), s_age datetime, s_sex nvarchar(10));
 
-insert into student values('01' , '赵雷' , '1990-01-01' , '男');
+insert into Student values('01' , '赵雷' , '1990-01-01' , '男');
 
-insert into student values('02' , '钱电' , '1990-12-21' , '男');
+insert into Student values('02' , '钱电' , '1990-12-21' , '男');
 
-insert into student values('03' , '孙风' , '1990-05-20' , '男');
+insert into Student values('03' , '孙风' , '1990-05-20' , '男');
 
-insert into student values('04' , '李云' , '1990-08-06' , '男');
+insert into Student values('04' , '李云' , '1990-08-06' , '男');
 
-insert into student values('05' , '周梅' , '1991-12-01' , '女');
+insert into Student values('05' , '周梅' , '1991-12-01' , '女');
 
-insert into student values('06' , '吴兰' , '1992-03-01' , '女');
+insert into Student values('06' , '吴兰' , '1992-03-01' , '女');
 
-insert into student values('07' , '郑竹' , '1989-07-01' , '女');
+insert into Student values('07' , '郑竹' , '1989-07-01' , '女');
 
-insert into student values('08' , '王菊' , '1990-01-20' , '女');
+insert into Student values('08' , '王菊' , '1990-01-20' , '女');
 
 -- 2.课程表
 
-create table course(c_id varchar(10), c_name nvarchar(10), t_id varchar(10));
+create table Course(c_id varchar(10), c_name nvarchar(10), t_id varchar(10));
 
-insert into course values('01' , '语文' , '02');
+insert into Course values('01' , '语文' , '02');
 
-insert into course values('02' , '数学' , '01');
+insert into Course values('02' , '数学' , '01');
 
-insert into course values('03' , '英语' , '03');
+insert into Course values('03' , '英语' , '03');
 
 -- 3.教师表
 
-create table teacher(t_id varchar(10), t_name nvarchar(10));
+create table Teacher(t_id varchar(10), t_name nvarchar(10));
 
-insert into teacher values('01' , '张三');
+insert into Teacher values('01' , '张三');
 
-insert into teacher values('02' , '李四');
+insert into Teacher values('02' , '李四');
 
-insert into teacher values('03' , '王五');
+insert into Teacher values('03' , '王五');
 
 -- 4.成绩表
 
-create table credits(s_id varchar(10), c_id varchar(10), score decimal(18,1));
+create table Score(s_id varchar(10), c_id varchar(10), s_score decimal(18,1));
 
-insert into credits values('01' , '01' , 80);
+insert into Score values('01' , '01' , 80);
 
-insert into credits values('01' , '02' , 90);
+insert into Score values('01' , '02' , 90);
 
-insert into credits values('01' , '03' , 99);
+insert into Score values('01' , '03' , 99);
 
-insert into credits values('02' , '01' , 70);
+insert into Score values('02' , '01' , 70);
 
-insert into credits values('02' , '02' , 60);
+insert into Score values('02' , '02' , 60);
 
-insert into credits values('02' , '03' , 80);
+insert into Score values('02' , '03' , 80);
 
-insert into credits values('03' , '01' , 80);
+insert into Score values('03' , '01' , 80);
 
-insert into credits values('03' , '02' , 80);
+insert into Score values('03' , '02' , 80);
 
-insert into credits values('03' , '03' , 80);
+insert into Score values('03' , '03' , 80);
 
-insert into credits values('04' , '01' , 50);
+insert into Score values('04' , '01' , 50);
 
-insert into credits values('04' , '02' , 30);
+insert into Score values('04' , '02' , 30);
 
-insert into credits values('04' , '03' , 20);
+insert into Score values('04' , '03' , 20);
 
-insert into credits values('05' , '01' , 76);
+insert into Score values('05' , '01' , 76);
 
-insert into credits values('05' , '02' , 87);
+insert into Score values('05' , '02' , 87);
 
-insert into credits values('06' , '01' , 31);
+insert into Score values('06' , '01' , 31);
 
-insert into credits values('06' , '03' , 34);
+insert into Score values('06' , '03' , 34);
 
-insert into credits values('07' , '02' , 89);
+insert into Score values('07' , '02' , 89);
 
-insert into credits values('07' , '03' , 98);
+insert into Score values('07' , '03' , 98);
 
 
 
