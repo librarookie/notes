@@ -1,2 +1,1 @@
-db_command.md
-sql_problem.md
+# SQL 50道面试题练习
