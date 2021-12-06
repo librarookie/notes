@@ -20,7 +20,9 @@
 
 ![20211203180034](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211203180034.png)
 
-### [专有名词](目录)
+</br>
+
+### [专有名词](#目录)
 
 ![20211203162137](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211203162137.png)
 
@@ -29,7 +31,9 @@
 * `Repository`： 仓库区（或本地仓库，`.git目录`）
 * `Remote`： 远程仓库
 
-### [仓库](目录)
+</br>
+
+### [仓库](#目录)
 
 > Git的设置文件为`.gitconfig`，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
 
@@ -44,7 +48,9 @@ $ git init [project-name]
 $ git clone [url]
 ```
 
-### [配置](目录)
+</br>
+
+### [配置](#目录)
 
 ```py
 # 显示当前的Git配置
@@ -61,7 +67,9 @@ $ git config [--global] user.email "[email address]"
 $ git config [--global] alias.别名 "command"
 ```
 
-### [增加和删除文件](目录)
+</br>
+
+### [增加和删除文件](#目录)
 
 ```py
 # 添加指定文件到暂存区
@@ -87,7 +95,9 @@ $ git rm --cached [file]
 $ git mv [file-original] [file-renamed]
 ```
 
-### [代码提交](目录)
+</br>
+
+### [代码提交](#目录)
 
 ```py
 # 提交暂存区到仓库区
@@ -110,7 +120,9 @@ $ git commit --amend -m [message]
 $ git commit --amend [file1] [file2] ...
 ```
 
-### [分支](目录)
+</br>
+
+### [分支](#目录)
 
 ```py
 # 列出所有本地分支
@@ -160,7 +172,9 @@ $ git push origin --delete [branch-name]
 $ git branch -dr [remote/branch]
 ```
 
-### [标签](目录)
+</br>
+
+### [标签](#目录)
 
 ```py
 # 列出所有tag
@@ -191,7 +205,9 @@ $ git push [remote] --tags
 $ git checkout -b [branch] [tag]
 ```
 
-### [查看信息](目录)
+</br>
+
+### [查看信息](#目录)
 
 ```py
 # 显示有变更的文件
@@ -256,7 +272,9 @@ $ git show [commit]:[filename]
 $ git reflog
 ```
 
-### [远程同步](目录)
+</br>
+
+### [远程同步](#目录)
 
 ```py
 # 下载远程仓库的所有变动
@@ -284,7 +302,9 @@ $ git push [remote] --force
 $ git push [remote] --all
 ```
 
-### [撤销](目录)
+</br>
+
+### [撤销](#目录)
 
 ```py
 # 恢复暂存区的指定文件到工作区
@@ -320,7 +340,9 @@ $ git stash
 $ git stash pop
 ```
 
-### [其他](目录)
+</br>
+
+### [其他](#目录)
 
 ```py
 # 生成一个可供发布的压缩包
