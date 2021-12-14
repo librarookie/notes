@@ -4,17 +4,24 @@
 
 ## 前言
 
-* Git共有三个级别的`config`文件，分别是`system、global`和`local`
+* Git共有三个级别的`config`文件，分别是`system(系统)`、`global（全局）`和`local（仓库）`
 
-* 在当前环境中，分别对应
+* 配置读取顺序： `system > global > local`
 
-  * %GitPath%\mingw64\etc\gitconfig 文件
+* 配置优先级： `local > global > system`
 
-  * %RepoPath%\\.git\config 文件
+* 在环境中，分别对应
 
-  * $home\\.gitconfig 文件
+  * `system：`
+    * /etc/gitconfig
 
-    note: 其中`%GitPath%`为 Git的安装路径，`%RepoPath%`为某仓库的本地路径。
+  * `global:`
+    * ~/.gitconfig
+
+  * `local:`
+    * $RepoPath/.git/config
+
+    note: 其中`$RepoPath`为某仓库的本地路径。
 
 * 所以 system 配置整个系统只有一个，global 配置每个账户只有一个，而 local 配置和git仓库的数目相同，并且只有在仓库目录才能看到该配置。
 
@@ -32,17 +39,17 @@
 
 ## 配置
 
-1. 清除 git 的全局设置
+1. 清除 git 的全局设置 (没配置全局则跳过)
 
     * 查看全局变量
 
-        ```python
+        ```py
         git config --global --list
         ```
 
     * 清除全局`user.name`和`user.email`
 
-        ```python
+        ```py
         git config --global --unset user.name
         git config --global --unset user.email
         ```
@@ -60,7 +67,7 @@
 
       * 最简配置
 
-        ```python
+        ```py
         # GitHub
             Host github.com
             HostName github.com
@@ -69,7 +76,7 @@
 
       * 完整配置
 
-        ```python
+        ```py
         # Default gitHub user Self
             Host github.com
             HostName github.com
@@ -91,7 +98,7 @@
 
         * Host
 
-            ```python
+            ```py
             它涵盖了下面一个段的配置，我们可以通过他来替代将要连接的服务器地址。
             这里可以使用任意字段或通配符。
             当ssh的时候如果服务器地址能匹配上这里Host指定的值，则Host下面指定的HostName将被作为最终的服务器地址使用，并且将使用该Host字段下面配置的所有自定义配置来覆盖默认的/etc/ssh/ssh_config配置信息。
@@ -99,37 +106,37 @@
 
         * Port
 
-            ```python
+            ```py
             自定义的端口。默认为22，可不配置
             ```
 
         * User
 
-            ```python
+            ```py
             自定义的用户名，默认为git,也可不配置
             ```
 
         * HostName
 
-            ```python
+            ```py
             真正连接的服务器地址
             ```
 
         * PreferredAuthentications
 
-            ```python
+            ```py
             指定优先使用哪种方式验证，支持密码和秘钥验证方式
             ```
 
         * IdentityFile
 
-            ```python
+            ```py
             指定本次连接使用的密钥文件
             ```
 
         * AddKeysToAgent yes
 
-            ```python
+            ```py
             将私钥加载到 ssh-agent，
             等同于 ssh-add ~/.ssh/id_ed25519
             ```
@@ -142,7 +149,7 @@
 
     * GitHub 项目
 
-        ```python
+        ```py
         $ git clone git@github.com:librarookie/spring-boot.git
 
         Cloning into 'spring-boot'...
@@ -153,7 +160,7 @@
 
     * Gitee 项目
 
-        ```python
+        ```py
         $ git clone git@gitee.com:librarookie/test.git
 
         Cloning into 'test'...
@@ -168,7 +175,7 @@
 
     * commit
 
-        ```python
+        ```py
         $ git commit -am "test"
 
         Author identity unknown
@@ -189,7 +196,7 @@
       * 原因是没有配置 `user.name`和 `user.email`
         * 方案一： 设置全局变量的 `user.name`和 `user.email`
 
-        ```python
+        ```py
         git config --global user.email "you@example.com"
         git config --global user.name "Your Name"
         ```
@@ -200,14 +207,14 @@
             1. 进入项目本地仓库
             2. 设置 `user.name`和 `user.email`
 
-        ```python
+        ```py
         git config --local user.email "you@example.com"
         git config --local user.name "Your Name"
         ```
 
     * commit 2
 
-        ```python
+        ```py
         $ git commit -am "5555" 
 
         [test 52bcd83] 5555
@@ -216,7 +223,7 @@
 
     * push
 
-        ```python
+        ```py
         $ git push 
 
         Enumerating objects: 5, done.
