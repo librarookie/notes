@@ -2,6 +2,10 @@
 
 </br></br>
 
+![20211203180034](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211203180034.png)
+
+</br>
+
 ## [目录](#目录)
 
 * [专有名词](#专有名词)
@@ -15,10 +19,6 @@
 * [远程同步](#远程同步)
 * [撤销](#撤销)
 * [其他](#其他)
-
-</br>
-
-![20211203180034](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211203180034.png)
 
 </br>
 
