@@ -10,20 +10,17 @@
 
 * 配置优先级： `local > global > system`
 
-* 在环境中，分别对应
+* 在Linux环境中，分别对应
 
-  * `system：`
-    * /etc/gitconfig
+  * `system`
+    * /etc/gitconfig文件：系统中对所有用户都普遍适用的配置。若使用 git config 时用 `--system` 选项，读写的就是这个文件。
+  * `global`
+    * ~/.gitconfig文件：用户目录下的配置文件只适用于该用户。若使用 git config 时用 `--global` 选项，读写的就是这个文件。
+  * `local`
+    * $RepoPath/.git/config文件：当前项目的 git 目录中的配置文件（也就是工作目录的 .git/config 文件）：这里的配置仅仅针对当前项目有效。每一个级别的配置都会覆盖上层的相同配置，所以.git/config 里的配置会覆盖 /etc/gitconfig 中的同名变量。（`$RepoPath`为某仓库的本地路径）
 
-  * `global:`
-    * ~/.gitconfig
-
-  * `local:`
-    * $RepoPath/.git/config
-
-    note: 其中`$RepoPath`为某仓库的本地路径。
-
-* 所以 system 配置整个系统只有一个，global 配置每个账户只有一个，而 local 配置和git仓库的数目相同，并且只有在仓库目录才能看到该配置。
+* 在 Windows 系统上
+  * Git 会找寻用户主目录下的 .gitconfig 文件。主目录即 $HOME 变量指定的目录，一般都是 C:\Documents and Settings\$USER。此外，Git 还会尝试找寻 /etc/gitconfig 文件，只不过看当初 Git 装在什么目录，就以此作为根目录来定位。
 
 </br>
 
