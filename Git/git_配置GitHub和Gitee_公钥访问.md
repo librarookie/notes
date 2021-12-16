@@ -2,25 +2,32 @@
 
 </br></br>
 
+- [配置GitHub 和Gitee共存环境](#配置github-和gitee共存环境)
+  - [前言](#前言)
+  - [准备](#准备)
+  - [配置](#配置)
+  - [检验](#检验)
+  - [拓展](#拓展)
+
 ## 前言
 
-* Git共有三个级别的`config`文件，分别是`system(系统)`、`global（全局）`和`local（仓库）`
+- Git支持多级配置,分别是`system(系统级)`、`global（用户级）`、`local（项目级）`和`worktree（工作区级）`，其中常用的就用户级和项目级。
 
-* 配置读取顺序： `system > global > local`
+- 在Linux中，用户和项目级配置
 
-* 配置优先级： `local > global > system`
+  - `global`
+    - `~/.gitconfig`： 用户级配置文件；用户目录下的配置文件只适用于该用户。使用 `git config --global`读写的就是这个文件。
 
-* 在Linux环境中，分别对应
+  - `local`
+    - `$RepoPath/.git/config`： 项目级配置文件；当前项目的 git仓库目录中的配置文件（也就是工作目录中的 `.git/config` 文件）,这里的配置仅仅针对当前项目有效。使用 `git config --local`或 `省略 local参数`，读写的就是这个文件。
 
-  * `system`
-    * /etc/gitconfig文件：系统中对所有用户都普遍适用的配置。若使用 git config 时用 `--system` 选项，读写的就是这个文件。
-  * `global`
-    * ~/.gitconfig文件：用户目录下的配置文件只适用于该用户。若使用 git config 时用 `--global` 选项，读写的就是这个文件。
-  * `local`
-    * $RepoPath/.git/config文件：当前项目的 git 目录中的配置文件（也就是工作目录的 .git/config 文件）：这里的配置仅仅针对当前项目有效。每一个级别的配置都会覆盖上层的相同配置，所以.git/config 里的配置会覆盖 /etc/gitconfig 中的同名变量。（`$RepoPath`为某仓库的本地路径）
+    `note` :
 
-* 在 Windows 系统上
-  * Git 会找寻用户主目录下的 .gitconfig 文件。主目录即 $HOME 变量指定的目录，一般都是 C:\Documents and Settings\$USER。此外，Git 还会尝试找寻 /etc/gitconfig 文件，只不过看当初 Git 装在什么目录，就以此作为根目录来定位。
+    - 每一个级别的配置都会覆盖上层的相同配置，所以 `.git/config` 里的配置会覆盖 `/etc/gitconfig` 中的同名变量。
+    - `$RepoPath`为某仓库的本地路径
+
+- 在 Windows 系统上
+  - Git 会找寻用户主目录下的 .gitconfig 文件。主目录即 $HOME 变量指定的目录，一般都是 C:\Documents and Settings\$USER。此外，Git 还会尝试找寻 /etc/gitconfig 文件，只不过看当初 Git 装在什么目录，就以此作为根目录来定位。
 
 </br>
 
@@ -38,13 +45,13 @@
 
 1. 清除 git 的全局设置 (没配置全局则跳过)
 
-    * 查看全局变量
+    - 查看全局变量
 
         ```py
         git config --global --list
         ```
 
-    * 清除全局`user.name`和`user.email`
+    - 清除全局`user.name`和`user.email`
 
         ```py
         git config --global --unset user.name
@@ -53,16 +60,16 @@
 
 2. 生成并添加 SSH Keys
 
-    * [点此进入生成并添加 SSH Keys](https://www.cnblogs.com/cure/p/15390170.html "生成&添加 SSH公钥")
+    - [点此进入生成并添加 SSH Keys](https://www.cnblogs.com/cure/p/15390170.html "生成&添加 SSH公钥")
 
 3. 多环境配置config文件
 
-    * 在`~/.ssh/`目录下创建config文件
+    - 在`~/.ssh/`目录下创建config文件
         > touch ~/.ssh/config
 
-    * 配置config文件内容
+    - 配置config文件内容
 
-      * 最简配置
+      - 最简配置
 
         ```py
         # GitHub
@@ -71,7 +78,7 @@
             IdentityFile ~/.ssh/id_ed25519
         ```
 
-      * 完整配置
+      - 完整配置
 
         ```py
         # Default gitHub user Self
@@ -91,9 +98,9 @@
             AddKeysToAgent yes
         ```
 
-      * 参数解释
+      - 参数解释
 
-        * Host
+        - Host
 
             ```py
             它涵盖了下面一个段的配置，我们可以通过他来替代将要连接的服务器地址。
@@ -101,37 +108,37 @@
             当ssh的时候如果服务器地址能匹配上这里Host指定的值，则Host下面指定的HostName将被作为最终的服务器地址使用，并且将使用该Host字段下面配置的所有自定义配置来覆盖默认的/etc/ssh/ssh_config配置信息。
             ```
 
-        * Port
+        - Port
 
             ```py
             自定义的端口。默认为22，可不配置
             ```
 
-        * User
+        - User
 
             ```py
             自定义的用户名，默认为git,也可不配置
             ```
 
-        * HostName
+        - HostName
 
             ```py
             真正连接的服务器地址
             ```
 
-        * PreferredAuthentications
+        - PreferredAuthentications
 
             ```py
             指定优先使用哪种方式验证，支持密码和秘钥验证方式
             ```
 
-        * IdentityFile
+        - IdentityFile
 
             ```py
             指定本次连接使用的密钥文件
             ```
 
-        * AddKeysToAgent yes
+        - AddKeysToAgent yes
 
             ```py
             将私钥加载到 ssh-agent，
@@ -144,7 +151,7 @@
 
 1. clone 测试
 
-    * GitHub 项目
+    - GitHub 项目
 
         ```py
         $ git clone git@github.com:librarookie/spring-boot.git
@@ -155,7 +162,7 @@
         Receiving objects: 100% (15/15), done.
         ```
 
-    * Gitee 项目
+    - Gitee 项目
 
         ```py
         $ git clone git@gitee.com:librarookie/test.git
@@ -170,7 +177,7 @@
 
 2. push 测试
 
-    * commit
+    - commit
 
         ```py
         $ git commit -am "test"
@@ -190,8 +197,8 @@
         fatal: unable to auto-detect email address (got 'noname@G3.(none)')
         ```
 
-      * 原因是没有配置 `user.name`和 `user.email`
-        * 方案一： 设置全局变量的 `user.name`和 `user.email`
+      - 原因是没有配置 `user.name`和 `user.email`
+        - 方案一： 设置全局变量的 `user.name`和 `user.email`
 
         ```py
         git config --global user.email "you@example.com"
@@ -200,7 +207,7 @@
 
         note: 此方案适合只使用GitHub 或Gitee（可以试试GitHub和Gitee使用同一个账号）
 
-        * 方案二： 设置项目库局部 `user.name`和 `user.email`
+        - 方案二： 设置项目库局部 `user.name`和 `user.email`
             1. 进入项目本地仓库
             2. 设置 `user.name`和 `user.email`
 
@@ -209,7 +216,7 @@
         git config --local user.name "Your Name"
         ```
 
-    * commit 2
+    - commit 2
 
         ```py
         $ git commit -am "5555" 
@@ -218,7 +225,7 @@
         1 file changed, 1 insertion(+)
         ```
 
-    * push
+    - push
 
         ```py
         $ git push 
@@ -234,11 +241,12 @@
 
 ## 拓展
 
-* [如何将 GitHub 项目导入码云？一步搞定！](https://blog.gitee.com/2018/06/05/github_to_gitee/ "如何将 GitHub 项目导入码云？一步搞定！")
+- [如何将 GitHub 项目导入码云？一步搞定！](https://blog.gitee.com/2018/06/05/github_to_gitee/ "如何将 GitHub 项目导入码云？一步搞定！")
+- [git-config配置多用户环境以及 includeIf用法](https://www.cnblogs.com/cure/p/15697181.html "git-config配置多用户环境以及 includeIf用法")
 
 </br></br>
 
 Reference
 
-* <https://duter2016.github.io/2021/01/22/Git%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8Gitee%E5%92%8CGithub%E5%B9%B6%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/>
-* <https://www.jianshu.com/p/68578d52470c>
+- <https://duter2016.github.io/2021/01/22/Git%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8Gitee%E5%92%8CGithub%E5%B9%B6%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/>
+- <https://www.jianshu.com/p/68578d52470c>
