@@ -121,33 +121,55 @@
 
 ## 栗子
 
-1. 指定工程的用户配置
+1. 在用户配置文件 `~/.gitconfig` 中添加以下内容
 
-    ```py
-    # 配置demo项目
-    [includeIf "gitdir/i:~/workspace/private/demo/.git"]
-        path = ~/.gitconfig_self
-    ```
+   - 指定工程的用户配置
 
-2. 指定目录的用户配置
+       ```py
+       # 配置demo项目
+       [includeIf "gitdir/i:~/workspace/private/demo/.git"]
+           path = ~/.gitconfig_self
+       ```
 
-    ```py
-    # 配置public目录
-    [includeIf "gitdir/i:~/workspace/public/"]
-        path = ~/.gitconfig_work
+   - 指定目录的用户配置
 
-    # 配置private目录
-    [includeIf "gitdir/i:~/workspace/private/"]
-        path = ~/.gitconfig_self
-    ```
+       ```py
+       # 配置public目录
+       [includeIf "gitdir/i:~/workspace/public/"]
+           path = ~/.gitconfig_work
 
-3. 指定分支的用户配置
+       # 配置private目录
+       [includeIf "gitdir/i:~/workspace/private/"]
+           path = ~/.gitconfig_self
+       ```
 
-    ```py
-    # 配置 test-branch分支
-    [includeIf "onbranch:test-branch"]
-        path = ~/.gitconfig_self
-    ```
+   - 指定分支的用户配置
+
+       ```py
+       # 配置 test-branch分支
+       [includeIf "onbranch:test-branch"]
+           path = ~/.gitconfig_self
+       ```
+
+2. 配置子配置文件
+   - 方法一： 直接在`$path`文件中添加`用户名`和`邮箱`，如：
+
+      ```py
+      [user]
+          name = librarookie
+          email = librarookie@163.com
+      ```
+
+   - 方法二： 用`git config -f|--file`指定`$path`文件的`用户名`和`邮箱`
+
+      > git config -f $path user.name "Your Name"
+      >
+      > git config -f $path user.email "you@example.com"
+
+      ```py
+      git config -f ~/.gitconfig_self user.name librarookie
+      git config -f ~/.gitconfig_self user.email librarookie@163.com
+      ```
 
 </br></br>
 
