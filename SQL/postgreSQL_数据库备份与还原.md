@@ -7,6 +7,7 @@
 * [备份](#备份)
 * [还原](#还原)
 * [栗子](#栗子)
+* [拓展](#拓展)
 
 </br>
 
@@ -27,7 +28,7 @@
 
     ```md
     -f, --file=FILENAME          输出文件或目录名
-    -F, --format=c|d|t|p         输出文件格式 (定制, 目录, tar) 明文 (默认值))
+    -F, --format=c|d|t|p         输出文件格式 ((定制, 目录, tar) 明文 (默认值))
     -j, --jobs=NUM               执行多个并行任务进行备份转储工作
     -v, --verbose                详细模式
     -V, --version                输出版本信息，然后退出
@@ -215,6 +216,12 @@
 
   * [REASSIGN OWNED 文档](https://www.postgresql.org/docs/9.6/sql-reassign-owned.html "https://www.postgresql.org/docs/9.6/sql-reassign-owned.html")
   * [REASSIGN OWNED 中文文档](http://www.postgres.cn/docs/9.6/sql-reassign-owned.html "http://www.postgres.cn/docs/9.6/sql-reassign-owned.html")
+
+</br>
+
+### [拓展](#目录)
+
+* [PostgreSQL 数据库备份脚本](https://www.cnblogs.com/cure/p/15767952.html "https://www.cnblogs.com/cure/p/15767952.html")
 
 </br></br>
 
