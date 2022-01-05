@@ -28,9 +28,9 @@
   | 切换数据库 |`USE dbname`|
   | 查看数据库 |`SHOW DATABASES`|
   | 查看表 |`SHOW TABLES`|
-  | 查看表结构 |`DESC tb_name` `SHOW COLUMNS FROM tb_name`|
-  | 退出 |`quit` `exit` `\q`|
-  | 帮助 |`？` `help`|
+  | 查看表结构 |`DESC tb_name` \| `SHOW COLUMNS FROM tb_name`|
+  | 退出 |`quit` \| `exit` \| `\q`|
+  | 帮助 |`？` \| `help`|
 
 </br>
 
@@ -138,13 +138,13 @@
 | 查看结构 | `\d tb_name` |
 | 查看所有 | `\d` |
 | 查看表 | `\dt` |
-| 查看角色（roles） | `\dg` `\du` |
+| 查看角色（roles） | `\dg` \| `\du` |
 | 查看模式（schemas） | `\dn` |
 | 查看索引（indexes） | `\di` |
 | 查看序列（sequences） | `\ds` |
 | 查看视图（views） | `\dv` |
 | 查看类型（types） | `\dT` |
-| 查看访问权限（access） | `\dp` `\z` |
+| 查看访问权限（access） | `\dp` \| `\z` |
 
 *note:*
 
