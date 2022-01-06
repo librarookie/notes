@@ -1,7 +1,7 @@
 -- database
 
 -- 1.学生表
--- Student(s_id, s_name, s_age, s_sex) --s_id 学生编号,s_name 学生姓名,s_age 出生年月,s_sex 学生性别
+-- Student(s_id, s_name, s_birth, s_sex) --s_id 学生编号,s_name 学生姓名,s_birth 出生年月,s_sex 学生性别
 
 -- 2.课程表
 -- Course(c_id, c_name, t_id) --c_id --c_id 课程编号,c_name 课程名称,t_id 教师编号
@@ -16,7 +16,7 @@
 -- 添加测试数据
 -- 1.学生表
 
-create table Student(s_id varchar(10), s_name nvarchar(10), s_age datetime, s_sex nvarchar(10));
+create table Student(s_id varchar(10), s_name nvarchar(10), s_birth nvarchar(10), s_sex nvarchar(10));
 
 insert into Student values('01' , '赵雷' , '1990-01-01' , '男');
 
