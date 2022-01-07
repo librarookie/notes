@@ -39,8 +39,8 @@
 
 - 语法
 
-    ```md
-    create table 表名(
+    ```py
+    CREATE TABLE 表名(
     字段名1 类型[(宽度) 约束条件],
     字段名2 类型[(宽度) 约束条件],
     字段名3 类型[(宽度) 约束条件]
@@ -63,18 +63,18 @@
 
 - 查看表结构(字段, 类型, 约束条件等)
 
-    > DESC tb_name;
+    > DESC table_name;
     >
-    > SHOW COLUMNS FROM tb_name;
+    > SHOW COLUMNS FROM table_name;
 
 - 查看表创建信息
 
-    > SHOW CREATE TABLE tb_name;
+    > SHOW CREATE TABLE table_name;
 
 - 数据库命令
   - 进入数据库
 
-    > USE db_anme;
+    > USE db_name;
 
   - 查看当前所在数据库
 
@@ -88,13 +88,13 @@
 
 #### [清空数据表](#数据表操作)
 
-  > TRUNCATE tb_name;
+  > TRUNCATE table_name;
 
 #### [删除数据表](#数据表操作)
 
-  > DROP TABLE tb_name;
+  > DROP TABLE table_name;
   >
-  > DROP TABLES tb_name tb_name2 ...;
+  > DROP TABLES table_name table_name2 ...;
 
 </br>
 
@@ -102,15 +102,15 @@
 
 #### [结构复制](#复制表操作)
 
-  > CREATE TABLE tb_name LIKE tb_temp_name;
+  > CREATE TABLE table_name LIKE temp_table_name;
 
 #### [全部复制](#复制表操作)（不会复制主键，外键，索引）
 
-  > CREATE TABLE tb_name SELECT - FROM tb_temp_name;
+  > CREATE TABLE table_name SELECT * FROM temp_table_name;
 
 #### [选择复制](#复制表操作)
 
-  > CREATE TABLE tb_name SELECT field1,field2... FROM tb_temp_name;
+  > CREATE TABLE table_name SELECT field1,field2... FROM temp_table_name;
 
 </br>
 
@@ -154,7 +154,7 @@
 
 #### [删除字段](#表字段操作)
 
-  > ALTER TABLE tb_name DROP field_name;
+  > ALTER TABLE table_name DROP field_name;
 
 </br></br>
 
