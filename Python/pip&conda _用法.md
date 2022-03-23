@@ -38,12 +38,19 @@
     | 激活环境 | conda activate [env_name] |
     | 退出环境 | conde deactivate |
     | 查看环境 | conda env list </br> conda info --envs </br> conda info -e |
-    | 新建环境 | conda create -n env_name [python=3.8] -y |
-    | 指定环境目录 | conda create -p /path/env_name [python=3.8] -y |
-    | 删除环境 </br> (指定目录环境用 p) | conda env remove -n env_name </br> conda remove -n env_name --all -y |
-    | 克隆环境 | conda create -n env_new --clone env_name -y |
+    | 新建环境 | conda create -n env_name [python=3.8] [-y] |
+    | 指定环境目录 | conda create -p /path/env_name [python=3.8] [-y] |
+    | 删除环境 </br> (指定目录环境用 p) | conda env remove -n env_name </br> conda remove -n env_name --all [-y] |
+    | 克隆环境 | conda create -n env_new --clone env_name [-y] |
     | 导出环境 | conda env export > environment.yaml |
     | 导入环境 | conda env create -f environment.yaml |
+
+    tips:
+    
+    * `python=3.8` 指定新建环境python版本，不填默认使用Anaconda的python版本
+    * `--clone` 
+        * 可以指环境名称（env_name），或者环境目录（/path/env_dir）
+        * 只会克隆`conda` 安装的包，`pip` 安装的包需要重新安装
 
 ## 镜像
 
