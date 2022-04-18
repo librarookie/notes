@@ -23,7 +23,7 @@ Ideas:
 
 - 看到 “找重复” 的关键字眼，首先要用分组函数（`group by`），再用聚合函数中的计数函数 `count()` 给姓名列计数。
 - 分组汇总后，从该表里选出计数 `大于 1` 的姓名，就是重复的姓名。
-- 拓展：找出重复出现 `n 次`的数据。只需要改变 `having` 语句中的条件即可
+- **拓展**：找出重复出现 `n 次`的数据。只需要改变 `having` 语句中的条件即可
 - SQL 子句的运行顺序：`FROM > WHERE > GROUP_BY > HAVING > SELECT > ORDER_BY > LIMIT`
 - SQL 子句的书写顺序如下：
 
@@ -41,7 +41,7 @@ Ideas:
 
 Tips:
 
-- 如果添加一个 `s_sex` 字段，就如出现如下错误：
+- 如果查询条件中添加一个 `s_sex` 字段，就如出现如下错误：
   - > `1055 - Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'testdb.Student.s_sex' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by`
   - 原因：问题字段既不在分组中也不在 `Aggregate 函数` 中，那么在相同的分组中，这个字段的值可能是不同的，系统不知道要如何选择；
   - 解决方案：
@@ -52,6 +52,8 @@ Tips:
 </br>
 
 ### 复杂查询
+
+
 
 #### 如何查找第 N 高的数据？
 
@@ -112,3 +114,10 @@ Tips:
 #### 【教育行业】学员续费如何分析？
 
 #### 【字节跳动】你的平均薪水是多少？
+
+</br>
+</br>
+
+Reference
+
+- <https://houzidata.gitbook.io/sql/>
