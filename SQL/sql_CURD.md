@@ -1,9 +1,9 @@
-# SQL 基础语法
+# MySQL 基础
 
 </br>
 </br>
 
-- [SQL 基础语法](#sql-基础语法)
+- [MySQL 基础](#mysql-基础)
   - [SQL 介绍](#sql-介绍)
   - [DDL（数据定义语言）](#ddl数据定义语言)
     - [数据库操作](#数据库操作)
@@ -316,50 +316,50 @@ Tips:
 
     - 语法:
 
-        ```sql
-        col_name data_type [GENERATED ALWAYS] AS (expr)
-          [VIRTUAL | STORED]
-          [NOT NULL | NULL] 
-          [UNIQUE [KEY]] 
-          [[PRIMARY] KEY]
-          [COMMENT 'string']
-        ```
+      ```sql
+      col_name data_type [GENERATED ALWAYS] AS (expr)
+        [VIRTUAL | STORED]
+        [NOT NULL | NULL] 
+        [UNIQUE [KEY]] 
+        [[PRIMARY] KEY]
+        [COMMENT 'string']
+      ```
 
         Tips:
 
-        - `GENERATED ALWAYS` 可以省略;
-        - `AS (expr)` 用于生成计算列值的表达式;
-        - `VIRTUAL 或 STORED` 关键字表示是否存储计算列的值：
-          - `VIRTUAL`：列值不存储，虚拟列不占用存储空间，默认设置为 VIRTUAL
-          - `STORED`：在添加或更新行时计算并存储列值; 存储列需要存储空间，并且可以创建索引;
-        - 如果表达式的结果类型与字段定义中的数据类型不同，将会执行隐式的类型转换
-        - 生成列支持`NOT NULL`、`UNIQUE`、`主键`、`CHECK`以及 `外键` 约束，但是不支持 `DEFAULT` 默认值;
-        - Generated column 表达式必须遵循以下规则:
-          - 允许使用常量、确定性的内置函数以及运算符；
-            - `确定性函数` 意味着对于表中的相同数据，多次调用返回相同的结果，与当前用户无关;
-            - `非确定性函数` 包括 CONNECTION_ID()、CURRENT_USER()、NOW() 等；
-          - 不允许使用存储函数和自定义函数；
-          - 不允许使用存储过程和函数的参数；
-          - 不允许使用变量（系统变量、自定义变量或者存储程序中的本地变量）；
-          - 不允许子查询；
-          - 允许引用表中已经定义的其他生成列；允许引用任何其他非生成列，无论这些列出现的位置在前面还是后面；
-          - 不允许使用 AUTO_INCREMENT 属性；
-          - 不允许使用 AUTO_INCREMENT 字段作为生成列的基础列；
-          - 可以在计算列上创建索引，但不能在 VIRTUAL 类型的计算列上创建聚集索引；
+      - `GENERATED ALWAYS` 可以省略;
+      - `AS (expr)` 用于生成计算列值的表达式;
+      - `VIRTUAL 或 STORED` 关键字表示是否存储计算列的值：
+        - `VIRTUAL`：列值不存储，虚拟列不占用存储空间，默认设置为 VIRTUAL
+        - `STORED`：在添加或更新行时计算并存储列值; 存储列需要存储空间，并且可以创建索引;
+      - 如果表达式的结果类型与字段定义中的数据类型不同，将会执行隐式的类型转换
+      - 生成列支持`NOT NULL`、`UNIQUE`、`主键`、`CHECK`以及 `外键` 约束，但是不支持 `DEFAULT` 默认值;
+      - Generated column 表达式必须遵循以下规则:
+        - 允许使用常量、确定性的内置函数以及运算符；
+          - `确定性函数` 意味着对于表中的相同数据，多次调用返回相同的结果，与当前用户无关;
+          - `非确定性函数` 包括 CONNECTION_ID()、CURRENT_USER()、NOW() 等；
+        - 不允许使用存储函数和自定义函数；
+        - 不允许使用存储过程和函数的参数；
+        - 不允许使用变量（系统变量、自定义变量或者存储程序中的本地变量）；
+        - 不允许子查询；
+        - 允许引用表中已经定义的其他生成列；允许引用任何其他非生成列，无论这些列出现的位置在前面还是后面；
+        - 不允许使用 AUTO_INCREMENT 属性；
+        - 不允许使用 AUTO_INCREMENT 字段作为生成列的基础列；
+        - 可以在计算列上创建索引，但不能在 VIRTUAL 类型的计算列上创建聚集索引；
 
     - 栗子
 
-        ```sql
-        -- 创建表 t_test ，其中计算列 sum 的值为 (a + b)
-        CREATE TABLE t_test (
-          a INT NOT NULL,
-          b INT NOT NULL,
-          sum INT GENERATED ALWAYS AS (a + b) [VIRTUAL]
-        );
+      ```sql
+      -- 创建表 t_test ，其中计算列 sum 的值为 (a + b)
+      CREATE TABLE t_test (
+        a INT NOT NULL,
+        b INT NOT NULL,
+        sum INT GENERATED ALWAYS AS (a + b) [VIRTUAL]
+      );
 
-        -- 添加计算列 area 值为 (a * b)
-        ALTER TABLE t_test ADD area INT AS (a * b) STORED;
-        ```
+      -- 添加计算列 area 值为 (a * b)
+      ALTER TABLE t_test ADD area INT AS (a * b) STORED;
+      ```
 
 2. 其他 SQL 类型
    - [其他 SQL 类型的计算列](https://blog.csdn.net/horses/article/details/104119208 "SQL 中的生成列/计算列以及主流数据库实现")
@@ -387,7 +387,7 @@ Tips:
 2. 授权
 
     - 语法
-        > GRANT 权限 ON 数据库对象 TO 用户 [WITH GRANT OPTION];
+      > GRANT 权限 ON 数据库对象 TO 用户 [WITH GRANT OPTION];
 
     - 栗子
       - 授予 super用户所有权限
