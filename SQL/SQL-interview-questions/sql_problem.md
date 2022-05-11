@@ -53,8 +53,6 @@ Tips:
 
 ### 复杂查询
 
-
-
 #### 如何查找第 N 高的数据？
 
 </br>
@@ -121,3 +119,4 @@ Tips:
 Reference
 
 - <https://houzidata.gitbook.io/sql/>
+- <https://mp.weixin.qq.com/s?__biz=MzAxMTMwNTMxMQ==&mid=2649253883&idx=1&sn=4cad145b62bde23ece960869d7bfff5f>
