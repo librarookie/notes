@@ -61,6 +61,8 @@
     PREFIX=24
     ```
 
+    Tips: 配置静态IP需要修改 `BOOTPROTO=static`
+
   - 添加 IPv6 配置
 
     ```md
