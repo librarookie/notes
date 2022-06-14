@@ -21,8 +21,6 @@
 
 2. TLS 介绍
 
-    ![http-vs-https](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/http-vs-https.png)
-
     > 传输层安全性（Transport Layer Security，TLS）是一种广泛采用的安全性协议，旨在促进互联网通信的私密性和数据安全性。TLS 的主要用例是对 web 应用程序和服务器之间的通信（例如，web 浏览器加载网站）进行加密。TLS 还可以用于加密其他通信，如电子邮件、消息传递和 IP 语音（VOIP）等。在本文中，我们将重点介绍 TLS 在 web 应用程序安全中发挥的作用。
 
     - TLS 其前身是 SSL，它最初的几个版本（SSL 1.0、SSL 2.0、SSL 3.0）由网景公司开发；
@@ -74,6 +72,8 @@
     - URL 则是用来定位具体的资源的，标示了一个具体的资源位置。互联网上的每个文件都有一个唯一的URL。
 
 ### HTTPS
+
+![http-vs-https](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/http-vs-https.png)
 
 > HTTPS（Hypertext Transfer Protocol Secure：超文本传输安全协议）是一种透过计算机网络进行安全通信的传输协议。HTTPS 经由 HTTP 进行通信，但利用 SSL/TLS 来加密数据包。HTTPS 开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。
 
