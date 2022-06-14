@@ -21,17 +21,24 @@ X.509 是密码学里公钥证书的格式标准。
     - PKCS #12： 个人讯息交换标准（Personal Information Exchange Syntax Standard），定义了包含私钥与公钥证书（public key certificate）的文件格式。私钥采密码(password)保护。常见的PFX就履行了PKCS#12。
 
 2. 常用扩展名：
-    - PKCS#7格式： .P7B .P7C .SPC
-    - PKCS#12格式： .P12 .PFX .PKCS12
     - JKS格式： .jks .keystore .truststore
-    - .pem – 隐私增强型电子邮件（Privacy-enhanced Electronic Mail）格式，通常是Base64格式的。
-    - .cer /.crt /.der – 通常是DER（X.690#DER_encoding）二进制格式的。
-    - .cer /.crt是用于存放证书，它是2进制形式存放的，不含私钥。
-    - .p12 – PKCS#12格式，包含证书的同时可能还包含私钥
-    - .pfx – PFX，PKCS#12之前的格式（通常用PKCS#12格式，比如由互联网资讯服务产生的PFX文件）
-    - .pfx /.p12 用于存放个人证书/私钥，他通常包含保护密码，2进制方式。
-    - .p7r 是CA对证书请求的回复，只用于导入。
-    - .p7b 以树状展示证书链(certificate chain)，同时也支持单个证书，不含私钥。
+    - PKCS#7格式： .p7b .p7c .spc
+    - PKCS#12格式： .p12 .pfx
+    - `.jks` 或 `.keystore` 文件是Java是存储密钥（公钥、私钥）的容器；
+    - `.truststore` 文件是存储自己信任对象公钥的容器；
+    - `.pem` ： 隐私增强型电子邮件（Privacy-enhanced Electronic Mail, pem），通常是Base64格式的文本格式；
+      - `.pem` 文件可以存放证书或私钥，或者两者都包含。如果只包含私钥，一般用 `.key` 文件代替。
+    - `.cer` `.crt` `.der` ： 通常是DER（X.690#DER_encoding）二进制格式的。
+      - `.der` 或 `.cer` 文件是二进制格式，只含有证书信息，不包含私钥。
+      - `.crt` 文件是二进制格式或文本格式，一般为文本格式，功能与 `.der` 及 `.cer` 证书文件相同。
+    - `.pfx` 或 `.p12` 文件是二进制格式，同时包含证书和私钥，且一般有密码保护。
+      - `.pfx` – PFX，PKCS#12之前的格式（通常用PKCS#12格式，比如由互联网资讯服务产生的PFX文件）;
+      - `.p12` – PKCS#12格式，包含证书的同时可能还包含私钥;
+    - `.csr` ： 数字证书签名请求文件（Cerificate Signing Request）
+    - `.p7r` ： 是CA对证书请求的回复，只用于导入。
+    - `.p7b` ： 以树状展示证书链(certificate chain)，同时也支持单个证书，不含私钥。
+
+Tips： 区别证书的不是后缀名，而是证书文件的格式与内容。
 
 ### 术语介绍
 
@@ -147,11 +154,10 @@ Apache和其他类似服务器使用PEM格式证书。几个PEM证书，甚至�
 
 - PEM to PFX
 
-    > openssl pkcs12 -export -out CERTIFICATE.pfx -inkey PRIVATEKEY.key -in CERTIFICATE.crt [-certfile CACert.crt] </br>
     > openssl pkcs12 -export -out CERTIFICATE.pfx -inkey PRIVATEKEY.key -in CERTIFICATE.cer [-certfile CACert.cer] </br>
     > openssl pkcs12 -export -out server.p12 -inkey server.key -in server.pem
 
-#### 转换 DER证书（der /.crt /.cer）
+#### 转换 DER证书（.der /.crt /.cer）
 
 - DER to PEM
 
@@ -167,7 +173,7 @@ Apache和其他类似服务器使用PEM格式证书。几个PEM证书，甚至�
 
     > openssl pkcs7 -print_certs -in CERTIFICATE.p7b -out CERTIFICATE.cer
 
-#### 转换 PFX证书（.pkcs12 /.pfx /.p12）
+#### 转换 PFX证书（.pfx /.p12）
 
 - PFX to PEM
 
@@ -176,6 +182,16 @@ Apache和其他类似服务器使用PEM格式证书。几个PEM证书，甚至�
     > openssl pkcs12 -clcerts -nokeys -in cert.p12 -out cert.pem
 
 （PFX to PEM后CERTIFICATE.cer文件包含认证证书和私钥，需要把它们分开存储才能使用。）
+
+#### JKS 和 PKCS＃12 格式互转
+
+- JKS to P12
+
+    > keytool -importkeystore -srcstoretype JKS -deststoretype PKCS12 -srckeystore server.jks -destkeystore server.p12
+
+- P12 to JKS
+
+    > keytool -importkeystore -srcstoretype PKCS12 -deststoretype JKS -srckeystore server.p12 -destkeystore server.jks
 
 ### 常用选项
 
