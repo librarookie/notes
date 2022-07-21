@@ -59,6 +59,10 @@
       | '' | 转到之前的位置。 |
       | ESC-M letter | 清除一个标记。 |
 
+      Tips: Ubuntu的预设文本编辑器是 `nano`，可通过 `sudo update-alternatives --config editor` 命令，然后指定编辑器来指定预设编辑器；
+
+      ![20220721094030](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/md_20220721094030.png)
+
 </br>
 
 ## 栗子
