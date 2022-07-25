@@ -9,9 +9,7 @@
 
 查看 catalina.out 文件后100行
 
-```md
-tail -n 100 catalina.out
-```
+`tail -n 100 catalina.out`
 
 </br>
 
@@ -28,7 +26,7 @@ tail -n 100 catalina.out
 
 - Usage:
 
-    cat [OPTION]... [FILE]...
+    `cat [OPTION]... [FILE]...`
 
 - Options:
 
@@ -53,7 +51,7 @@ tail -n 100 catalina.out
 
 - Usage:
 
-    tac [OPTION]... [FILE]...
+    `tac [OPTION]... [FILE]...`
 
 - Options:
 
@@ -73,11 +71,11 @@ tail -n 100 catalina.out
 
 - tail Usage:
 
-    tail [OPTION]... [FILE]...
+    `tail [OPTION]... [FILE]...`
 
 - haad Usage:
 
-    head [OPTION]... [FILE]...
+    `head [OPTION]... [FILE]...`
 
 - Options:
 
@@ -114,7 +112,7 @@ Tips：
 
 - Usage:
 
-    more [options] [file]...
+    `more [options] [file]...`
 
 - Options:
 
@@ -207,7 +205,9 @@ Tips：
 
 5. 合并文件
 
+    ```md
     cat file1 file2 > file3
+    ```
 
 </br>
 </br>
