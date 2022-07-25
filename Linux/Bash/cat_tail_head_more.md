@@ -73,7 +73,7 @@
 
     `tail [OPTION]... [FILE]...`
 
-- haad Usage:
+- head Usage:
 
     `head [OPTION]... [FILE]...`
 
