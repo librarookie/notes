@@ -123,7 +123,7 @@ AppImage是一种可执行文件格式，类似于Windows的exe文件，macOS的
         选中图标 -> 点击鼠标右键 -> Add to Favorites
         ```
 
-        ![1](https://img2020.cnblogs.com/blog/1957451/202108/1957451-20210811140954717-1942751987.png)
+        ![1](https://gitee.com/librarookie/picgo/raw/master/img/202208091539252.png)
 
 ### 软连接
 
@@ -133,7 +133,7 @@ AppImage是一种可执行文件格式，类似于Windows的exe文件，macOS的
     echo $PATH
     ```
 
-    ![2](https://img2020.cnblogs.com/blog/1957451/202108/1957451-20210811140814977-749329264.png)
+    ![2](https://gitee.com/librarookie/picgo/raw/master/img/202208091540390.png)
 
 - 建立软连接
   - 说明
