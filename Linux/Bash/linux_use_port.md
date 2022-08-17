@@ -4,7 +4,7 @@
 
 浏览器的HTTP默认端口为 `80`， HTTPS的默认端口为 `433`，在Linux中将Tomcat配置为这些端口后，再使用普通用户启动时报错，报错信息如下：
 
-![20220706163852](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/md_20220706163852.png)
+![20220706163852](https://gitee.com/librarookie/picgo/raw/main/images/md_20220706163852.png)
 
 ## 介绍
 

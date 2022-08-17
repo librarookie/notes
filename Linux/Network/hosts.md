@@ -102,7 +102,7 @@ Windows还可以查看DNS缓存。
     - 原因： hosts文件只有可读权限
       - 处理： 去掉hosts属性中的“可读”即可，如图所示：
 
-        ![20220629171821](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/md_20220629171821.png)
+        ![20220629171821](https://gitee.com/librarookie/picgo/raw/main/images/md_20220629171821.png)
 
 2. 修改了hosts文件，添加了域名映射信息，但是不生效，试过了重新启动和刷新DNS都不行
 
@@ -110,8 +110,8 @@ Windows还可以查看DNS缓存。
     - 原因2： 使用第三方工具编辑 hosts文件，保存后hosts文件的编码格式变了，而windows对于hosts文件只能读取ASCII编码，所以hosts文件的编码必须是 `ANSI`。
       - 处理： 将hosts文件的域名信息填写好，然后另存为，在编码处选择“ANSI”，最后确定。
 
-        ![20220629171956](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/md_20220629171956.png)
-        ![hosts_faq](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/md_hosts_faq.png)
+        ![20220629171956](https://gitee.com/librarookie/picgo/raw/main/images/md_20220629171956.png)
+        ![hosts_faq](https://gitee.com/librarookie/picgo/raw/main/images/md_hosts_faq.png)
 
 </br>
 </br>

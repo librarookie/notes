@@ -21,7 +21,7 @@
 
 * <https://downloads.mysql.com/archives/community/>
 
-    ![20211101090923](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211101090923.png)
+    ![20211101090923](https://gitee.com/librarookie/picgo/raw/main/images/20211101090923.png)
 
  Product Version:　MySQL版本
 
@@ -116,13 +116,13 @@ OS Version:　系统的细版本（如：Ubuntu 18.04，Ubuntu20.04）
         // 输入 q 退出当前状态
         ```
 
-        ![20211101091008](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211101091008.png)
+        ![20211101091008](https://gitee.com/librarookie/picgo/raw/main/images/20211101091008.png)
 
     * 方案二：登录MySQL即可
 
         > mysql -u root -p　　　　// -u 用户名，-p 密码
 
-        ![20211101091027](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211101091027.png)
+        ![20211101091027](https://gitee.com/librarookie/picgo/raw/main/images/20211101091027.png)
 
 1. 授予 root 远程访问
 
@@ -139,7 +139,7 @@ OS Version:　系统的细版本（如：Ubuntu 18.04，Ubuntu20.04）
 
     1. 然后重启MySQL服务即可（快捷键 shift + g 可快速到达文件底部, "#"号表示注释该行）
 
-        ![20211101091118](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211101091118.png)
+        ![20211101091118](https://gitee.com/librarookie/picgo/raw/main/images/20211101091118.png)
 
  </br>
 

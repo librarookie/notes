@@ -65,29 +65,29 @@
 
 * 点击用户头像 -> 选择 Settings
 
-    ![20211026152844](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211026152844.png)
+    ![20211026152844](https://gitee.com/librarookie/picgo/raw/main/images/20211026152844.png)
 
 * 点击 Developer settings
 
-    ![20211026152924](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211026152924.png)
+    ![20211026152924](https://gitee.com/librarookie/picgo/raw/main/images/20211026152924.png)
 
 * 点击 Personal access tokens
 
-    ![20211026153043](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211026153043.png)
+    ![20211026153043](https://gitee.com/librarookie/picgo/raw/main/images/20211026153043.png)
 
 * 点击 Generate new token
 
-    ![20211026153113](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211026153113.png)
+    ![20211026153113](https://gitee.com/librarookie/picgo/raw/main/images/20211026153113.png)
 
 * 填写 Token 描述，勾选 repo，然后点击 Generate token 生成一个 Token
 
-    ![20211026153150](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211026153150.png)
+    ![20211026153150](https://gitee.com/librarookie/picgo/raw/main/images/20211026153150.png)
 
-    ![20211026153213](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211026153213.png)
+    ![20211026153213](https://gitee.com/librarookie/picgo/raw/main/images/20211026153213.png)
 
 * 获取 Token 密钥
 
-    ![20211026153251](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211026153251.png)
+    ![20211026153251](https://gitee.com/librarookie/picgo/raw/main/images/20211026153251.png)
 
 *note:* 注意这个 Token 只会显示一次，自己先保存下来，或者等后面配置好 PicGo 后再关闭此网页
 
@@ -95,7 +95,7 @@
 
 * 在vscode上安装`Picgo插件`， 或者前往下载 [PicGo客户端（点击下载）](https://github.com/Molunerfinn/PicGo "https://github.com/Molunerfinn/PicGo")，安装好后开始配置图床（插件和客户端的配置差不多，这里示范vscode插件）
 
-    ![20211026154813](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211026154813.png)
+    ![20211026154813](https://gitee.com/librarookie/picgo/raw/main/images/20211026154813.png)
 * 配置`PicGo`
 
   * 设定仓库名（Repo）：按照 `用户名/图床仓库名` 的格式填写
@@ -112,11 +112,11 @@
 
   * 官网指南：[Picgo官方使用指导](https://picgo.github.io/PicGo-Doc/zh/guide/config.html#github%E5%9B%BE%E5%BA%8A "Github图床配置手册")
 
-    ![20211026155522](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211026155522.png)
+    ![20211026155522](https://gitee.com/librarookie/picgo/raw/main/images/20211026155522.png)
 
 ### [上传图片到 PicGo 并使用图床](#配置)
 
-![20211026163429](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211026163429.png)
+![20211026163429](https://gitee.com/librarookie/picgo/raw/main/images/20211026163429.png)
 
 * 配置好 PicGo 后，配合`Picgo插件`快捷键使用
 
@@ -143,7 +143,7 @@
 * 下面是三种可访问的方式
   * <https://cdn.jsdelivr.net/gh/librarookie/Picgo@v1.0.1/images/baidu.png>
   * <https://cdn.jsdelivr.net/gh/librarookie/Picgo@latest/images/baidu.png>
-  * <https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/baidu.png>
+  * <https://gitee.com/librarookie/picgo/raw/main/images/baidu.png>
 
 </br></br>
 

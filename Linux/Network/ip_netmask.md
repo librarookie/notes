@@ -7,7 +7,7 @@
 
 ## 概念
 
-![20220513171705](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20220513171705.png)
+![20220513171705](https://gitee.com/librarookie/picgo/raw/main/images/20220513171705.png)
 
 - IP地址：一般是指逻辑ip；
 - 子网掩码：将IP划分为网络号和主机号的IP；

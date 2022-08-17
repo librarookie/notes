@@ -2,7 +2,7 @@
 
 </br></br>
 
-![20211203180034](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211203180034.png)
+![20211203180034](https://gitee.com/librarookie/picgo/raw/main/images/20211203180034.png)
 
 </br>
 
@@ -24,7 +24,7 @@
 
 ### [专有名词](#目录)
 
-![20211203162137](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20211203162137.png)
+![20211203162137](https://gitee.com/librarookie/picgo/raw/main/images/20211203162137.png)
 
 * `Workspace`： 工作区
 * `Index / Stage`： 暂存区

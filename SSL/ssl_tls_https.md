@@ -73,7 +73,7 @@
 
 ### HTTPS
 
-![http-vs-https](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/http-vs-https.png)
+![http-vs-https](https://gitee.com/librarookie/picgo/raw/main/images/http-vs-https.png)
 
 > HTTPS（Hypertext Transfer Protocol Secure：超文本传输安全协议）是一种透过计算机网络进行安全通信的传输协议。HTTPS 经由 HTTP 进行通信，但利用 SSL/TLS 来加密数据包。HTTPS 开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。
 
@@ -100,7 +100,7 @@
 
 ## SSL 证书
 
-![20220527175255](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20220527175255.png)
+![20220527175255](https://gitee.com/librarookie/picgo/raw/main/images/20220527175255.png)
 
 > SSL 证书使得网站能够从 HTTP 转到更加安全的 HTTPS。SSL 证书是托管在网站源服务器中的数据文件。SSL 证书促成了 SSL/TLS 加密，它们含有网站的公钥和网站标识以及相关信息。尝试与源服务器通信的设备将引用此文件，以获取公钥并验证服务器的身份。私钥应保密并妥善保管。
 

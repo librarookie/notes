@@ -126,4 +126,4 @@
 
 - 出现下图现象就表示JDK配置成功了
 
-    ![20220331143603](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20220331143603.png)
+    ![20220331143603](https://gitee.com/librarookie/picgo/raw/main/images/20220331143603.png)
