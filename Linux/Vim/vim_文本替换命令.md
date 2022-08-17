@@ -58,7 +58,7 @@
 
 ## 实例
 
-![20220401113807](https://cdn.jsdelivr.net/gh/librarookie/Picgo/images/20220401113807.png)
+![20220401113807](https://gitee.com/librarookie/picgo/raw/main/images/20220401113807.png "20220401113807")
 
 ### 图例
 
