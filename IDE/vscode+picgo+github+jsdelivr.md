@@ -1,6 +1,7 @@
 # VScode + PicGo + Github + jsDelivr 搭建稳定快速高效图床
 
-</br></br>
+</br>
+</br>
 
 ## [目录](#目录)
 
@@ -43,11 +44,16 @@
 
 ## [配置](#目录)
 
-1. [新建 GitHub 仓库](#新建-github-仓库)
-1. [生成一个 Token](#生成一个-token)
-1. [配置 PicGo 并使用 jsdelivr 作为 CDN 加速](#配置-picgo-并使用-jsdelivr-作为-cdn-加速)
-1. [使用 Imagine 进行图片压缩](#使用-imagine-进行图片压缩)
-1. [上传图片到 PicGo 并使用图床](#上传图片到-picgo-并使用图床)
+* [VScode + PicGo + Github + jsDelivr 搭建稳定快速高效图床](#vscode--picgo--github--jsdelivr-搭建稳定快速高效图床)
+  * [目录](#目录)
+  * [前言](#前言)
+  * [准备](#准备)
+  * [配置](#配置)
+    * [新建 GitHub 仓库](#新建-github-仓库)
+    * [生成一个 Token](#生成一个-token)
+    * [配置 PicGo 并使用 jsdelivr 作为 CDN 加速](#配置-picgo-并使用-jsdelivr-作为-cdn-加速)
+    * [上传图片到 PicGo 并使用图床](#上传图片到-picgo-并使用图床)
+  * [验证](#验证)
 
 ### [新建 GitHub 仓库](#配置)
 
@@ -130,7 +136,7 @@
 
 *note:* 如果你和我一样是Ubuntu系统，那你上传可能会遇到这个错误`xclip no found`, 之所以上传失败， 是因为需要先将图片复制到剪切板中。而这借助了xclip
 
-    > sudo apt install xlicp  安装xclip
+    > sudo apt install xclip  安装xclip
 
 </br>
 
@@ -141,13 +147,14 @@
     > https://cdn.jsdelivr.net/gh/user/repo@version/file
 
 * 下面是三种可访问的方式
-  * <https://cdn.jsdelivr.net/gh/librarookie/Picgo@v1.0.1/images/baidu.png>
-  * <https://cdn.jsdelivr.net/gh/librarookie/Picgo@latest/images/baidu.png>
-  * <https://gitee.com/librarookie/picgo/raw/main/images/baidu.png>
+  * <https://cdn.jsdelivr.net/gh/librarookie/picgo@v1.0.1/images/baidu.png>
+  * <https://cdn.jsdelivr.net/gh/librarookie/picgo@latest/images/baidu.png>
+  * <https://cdn.jsdelivr.net/gh/librarookie/picgo/images/baidu.png>
 
-</br></br>
+</br>
+</br>
 
-Referense
+Ref
 
 * <https://www.jsdelivr.com/?docs=gh>
 * <https://picgo.github.io/PicGo-Doc/zh/guide/config.html#github%E5%9B%BE%E5%BA%8A>
