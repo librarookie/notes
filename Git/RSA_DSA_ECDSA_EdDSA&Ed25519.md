@@ -1,6 +1,8 @@
-# RSA，DSA，ECDSA，EdDSA和Ed25519的区别
+# RSA、DSA、ECDSA、EdDSA 和 Ed25519 的区别
 
 > 用过ssh的朋友都知道，ssh key的类型有很多种，比如dsa、rsa、 ecdsa、ed25519等，那这么多种类型，我们要如何选择呢？
+
+</br>
 
 ## 说明
 
@@ -17,17 +19,14 @@
     * Ed25519是EdDSA签名方案，但使用SHA-512 / 256和Curve25519；它是一条安全的椭圆形曲线，比DSA，ECDSA和EdDSA 提供更好的安全性，并且具有更好的性能（人为注意）。
 
 2. 其他说明
+
     * RSA密钥使用最广泛，因此似乎得到最好的支持。
-
     * ECDSA（在OpenSSH v5.7中引入）在计算上比DSA轻，但是除非您有一台处理能力非常低的机器，否则差异并不明显。
-
     * 从OpenSSH 7.0开始，默认情况下SSH不再支持DSA密钥（ssh-dss）。根据SSH标准（RFC 4251及更高版本），DSA密钥可用于任何地方。
-
     * Ed25519在openSSH 6.5中引入。
-
     * 相关文章
 
-        ```python
+        ```md
         OpenSSH supports several signing algorithms (for authentication keys) which can be divided in two groups depending on the mathematical properties they exploit:
 
         DSA and RSA, which rely on the practical difficulty of factoring the product of two large prime numbers,
@@ -38,6 +37,8 @@
 
         #RSA keys will give you the greatest portability, while #Ed25519 will give you the best security but requires recent versions of client & server[2]. #ECDSA is likely more compatible than Ed25519 (though still less than RSA), but suspicions exist about its security (see below).
         ```
+
+</br>
 
 ## 结论
 
@@ -53,15 +54,16 @@
 
 6. ed25519是目前最安全、加解密速度最快的key类型，由于其数学特性，它的key的长度比rsa小很多，优先推荐使用。它目前唯一的问题就是兼容性，即在旧版本的ssh工具集中可能无法使用。不过据我目前测试，还没有发现此类问题。
 
+</br>
+
 ## 总结
 
-```python
-    优先选择ed25519，否则选择rsa 
-```
+> 优先选择ed25519，否则选择rsa
 
-</br></br>
+</br>
+</br>
 
-Reference
+Ref
 
 * <https://qastack.cn/ubuntu/363207/what-is-the-difference-between-the-rsa-dsa-and-ecdsa-keys-that-ssh-uses>
 * <https://segmentfault.com/a/1190000020166520>
