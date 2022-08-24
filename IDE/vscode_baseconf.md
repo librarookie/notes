@@ -23,7 +23,7 @@ Visual Studio Code 支持支持 Windows、Linux、Mac；
 
 * 布局
 
-  ![202208241723152](https://gitee.com/librarookie/picgo/raw/master/img/202208241723152.png "202208241723152")
+  ![vscode-index](https://img2020.cnblogs.com/blog/1957451/202108/1957451-20210817163055542-74357445.png)
 
   上面是 vscode 的布局，和大多数编辑器一样，分为：
   * `Editor`      &nbsp;&nbsp;&nbsp;&nbsp; 用来编辑文件的主体区域。（可以并排打开三个编辑器）
@@ -32,7 +32,7 @@ Visual Studio Code 支持支持 Windows、Linux、Mac；
   * `View Bar`    &nbsp;&nbsp;&nbsp;&nbsp; 在最左手边，帮助切换视图以及提供额外的上下文相关的提示，比如激活了Git的情况下，需要提交的变化的数目。
   
 * 快捷键
-  * [VScode 快捷键入口](https://www.cnblogs.com/cure/p/15138212.html '传送')
+  * [VScode 快捷键入口](https://www.cnblogs.com/librarookie/p/15138212.html '传送')
 
 * 扩展
 
