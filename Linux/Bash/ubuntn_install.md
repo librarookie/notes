@@ -22,7 +22,11 @@
 
 ## yum
 
+TODO yum
+
 ## rpm
+
+TODO rpm
 
 ## 源码编译安装
 
@@ -43,6 +47,7 @@ make uninstall（卸载时的源码目录所在路径与安装时的源码目录
 由于源码安排可以指定安装位置，所以在我们不拥有较高权限（比如root权限）的情况下，只能采用“从源码编译安装机制”
 如果安装到目标目录需要是”root”权限才能操作，那么以上4个命令中，分别加上”sudo”
 
+TODO 编译安装
 
 - http://c.biancheng.net/view/2952.html
 - https://rqsir.github.io/2019/04/13/linux-make-install%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/
