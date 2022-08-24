@@ -1,28 +1,13 @@
 # Git 常用命令
 
-</br></br>
+</br>
+</br>
 
 ![20211203180034](https://gitee.com/librarookie/picgo/raw/main/images/20211203180034.png)
 
 </br>
 
-## [目录](#目录)
-
-* [专有名词](#专有名词)
-* [仓库](#仓库)
-* [配置](#配置)
-* [增加和删除文件](#增加和删除文件)
-* [代码提交](#代码提交)
-* [分支](#分支)
-* [标签](#标签)
-* [查看信息](#查看信息)
-* [远程同步](#远程同步)
-* [撤销](#撤销)
-* [其他](#其他)
-
-</br>
-
-### [专有名词](#目录)
+## 专有名词
 
 ![20211203162137](https://gitee.com/librarookie/picgo/raw/main/images/20211203162137.png)
 
@@ -33,9 +18,9 @@
 
 </br>
 
-### [仓库](#目录)
+## 仓库
 
-> Git的设置文件为`.gitconfig`，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
+> Git的设置文件为 `.gitconfig` ，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
 
 ```py
 # 在当前目录新建一个Git代码库
@@ -50,7 +35,7 @@ $ git clone [url]
 
 </br>
 
-### [配置](#目录)
+## 配置
 
 ```py
 # 显示当前的Git配置
@@ -69,7 +54,7 @@ $ git config [--global] alias.别名 "command"
 
 </br>
 
-### [增加和删除文件](#目录)
+## 增加和删除文件
 
 ```py
 # 添加指定文件到暂存区
@@ -97,7 +82,7 @@ $ git mv [file-original] [file-renamed]
 
 </br>
 
-### [代码提交](#目录)
+## 代码提交
 
 ```py
 # 提交暂存区到仓库区
@@ -122,7 +107,7 @@ $ git commit --amend [file1] [file2] ...
 
 </br>
 
-### [分支](#目录)
+## 分支
 
 ```py
 # 列出所有本地分支
@@ -174,7 +159,7 @@ $ git branch -dr [remote/branch]
 
 </br>
 
-### [标签](#目录)
+## 标签
 
 ```py
 # 列出所有tag
@@ -207,7 +192,7 @@ $ git checkout -b [branch] [tag]
 
 </br>
 
-### [查看信息](#目录)
+## 查看信息
 
 ```py
 # 显示有变更的文件
@@ -274,7 +259,7 @@ $ git reflog
 
 </br>
 
-### [远程同步](#目录)
+## 远程同步
 
 ```py
 # 下载远程仓库的所有变动
@@ -304,7 +289,7 @@ $ git push [remote] --all
 
 </br>
 
-### [撤销](#目录)
+## 撤销
 
 ```py
 # 恢复暂存区的指定文件到工作区
@@ -342,16 +327,17 @@ $ git stash pop
 
 </br>
 
-### [其他](#目录)
+## 其他
 
 ```py
 # 生成一个可供发布的压缩包
 $ git archive
 ```
 
-</br></br>
+</br>
+</br>
 
-Reference
+Ref
 
 * <http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html>
 * <https://yanhaijing.com/git/2014/11/01/my-git-note/>

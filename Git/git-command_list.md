@@ -1,6 +1,7 @@
-# git 常用命令
+# Git 命令大全
 
-</br></br>
+</br>
+</br>
 
 * 基础命令
 
@@ -115,9 +116,10 @@
 
 [^1]:发布一个版本时，我们通常先在版本库中打一个标签（tag），这样就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。标签也是版本库的一个快照。
 
-</br></br>
+</br>
+</br>
 
-Reference
+Ref
 
 * <https://blog.csdn.net/Lucky_LXG/article/details/77849212>
 * <https://www.runoob.com/git/git-basic-operations.html>
