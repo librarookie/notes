@@ -1,4 +1,7 @@
-# 生成&添加 SSH公钥
+# 生成和添加 SSH 公钥
+
+</br>
+</br>
 
 ## 生成
 
@@ -10,7 +13,7 @@
     ssh-keygen -t ed25519 -C "your_email@example.com"
     ```
 
-    note：如果您使用的是不支持 Ed25519 算法的旧系统，请使用 RSA，感兴趣的可以点击[Ed25519和 RSA详情入口](https://www.cnblogs.com/librarookie/p/15389876.html "RSA，DSA，ECDSA，EdDSA和Ed25519的区别")了解；
+    note：如果您使用的是不支持 Ed25519 算法的旧系统，请使用 RSA，感兴趣的可以点击[Ed25519 和 RSA 详情入口](https://www.cnblogs.com/librarookie/p/15389876.html "RSA、DSA、ECDSA、EdDSA 和 Ed25519 的区别")了解；
 
     * 参数解释：
       * -t： 指定使用的数字签名算法；
@@ -42,15 +45,14 @@
     +----[SHA256]-----+
     ```
 
-3. 查看生成的 public key
+3. 查看生成的 SSH keys
 
     * 查看公钥
 
         ```python
         # 不出意外，~/.ssh/目录下应该有了 id_ed25519和 id_ed25519.pub
-
         # 我们打开 id_ed25519.pub
-            cat ~/.ssh/id_ed25519.pub
+        cat ~/.ssh/id_ed25519.pub
         
         # 然后就可以看到公钥内容了（一串字符串）
         ```
@@ -64,15 +66,30 @@
 
         note: 默认只读取 id_rsa，为了让 SSH 识别新的私钥，需要将新的私钥加入到 ssh-agent 中
 
+</br>
+
 ## 添加
 
-1. 进入 SSH公钥管理
-    * Gitee公钥管理页面： <https://gitee.com/profile/sshkeys>
-    * GitHub公钥管理页面： <https://github.com/settings/keys>
+* Gitee公钥管理页面： <https://gitee.com/profile/sshkeys>
+* GitHub公钥管理页面： <https://github.com/settings/keys>
 
-2. 填写标题和公钥（id_ed25519.pub内容）
+1. 进入GitHub 或Gitee平台并打开设置
 
-3. 输入密码
+    ![202208251005728](https://gitee.com/librarookie/picgo/raw/master/img/202208251005728.png "202208251005728")
+
+2. 选择 SSH公钥
+
+    ![202208251005637](https://gitee.com/librarookie/picgo/raw/master/img/202208251005637.png "202208251005637")
+
+    ![202208251006724](https://gitee.com/librarookie/picgo/raw/master/img/202208251006724.png "202208251006724")
+
+3. 填写标题和公钥（id_ed25519.pub内容）
+
+    ![202208251006956](https://gitee.com/librarookie/picgo/raw/master/img/202208251006956.png "202208251006956")
+
+4. 输入密码
+
+</br>
 
 ## 验证
 
@@ -94,3 +111,10 @@
         # Gitee
     You've successfully authenticated, but GITEE.COM does not provide shell access. 
     ```
+
+</br>
+</br>
+
+Ref
+
+* <https://blog.csdn.net/Lucky_LXG/article/details/77849212>
