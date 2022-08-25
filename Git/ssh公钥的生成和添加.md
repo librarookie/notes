@@ -10,7 +10,7 @@
     ssh-keygen -t ed25519 -C "your_email@example.com"
     ```
 
-    note：如果您使用的是不支持 Ed25519 算法的旧系统，请使用 RSA，感兴趣的可以点击[Ed25519和 RSA详情入口](https://www.cnblogs.com/cure/p/15389876.html "RSA，DSA，ECDSA，EdDSA和Ed25519的区别")了解；
+    note：如果您使用的是不支持 Ed25519 算法的旧系统，请使用 RSA，感兴趣的可以点击[Ed25519和 RSA详情入口](https://www.cnblogs.com/librarookie/p/15389876.html "RSA，DSA，ECDSA，EdDSA和Ed25519的区别")了解；
 
     * 参数解释：
       * -t： 指定使用的数字签名算法；

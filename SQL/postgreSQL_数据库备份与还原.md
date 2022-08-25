@@ -221,7 +221,7 @@
 
 ### [拓展](#目录)
 
-* [PostgreSQL 数据库备份脚本](https://www.cnblogs.com/cure/p/15767952.html "https://www.cnblogs.com/cure/p/15767952.html")
+* [PostgreSQL 数据库备份脚本](https://www.cnblogs.com/librarookie/p/15767952.html "https://www.cnblogs.com/librarookie/p/15767952.html")
 
 </br></br>
 

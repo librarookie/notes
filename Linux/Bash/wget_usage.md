@@ -165,7 +165,7 @@ wget  [参数列表]    [目标软件、网页的网址]
 - 检查网页是否可访问，而不用下载（“S“：打印响应信息，“spaider”：不下载）
 
     ```md
-    wget [-S] --spaider https://www.cnblogs.com/cure/p/14660645.html
+    wget [-S] --spaider https://www.cnblogs.com/librarookie/p/14660645.html
     ```
 
 - 指定文件格式下载（“A” 指定下载文件格式，“R”指定忽略下载文件格式）
@@ -180,8 +180,8 @@ wget  [参数列表]    [目标软件、网页的网址]
 
     ```md
     # 此场景适合部分访问需要用户名和密码验证的 URL下载
-    wget --user=USER --password=PASS https://www.cnblogs.com/cure/p/14660645.html   # 此方式密码明文显示
-    wget --user=USER --ask-password https://www.cnblogs.com/cure/p/14660645.html    # 此方式密码是按回车后，提示输入密码，密码不显示（推荐）
+    wget --user=USER --password=PASS https://www.cnblogs.com/librarookie/p/14660645.html   # 此方式密码明文显示
+    wget --user=USER --ask-password https://www.cnblogs.com/librarookie/p/14660645.html    # 此方式密码是按回车后，提示输入密码，密码不显示（推荐）
     ```
 
 - 下载URL中的当前位置的所有文件
@@ -189,9 +189,9 @@ wget  [参数列表]    [目标软件、网页的网址]
     ```md
     # 场景： 我需要下载文件服务器某一路径下的全部文件，但是不需要保存主页“index.html”
 
-    wget -r -np -nd -R html,tmp  https://www.cnblogs.com/cure/p/
+    wget -r -np -nd -R html,tmp  https://www.cnblogs.com/librarookie/p/
         或者：
-    wget -r -np -nd -A txt,zip,png[...]  https://www.cnblogs.com/cure/p/
+    wget -r -np -nd -A txt,zip,png[...]  https://www.cnblogs.com/librarookie/p/
 
     # 参数介绍：
     # -r   递归下载（最好跟上np参数，不然会下载整个网站的数据及关联网站数据）

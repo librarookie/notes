@@ -145,5 +145,5 @@ OS Version:　系统的细版本（如：Ubuntu 18.04，Ubuntu20.04）
 
 ### [卸载](#目录)
 
-* [MySQL卸载](https://www.cnblogs.com/cure/p/14152596.html "Ubuntu 18.04 彻底卸载MySQL")
+* [MySQL卸载](https://www.cnblogs.com/librarookie/p/14152596.html "Ubuntu 18.04 彻底卸载MySQL")
 * [官网参考](https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/#repo-qg-apt-replace-direct)

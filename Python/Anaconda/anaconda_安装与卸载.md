@@ -135,7 +135,7 @@
     ```
 
   * Anaconda 镜像配置
-    * [点击前往Anaconda 镜像配置](https://www.cnblogs.com/cure/p/15376578.html "Anaconda 镜像配置")
+    * [点击前往Anaconda 镜像配置](https://www.cnblogs.com/librarookie/p/15376578.html "Anaconda 镜像配置")
 
 ## 卸载
 

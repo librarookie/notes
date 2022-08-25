@@ -1,15 +1,6 @@
 # Git 使用，本地项目上传到GitHub远程库
 
-</br></br>
-
-目录
-
-- [Git 使用，本地项目上传到GitHub远程库](#git-使用本地项目上传到github远程库)
-  - [环境](#环境)
-  - [本地项目上传到 GitHub](#本地项目上传到-github)
-  - [克隆项目](#克隆项目)
-  - [扩展](#扩展)
-
+</br>
 </br>
 
 ## 环境
@@ -107,4 +98,4 @@
 
 ## 扩展
 
-- [生成/添加 SSH公钥](https://www.cnblogs.com/cure/p/15390170.html "生成&添加 SSH公钥")
+- [生成/添加 SSH公钥](https://www.cnblogs.com/librarookie/p/15390170.html "生成&添加 SSH公钥")

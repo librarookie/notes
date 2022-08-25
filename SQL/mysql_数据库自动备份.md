@@ -136,7 +136,7 @@
 
 ## MySQL 备份脚本
 
-- [MySQL 数据库备份脚本](https://www.cnblogs.com/cure/p/15767567.html "https://www.cnblogs.com/cure/p/15767567.html")
+- [MySQL 数据库备份脚本](https://www.cnblogs.com/librarookie/p/15767567.html "https://www.cnblogs.com/librarookie/p/15767567.html")
 
 </br>
 

@@ -54,7 +54,7 @@
 
 2. 生成并添加 SSH Keys
 
-    - [点此进入生成并添加 SSH Keys](https://www.cnblogs.com/cure/p/15390170.html "生成&添加 SSH公钥")
+    - [点此进入生成并添加 SSH Keys](https://www.cnblogs.com/librarookie/p/15390170.html "生成&添加 SSH公钥")
 
 3. 多环境配置config文件
 

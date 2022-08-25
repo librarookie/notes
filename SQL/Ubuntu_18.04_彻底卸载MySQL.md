@@ -50,4 +50,4 @@
 
 </br></br>
 
-[MySQL安装传送门](https://www.cnblogs.com/cure/p/14001729.html "MySQL安装")
+[MySQL安装传送门](https://www.cnblogs.com/librarookie/p/14001729.html "MySQL安装")

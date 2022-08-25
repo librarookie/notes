@@ -56,11 +56,11 @@
 
 * pip 国内源配置
 
-    [Python pip配置国内源](https://www.cnblogs.com/cure/p/14930238.html "Python pip配置国内源")
+    [Python pip配置国内源](https://www.cnblogs.com/librarookie/p/14930238.html "Python pip配置国内源")
 
 * conda 镜像配置
 
-    [Anaconda 镜像配置](https://www.cnblogs.com/cure/p/15376578.html "Anaconda 镜像配置")
+    [Anaconda 镜像配置](https://www.cnblogs.com/librarookie/p/15376578.html "Anaconda 镜像配置")
 
 </br></br>
 

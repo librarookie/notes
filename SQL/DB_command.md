@@ -163,7 +163,7 @@
 | 还原 | `psql -U username -d db_name < db_backup.sql` |
 | 恢复 | `pg_restore -U username -d db_name < db_backup.tar` |
 
-[PostgreSQL 数据库备份与还原](https://www.cnblogs.com/cure/p/15534021.html "https://www.cnblogs.com/cure/p/15534021.html")
+[PostgreSQL 数据库备份与还原](https://www.cnblogs.com/librarookie/p/15534021.html "https://www.cnblogs.com/librarookie/p/15534021.html")
 
 </br></br>
 
