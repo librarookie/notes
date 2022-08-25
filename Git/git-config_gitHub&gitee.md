@@ -1,13 +1,7 @@
-# 配置GitHub 和Gitee共存环境
+# 配置 GitHub 和 Gitee 共存环境
 
-</br></br>
-
-- [配置GitHub 和Gitee共存环境](#配置github-和gitee共存环境)
-  - [前言](#前言)
-  - [准备](#准备)
-  - [配置](#配置)
-  - [检验](#检验)
-  - [拓展](#拓展)
+</br>
+</br>
 
 ## 前言
 
@@ -242,11 +236,12 @@
 ## 拓展
 
 - [如何将 GitHub 项目导入码云？一步搞定！](https://blog.gitee.com/2018/06/05/github_to_gitee/ "如何将 GitHub 项目导入码云？一步搞定！")
-- [git-config配置多用户环境以及 includeIf用法](https://www.cnblogs.com/cure/p/15697181.html "git-config配置多用户环境以及 includeIf用法")
+- [git-config 配置多用户环境以及 includeIf用法](https://www.cnblogs.com/librarookie/p/15697181.html "git-config 配置多用户环境以及 includeIf用法")
 
-</br></br>
+</br>
+</br>
 
-Reference
+Ref
 
 - <https://duter2016.github.io/2021/01/22/Git%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8Gitee%E5%92%8CGithub%E5%B9%B6%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/>
 - <https://www.jianshu.com/p/68578d52470c>
