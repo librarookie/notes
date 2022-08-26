@@ -1,4 +1,4 @@
-# 解决 VS Code 无法使用Ctrl+C等快捷键
+# 解决 VScode 无法使用 Ctrl+C 等快捷键
 
 </br>
 </br>
@@ -76,12 +76,12 @@
        代码工作区禁用vim扩展，文档工作区启动vim扩展
     ```
 
-    [vscode 工作区解释](https://zhuanlan.zhihu.com/p/54770077 "点击跳转")
+    [VScode 工作区介绍](https://zhuanlan.zhihu.com/p/54770077 "点击跳转")
 
 </br>
 </br>
 
-Ref
+Via
 
 * <https://marketplace.visualstudio.com/items?itemName=vscodevim.vim>
 * <https://www.cnblogs.com/jie828/p/11320014.html>

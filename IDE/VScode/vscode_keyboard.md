@@ -1,4 +1,4 @@
-# VS Code 快捷键
+# VScode 快捷键
 
 </br>
 </br>
@@ -66,7 +66,7 @@
 | `Shift + Alt + F3` | 上一个更改 |
 
 </br>
-  
+
 ## 常用
 
 | Key  | Value |
@@ -96,13 +96,13 @@
 | `Ctrl + U` | 回退光标位置 |
 | `Ctrl + K Ctrl +  S` | 打开键盘快捷方式 |
 
-Note: 所有自定义快捷键都会在`keybinging.json`文件中显示, 把这个文件清空则为默认快捷键（点击键盘快捷方式右上角的 ![202208241709330](https://gitee.com/librarookie/picgo/raw/master/img/202208241709330.png "202208241709330") 即可打开该文件）
+Note: 所有自定义快捷键都会在`keybinging.json`文件中显示, 把这个文件清空则为默认快捷键（点击键盘快捷方式右上角的![202208241709330](https://gitee.com/librarookie/picgo/raw/master/img/202208241709330.png "202208241709330")即可打开该文件）
 
 ![202208241709514](https://gitee.com/librarookie/picgo/raw/master/img/202208241709514.png "202208241709514")
 
 </br>
 </br>
 
-Ref
+Via
 
 * <https://zhuanlan.zhihu.com/p/34989844>

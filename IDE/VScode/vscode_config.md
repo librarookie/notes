@@ -1,4 +1,4 @@
-# VS Code 配置和使用
+# VScode 配置和使用
 
 </br>
 </br>
@@ -32,7 +32,7 @@ Visual Studio Code 支持支持 Windows、Linux、Mac；
   * `View Bar`    &nbsp;&nbsp;&nbsp;&nbsp; 在最左手边，帮助切换视图以及提供额外的上下文相关的提示，比如激活了Git的情况下，需要提交的变化的数目。
   
 * 快捷键
-  * [VScode 快捷键入口](https://www.cnblogs.com/librarookie/p/15138212.html '传送')
+  * [VScode 快捷键入口](https://www.cnblogs.com/librarookie/p/15138212.html "VScode 快捷键")
 
 * 扩展
 
@@ -59,7 +59,7 @@ Visual Studio Code 支持支持 Windows、Linux、Mac；
 </br>
 </br>
 
-Ref
+Via
 
 * <https://zhuanlan.zhihu.com/p/54770077>
 * <https://zhuanlan.zhihu.com/p/35176928>

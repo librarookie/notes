@@ -3,16 +3,7 @@
 </br>
 </br>
 
-## [目录](#目录)
-
-1. [前言](#前言)
-1. [准备](#准备)
-1. [配置](#配置)
-1. [验证](#验证)
-
-</br>
-
-## [前言](#目录)
+## 前言
 
 > 所谓图床，就是将图片储存到第三方静态资源库中，其返回给你一个 URL 进行获取图片。Markdown 支持使用 URL 的方式显示图片
 
@@ -21,7 +12,7 @@
 
 </br>
 
-## [准备](#目录)
+## 准备
 
 1. VScode 工具
     * [官网下载](https://code.visualstudio.com/Download "https://code.visualstudio.com/Download")
@@ -42,20 +33,9 @@
 
 </br>
 
-## [配置](#目录)
+## 配置
 
-* [VScode + PicGo + Github + jsDelivr 搭建稳定快速高效图床](#vscode--picgo--github--jsdelivr-搭建稳定快速高效图床)
-  * [目录](#目录)
-  * [前言](#前言)
-  * [准备](#准备)
-  * [配置](#配置)
-    * [新建 GitHub 仓库](#新建-github-仓库)
-    * [生成一个 Token](#生成一个-token)
-    * [配置 PicGo 并使用 jsdelivr 作为 CDN 加速](#配置-picgo-并使用-jsdelivr-作为-cdn-加速)
-    * [上传图片到 PicGo 并使用图床](#上传图片到-picgo-并使用图床)
-  * [验证](#验证)
-
-### [新建 GitHub 仓库](#配置)
+### 新建 GitHub 仓库
 
 * 登录/注册 [GitHub](https://github.com "https://github.com")
 
@@ -67,7 +47,7 @@
 
 * 根据需求选择是否为仓库初始化一个 README.md 描述文件
 
-### [生成一个 Token](#配置)
+### 生成一个 Token
 
 * 点击用户头像 -> 选择 Settings
 
@@ -97,7 +77,7 @@
 
 *note:* 注意这个 Token 只会显示一次，自己先保存下来，或者等后面配置好 PicGo 后再关闭此网页
 
-### [配置 PicGo 并使用 jsdelivr 作为 CDN 加速](#配置)
+### 配置 PicGo 并使用 jsdelivr 作为 CDN 加速
 
 * 在vscode上安装`Picgo插件`， 或者前往下载 [PicGo客户端（点击下载）](https://github.com/Molunerfinn/PicGo "https://github.com/Molunerfinn/PicGo")，安装好后开始配置图床（插件和客户端的配置差不多，这里示范vscode插件）
 
@@ -120,7 +100,7 @@
 
     ![20211026155522](https://gitee.com/librarookie/picgo/raw/main/images/20211026155522.png)
 
-### [上传图片到 PicGo 并使用图床](#配置)
+### 上传图片到 PicGo 并使用图床
 
 ![20211026163429](https://gitee.com/librarookie/picgo/raw/main/images/20211026163429.png)
 
@@ -140,7 +120,7 @@
 
 </br>
 
-## [验证](#目录)
+## 验证
 
 如果你配置了`jsDelivr` 加速访问，上传成功后，你会发现图片都显现不了，按照 jsDelivr官方访问格式可以看出，使用jsDelivr访问是需要GitHub发布一个版本的，所以我们需要在将图床仓库发布一个版本，然后才能访问。官方推荐访问格式如下：
 
@@ -154,7 +134,7 @@
 </br>
 </br>
 
-Ref
+Via
 
 * <https://www.jsdelivr.com/?docs=gh>
 * <https://picgo.github.io/PicGo-Doc/zh/guide/config.html#github%E5%9B%BE%E5%BA%8A>

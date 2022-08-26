@@ -1,4 +1,4 @@
-# VScode的 Todo Tree 待办事项插件的定制和使用
+# VScode-TodoTree 待办事项插件的定制和使用
 
 </br>
 </br>
@@ -265,7 +265,7 @@ Tips:
 </br>
 </br>
 
-Ref
+Via
 
 - <https://www.cnblogs.com/donpangpang/p/14612568.html>
 - <https://blog.csdn.net/sinat_39620217/article/details/115614152>
