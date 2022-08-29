@@ -1,4 +1,4 @@
-# Linux_配置IPv4或IPv6地址
+# Linux 配置 IPv4或 IPv6地址
 
 </br>
 </br>
@@ -55,7 +55,7 @@
 
   - 添加 IPv4 配置
 
-    ```md
+    ```sh
     DNS1=192.168.0.1
     IPADDR=192.168.1.188
     PREFIX=24
@@ -65,7 +65,7 @@
 
   - 添加 IPv6 配置
 
-    ```md
+    ```sh
     IPV6INIT=yes
     IPV6_AUTOCONF=no
     IPV6_FAILURE_FATAL=no
@@ -75,7 +75,7 @@
 
 - `ifcfg-ethX` 文件常用配置介绍
 
-    ```md
+    ```sh
     # 类型
     TYPE=Ethernet
     # 关联的接口名称，与 interface 保持一致
@@ -110,7 +110,6 @@
     # 就是default route，是否把这个网卡设置为ipv4默认路由
     DEFROUTE=yes
 
-
     # 是否使用IPV6地址：yes为使用；no为禁用
     IPV6INIT=yes
     # 是否自动连接 yes 自动， no手动
@@ -120,7 +119,6 @@
     # 如果ipv6配置失败禁用设备
     IPV6_FAILURE_FATAL=no
     IPV6_ADDR_GEN_MODE="stable-privacy"
-
 
     # 地址 ipv6 配置信息，如果不使用ipv6 可以不用配置
     IPV6_PEERDNS=yes
@@ -137,7 +135,7 @@ Tips:
 
 > 临时地址是指配置网络后，在系统重启或者网卡重启后失效;
 
-[常用网络配置命令](https://www.cnblogs.com/librarookie/p/16256959.html "ip、ifconfig 和 route命令")
+[常用网络配置命令](https://www.cnblogs.com/librarookie/p/16256959.html "ip、ifconfig 和 route命令介绍与网络配置")
 
 #### 配置 IPv4
 
@@ -174,7 +172,7 @@ Tips:
 
     - 栗子
 
-        ```md
+        ```sh
         ifconfig eth0 inet6 add 2001:250:250:250:250:250:250:222/64
         route -A inet6 add default gw 2001:250:250:250::1 dev eth0
         ```
@@ -207,7 +205,7 @@ Tips:
 </br>
 </br>
 
-Reference
+Via
 
 - <https://zhuanlan.zhihu.com/p/65226634>
 - <https://blog.csdn.net/weixin_39676242/article/details/110257459>

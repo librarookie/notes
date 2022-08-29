@@ -1,4 +1,4 @@
-# 通过 hosts文件配置本地域名
+# 通过 hosts 文件配置本地域名
 
 </br>
 </br>
@@ -18,7 +18,7 @@
 
 ## 域名查询顺序
 
-浏览器缓存  >  本地操作系统缓存  >  DNS服务器（路由缓存 > 互联网DNS缓存服务器）  >  递归搜索
+> 浏览器缓存  >  本地操作系统缓存  >  DNS服务器（路由缓存 > 互联网DNS缓存服务器）  >  递归搜索
 
 - 浏览器缓存: 只存下浏览器自己访问过的域名.
   - 为了加快访问速度，Google Chrome浏览器采用了预提DNS记录，在本地建立DNS缓存的方法，加快网站的连接速度。
@@ -41,7 +41,7 @@
 
 1. 配置
 
-    ```md
+    ```sh
     # 打开 hosts文件，文件路径如下：
     C:\Windows\System32\drivers\etc\hosts
 
@@ -49,15 +49,16 @@
     192.168.1.1     www.test.com
     ```
 
-    tips
+    Tips
+
     - 文件修改时，注意域名后不要有空格
     - 如果是用第三方工具编辑hosts，保存文件时注意编码格式，必须是`ANSI`。
 
 2. 刷新与查看
 
-    ```md
-    # 进入 cmd终端窗口（小黑窗）
-    win + r  >  cmd  >  回车
+    ```sh
+    # 进入 csh终端窗口（小黑窗）
+    win + r  >  csh  >  回车
 
     # 查看 DNS缓存
     ipconfig /displaydns
@@ -70,7 +71,7 @@
 
 1. 配置
 
-    ```md
+    ```sh
     # 打开 hosts文件，文件路径如下：
     sudo vim /etc/hosts
 
@@ -81,6 +82,7 @@
 2. 刷新
 
     如果域名未生效，则可以重启网络来刷新，下面是centos操作
+
     `service network restart`
 
 </br>
@@ -108,9 +110,10 @@ Windows还可以查看DNS缓存。
 
     - 原因1： 域名信息配置不规范; 或者域名、ip拼写错误；
     - 原因2： 使用第三方工具编辑 hosts文件，保存后hosts文件的编码格式变了，而windows对于hosts文件只能读取ASCII编码，所以hosts文件的编码必须是 `ANSI`。
-      - 处理： 将hosts文件的域名信息填写好，然后另存为，在编码处选择“ANSI”，最后确定。
+      - 处理： 将hosts文件的域名信息填写好，然后另存为，在编码处选择 “ANSI” ，最后确定。
 
         ![20220629171956](https://gitee.com/librarookie/picgo/raw/main/images/md_20220629171956.png)
+
         ![hosts_faq](https://gitee.com/librarookie/picgo/raw/main/images/md_hosts_faq.png)
 
 </br>
