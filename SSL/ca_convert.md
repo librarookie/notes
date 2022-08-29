@@ -250,7 +250,7 @@ Apache和其他类似服务器使用PEM格式证书。几个PEM证书，甚至�
 </br>
 </br>
 
-Reference
+Via
 
 - <https://csr.chinassl.net/convert-ssl-commands.html>
 - <https://www.jianshu.com/p/87e3753c222b>

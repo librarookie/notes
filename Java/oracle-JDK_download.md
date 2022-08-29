@@ -25,7 +25,7 @@
 
 1. 账号方案一：找到一个Oracle账号（亲测有效）
 
-    ```py
+    ```java
     账号：2696671285@qq.com
     密码：Oracle123
     ```
@@ -61,7 +61,7 @@
 
     - 文件末行添加Java环境
 
-        ```py
+        ```shell
         export JAVA_HOME=/usr/java/jdk1.8.0_271
         export PATH=$JAVA_HOME/bin:$PATH
         export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
@@ -79,7 +79,7 @@
 
     - 在文件中添加Java环境
 
-        ```py
+        ```shell
         export JAVA_HOME=/usr/java/jdk1.8.0_271
         export PATH=$JAVA_HOME/bin:$PATH
         export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
@@ -94,7 +94,7 @@
 
     - 在文件中添加Java环境
 
-        ```py
+        ```shell
         export JAVA_HOME=/usr/java/jdk1.8.0_271
         export PATH=$JAVA_HOME/bin:$PATH
         export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
@@ -106,13 +106,13 @@
 
     - 直接在终端中配置 Java环境标量
 
-        ```py
+        ```shell
         export JAVA_HOME=/usr/java/jdk1.8.0_271
         export PATH=$JAVA_HOME/bin:$PATH
         export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
         ```
 
-        tips：只有当前终端窗口有效，输完Java环境变量即生效
+        Tips：只有当前终端窗口有效，输完Java环境变量即生效
 
 </br>
 
@@ -120,10 +120,13 @@
 
 - 在终端中输入Java命令即可，最常用的就是查看JDK版本
 
-    ```py
+    ```shell
     java -version　　　　# 查看 JDK版本信息
     ```
 
 - 出现下图现象就表示JDK配置成功了
 
     ![20220331143603](https://gitee.com/librarookie/picgo/raw/main/images/20220331143603.png)
+
+</br>
+</br>

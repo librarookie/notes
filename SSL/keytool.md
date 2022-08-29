@@ -370,7 +370,7 @@ keytool -import -trustcacerts -alias clientCer -keystore $JAVA_HOME/jre/lib/secu
 />
 ```
 
-Tips:
+Tips
 
 - 其中 `clientAuth` 指定是否需要验证客户端证书
   - `false` ： 表示单向SSL验证，即服务端认证;
@@ -463,7 +463,7 @@ Tips:
 </br>
 </br>
 
-Reference
+Via
 
 - <https://www.cnblogs.com/molao-doing/articles/9687445.html>
 - <https://yoloz.github.io/2020/04/17/security/keytool%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/>
