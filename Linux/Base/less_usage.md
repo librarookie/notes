@@ -1,4 +1,4 @@
-# less 命令： 查看文件内容
+# less 介绍与使用
 
 </br>
 </br>
@@ -105,6 +105,8 @@ h H                   显示此帮助。
 q :q Q :Q ZZ          退出。
 ```
 
+</br>
+
 ### MOVING(移动)
 
 ```md
@@ -131,6 +133,8 @@ R                    重新绘制屏幕，丢弃缓冲输入。
         默认的 "半窗 "是屏幕高度的一半。
 ```
 
+</br>
+
 ### SEARCHING(检索)
 
 ```md
@@ -153,6 +157,8 @@ ESC-U                清除搜索高亮显示.
         ^R 不使用常规表达式。
         ^W 如果没有找到匹配，则进行WRAP搜索。
 ```
+
+</br>
 
 ### JUMPING(跳转)
 
@@ -188,6 +194,8 @@ ESC-M<letter>        清除一个标记。
             $ 表示文件的结束
 ```
 
+</br>
+
 ### CHANGING FILES(改变文件)
 
 ```md
@@ -199,6 +207,8 @@ ESC-M<letter>        清除一个标记。
   :d                   从命令行列表中删除当前文件。
   =  ^G  :f            打印当前文件名。
 ```
+
+</br>
 
 ### MISCELLANEOUS COMMANDS(其他命令)
 
@@ -215,6 +225,8 @@ ESC-M<letter>        清除一个标记。
   v                    用 $VISUAL 或 $EDITOR 编辑当前文件。
   V                    打印 "less "的版本号。
 ```
+
+</br>
 
 ### OPTIONS(选项)
 
@@ -338,6 +350,8 @@ ESC-M<letter>        清除一个标记。
                 --wheel-lines=N
                   每点击一次鼠标滚轮，就会移动N行。
 ```
+
+</br>
 
 ### LINE EDITING(行编辑)
 

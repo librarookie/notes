@@ -1,13 +1,11 @@
-# 用 AppImage文件创建快捷图标和软连接
+# 用 AppImage 文件创建快捷图标（Desktop Entry）和软连接
 
 </br>
 </br>
 
 ## 背景
 
-```md
-AppImage是一种可执行文件格式，类似于Windows的exe文件，macOS的app文件，一个文件即一个应用程序，不过AppImage是运行在Linux上的可执行文件，而且是可以运行在不同发行版本的Linux，如Ubuntu, Debian, openSUSE, RHEL, CentOS, Fedora, Arch Linux ...
-```
+> AppImage是一种可执行文件格式，类似于Windows的exe文件，macOS的app文件，一个文件即一个应用程序，不过AppImage是运行在Linux上的可执行文件，而且是可以运行在不同发行版本的Linux，如Ubuntu, Debian, openSUSE, RHEL, CentOS, Fedora, Arch Linux ...
 
 ## 使用
 
@@ -123,7 +121,7 @@ AppImage是一种可执行文件格式，类似于Windows的exe文件，macOS的
         选中图标 -> 点击鼠标右键 -> Add to Favorites
         ```
 
-        ![1](https://gitee.com/librarookie/picgo/raw/master/img/202208091539252.png)
+        ![202208091539252](https://gitee.com/librarookie/picgo/raw/master/img/202208091539252.png)
 
 ### 软连接
 
@@ -133,7 +131,7 @@ AppImage是一种可执行文件格式，类似于Windows的exe文件，macOS的
     echo $PATH
     ```
 
-    ![2](https://gitee.com/librarookie/picgo/raw/master/img/202208091540390.png)
+    ![202208091540390](https://gitee.com/librarookie/picgo/raw/master/img/202208091540390.png)
 
 - 建立软连接
   - 说明

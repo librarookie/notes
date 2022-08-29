@@ -1,13 +1,13 @@
-# wget 命令用法
+# wget 命令介绍与使用
 
 </br>
 </br>
 
 ## 介绍
 
-### 用法/命令格式
+### 用法
 
-```md
+```sh
 wget  [OPTION]...  [URL]...
 wget  [参数列表]    [目标软件、网页的网址]
 ```
@@ -20,7 +20,7 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - 启动：
 
-    ```md
+    ```sh
     -V,  --version                   # 显示 Wget 的版本信息并退出
     -h,  --help                      # 打印帮助
     -b,  --background                # 启动后转入后台
@@ -28,7 +28,7 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - 记录和输入文件：
 
-    ```md
+    ```sh
     -o,  --output-file=FILE          # 将日志信息写入【FILE】
     -a,  --append-output=FILE        # 将信息添加至【FILE】
     -q,  --quiet                     # 安静模式 (无信息输出)
@@ -39,7 +39,7 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - 下载：
 
-    ```md
+    ```sh
     -t,  --tries=NUMBER              # 设置重试次数为【NUMBER】(0 代表无限制)
         --retry-connrefused         # 即使拒绝连接也重试
     -O,  --output-document=FILE      # 将文档写入【FILE】（可以理解为把下载的文件重命名改为【FILE】）
@@ -57,7 +57,7 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - 目录：
 
-    ```md
+    ```sh
     -nd, --no-directories            # 不创建目录
     -x,  --force-directories         # 强制创建目录
     -nH, --no-host-directories       # 不要创建主机（www.cnglogs.com）目录
@@ -68,7 +68,7 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - HTTP选项：
 
-    ```md
+    ```sh
     --http-user=USER            # 设置 http 用户名为【USER】
     --http-password=PASS        # 设置 http 密码为【PASS】
     --no-cache                  # 不使用服务器缓存的数据。
@@ -79,14 +79,14 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - HSTS选项：
 
-    ```md
+    ```sh
     --no-hsts                   # 禁用 HSTS
     --hsts-file                 # HSTS 数据库路径（将覆盖默认值）
     ```
 
 - FTP选项：
 
-    ```md
+    ```sh
     --ftp-user=USER             # 设置 ftp 用户名为【USER】
     --ftp-password=PASS         # 设置 ftp 密码为【PASS】
     --no-glob                   # 不在 FTP 文件名中使用通配符展开
@@ -96,7 +96,7 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - 递归下载：
 
-    ```md
+    ```sh
     -r,  --recursive            # 指定递归下载
     -l,  --level=NUMBER         # 最大递归深度 (inf 或 0 代表无限制，即全部下载)。
         --delete-after         # 下载完成后删除本地文件
@@ -106,7 +106,7 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - 递归接受/拒绝：
 
-    ```md
+    ```sh
     -A,  --accept=LIST          # 逗号分隔的可接受的扩展名列表
     -R,  --reject=LIST          # 逗号分隔的要拒绝的扩展名列表
         --accept-regex=REGEX        # 匹配接受的 URL 的正则表达式
@@ -125,14 +125,14 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - 下载单个文件/网页
 
-    ```md
+    ```sh
     wget https://www.rarlab.com/rar/rarlinux-6.0.1.tar.gz   # 下载rarlinux-6.0.1.tar.gz文件
     wget https://www.rarlab.com/download.htm        # 下载 download.htm 网页
     ```
 
 - 将下载的文件名改为指定文件名 （参数 “O” ）
 
-    ```md
+    ```sh
     wget -O edit.html https://i.cnblogs.com/posts/editpostId=14660645
     # 默认下载保存的文件为“editpostId=14660645”
     # 使用 -O 参数后，保存的文件为指定文件名，这里是“edit.html”
@@ -140,7 +140,7 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - 断点下载（参数 “c” ）
 
-    ```md
+    ```sh
     # 这个参数适合下载大文件，网速不理想的场景
     # 借助参数 "c", 可以继续从文件中断的地方继续下载
     wget -c https://www.rarlab.com/rar/rarlinux-6.0.1.tar.gz
@@ -148,7 +148,7 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - 后台下载（参数 “b”）
 
-    ```md
+    ```sh
     # 对于下载大文件时，我们可以使用参数 “b”，将进程切换到后台下载
     # 切换后台下载后，我们可以通过 “wget-log”查看下载进度
     # -t 参数表示重试次数，例如需要重试100次，那么就写-t 100，如果设成-t 0，那么表示无穷次重试，直到连接成功
@@ -157,20 +157,20 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - 批量下载（参数 “i”）
 
-    ```md
+    ```sh
     # 自定义一个文件URLlist.txt，将需要下载的URL都输入进去，然后使用参数 “i”指定改文件即可
     wget -i URLlist.txt
     ```
 
 - 检查网页是否可访问，而不用下载（“S“：打印响应信息，“spaider”：不下载）
 
-    ```md
+    ```sh
     wget [-S] --spaider https://www.cnblogs.com/librarookie/p/14660645.html
     ```
 
 - 指定文件格式下载（“A” 指定下载文件格式，“R”指定忽略下载文件格式）
 
-    ```md
+    ```sh
     # LIST 表示可以指定多个格式
     wget -A png https://www.cnblogs.com/    或  wget --accept=LIST https://www.cnblogs.com/
     wget -R gif https://www.cnblogs.com/    或  wget --reject=LIST https://www.cnblogs.com/
@@ -178,7 +178,7 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - 指定用户名密码下载
 
-    ```md
+    ```sh
     # 此场景适合部分访问需要用户名和密码验证的 URL下载
     wget --user=USER --password=PASS https://www.cnblogs.com/librarookie/p/14660645.html   # 此方式密码明文显示
     wget --user=USER --ask-password https://www.cnblogs.com/librarookie/p/14660645.html    # 此方式密码是按回车后，提示输入密码，密码不显示（推荐）
@@ -186,7 +186,7 @@ wget  [参数列表]    [目标软件、网页的网址]
 
 - 下载URL中的当前位置的所有文件
 
-    ```md
+    ```sh
     # 场景： 我需要下载文件服务器某一路径下的全部文件，但是不需要保存主页“index.html”
 
     wget -r -np -nd -R html,tmp  https://www.cnblogs.com/librarookie/p/
@@ -204,6 +204,6 @@ wget  [参数列表]    [目标软件、网页的网址]
 </br>
 </br>
 
-ref:
+Via
 
 - <https://www.jianshu.com/p/59bb131bc2ab>

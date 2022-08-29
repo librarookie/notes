@@ -1,4 +1,4 @@
-# Linux中查看文件的最后几行
+# Linux 查看文件的最后几行
 
 </br>
 </br>
@@ -154,7 +154,7 @@ Tips：
 
 #### less
 
-[less命令介绍](https://www.cnblogs.com/librarookie/p/16499068.html "less 命令： 查看文件内容")
+[less命令介绍](https://www.cnblogs.com/librarookie/p/16499068.html "less 介绍与使用")
 
 </br>
 </br>
@@ -163,41 +163,41 @@ Tips：
 
 1. 查看开头或结尾内容
 
-    ```java
-    tail -n 200 catalina.out    // 输出 最后200行内容
-    tail -n 2b catalina.out    // 输出 最后 2 * 512行内容
+    ```sh
+    tail -n 200 catalina.out    # 输出 最后200行内容
+    tail -n 2b catalina.out    # 输出 最后 2 * 512行内容
 
-    head -n 100 catalina.out    // 输出 开头100行内容
-    head -n b catalina.out    // 输出 开头 512行内容
+    head -n 100 catalina.out    # 输出 开头100行内容
+    head -n b catalina.out    # 输出 开头 512行内容
     ```
 
 2. 排除开头或结尾内容
 
-    ```java
-    tail -n +200 catalina.out   // 输出 开头200行 以后的内容，即从200行开始打印
+    ```sh
+    tail -n +200 catalina.out   # 输出 开头200行 以后的内容，即从200行开始打印
 
-    head -n -100 catalina.out    // 输出 最后100行 以前的内容， 即打印到最后100行为止
+    head -n -100 catalina.out    # 输出 最后100行 以前的内容， 即打印到最后100行为止
     ```
 
     Tips: tail 和 head 都支持乘数后缀（b, K ,M 等等）
 
 3. 查看显示行号
 
-    ```java
-    cat -n catalina.out             //显示所有行号(包括空行)
+    ```sh
+    cat -n catalina.out     # 显示所有行号(包括空行)
 
-    cat -b catalina.out             //显示所有行号(但不包括空行)
+    cat -b catalina.out     # 显示所有行号(但不包括空行)
 
-    less -N catalina.out            //显示所有行号(包括空行)
+    less -N catalina.out        # 显示所有行号(包括空行)
 
-    nl [-ba] catalina.out             //显示所有行号(包括空行)
+    nl [-ba] catalina.out       # 显示所有行号(包括空行)
 
-    nl -bt catalina.out             //显示所有行号(但不包括空行)
+    nl -bt catalina.out     # 显示所有行号(但不包括空行)
     ```
 
 4. 实时查看文件内容
 
-    ```md
+    ```sh
     tail -f catalina.out
 
     less catalina.out --> F
@@ -205,7 +205,7 @@ Tips：
 
 5. 合并文件
 
-    ```md
+    ```sh
     cat file1 file2 > file3
     ```
 

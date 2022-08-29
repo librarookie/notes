@@ -8,8 +8,6 @@
 
 ## echo
 
-### echo介绍
-
 > echo命令是Linux中最基本和最常用的命令之一。传递参数给echo将打印到标准输出。echo通常在shell脚本中用于打印消息或输出其他命令的结果。Linxu还有一个独立的/usr/bin/echo程序，但它们的行为与shell之间略有不同。通常shell内置版本将优先。
 
 - Usage:
@@ -18,9 +16,9 @@
 
 将STRING(s)回传到标准输出。
 
-- Options:
+- Options
 
-    ```md
+    ```sh
     -n      不输出后面的换行符
     -e      启用反斜杠转义的解释
     -E      禁用反斜杠转义的解释(默认)
@@ -28,7 +26,7 @@
 
 - 常用转义符
 
-    ```md
+    ```sh
     \\      识别反斜杠（backslash）
     \a      警报（alert）
     \b      退格（backspace）
@@ -47,7 +45,7 @@
 
 1. 常用打印
 
-    ```md
+    ```sh
     # 标准打印一行文本
     echo "Hello, World"         --> Hello, World
     # 转义常用符号
@@ -66,7 +64,7 @@
 
 2. 以彩色进行echo打印
 
-    ```md
+    ```sh
     echo -e "\033[1;37mWHITE"     –打印白色 WHITE
     echo -e "\033[0;30mBLACK"     –打印黑色 BLACK
     echo -e "\033[0;34mBLUE"      –打印蓝色 BLUE
@@ -80,9 +78,7 @@
 
 ## alias（别名）
 
-### alias介绍
-
-- Usage:
+- Usage
 
     > 添加别名 alias [-p] [name[=value] ...]
     > 删除别名 unalias [-a] name [name ...]
@@ -124,4 +120,9 @@
 
 ## history
 
- TODO history
+TODO history
+
+</br>
+</br>
+
+TAG Unreleased
