@@ -1,8 +1,9 @@
-# Markdown 速查表
+# Markdown 语法
 
-</br></br>
+</br>
+</br>
 
-## 基本语法
+## 基础语法
 
 > 这些是 John Gruber 的原始设计文档中列出的元素。所有 Markdown 应用程序都支持这些元素。
 
@@ -67,9 +68,10 @@ yaml
 | 注音符号 | {喜大普奔\|hē hē hē hē} |
 | 横屏滑动幻灯片 | `<![](url),![](url)>` |
 
-</br></br>
+</br>
+</br>
 
-Refercense
+Via
 
 * <https://markdown.com.cn/cheat-sheet.html>
 * <https://markdown.com.cn/editor/>
