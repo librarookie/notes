@@ -1,4 +1,4 @@
-# Picgo介绍和配置 Gitee图床
+# Picgo + Gitee 配置图床
 
 </br>
 </br>
@@ -69,7 +69,7 @@ Tips:
 
     由于本人使用的是Ubuntu，所以下面介绍下Linux中安装nodejs（源码包需要编译再安装，而使用“二进制文件（x64）包”少这一步，所以我们使用后者）
 
-    ```md
+    ```sh
     # 进入 “Downloads” 目录
     cd ~/Downloads
 
@@ -107,7 +107,7 @@ Tips:
 
 - 下载
 
-    ```md
+    ```sh
     wget -c https://github.com/Molunerfinn/picgo/releases/download/v2.3.0/picgo-2.3.0.AppImage
     ```
 
@@ -119,13 +119,13 @@ Tips:
 
     1. 授权
 
-        ```md
+        ```sh
         sudo chmod u+x picgo-2.3.0.AppImage
         ```
 
     2. 查看系统变量 PATH
 
-        ```md
+        ```sh
         echo $PATH
         ```
 
@@ -133,7 +133,7 @@ Tips:
 
     3. 移动到 PATH
 
-        ```md
+        ```sh
         # 如上图所示，我们选用 “/usr/local/bin/” 
         sudo mv ~/Downloads/picgo-2.3.0.AppImage /usr/local/bin/
         ```
@@ -295,7 +295,7 @@ Tips:
 - 如果你和我一样是Ubuntu系统，那你上传可能会遇到这个错误 `xclip no found`.
 - 之所以上传失败，是因为需要先将图片复制到剪切板中，而这借助了 `xclip`
 
-    ```md
+    ```sh
     # 安装xclip
     sudo apt install xclip
     ```
@@ -352,7 +352,7 @@ Tips:
 
         1. 查找（grep）
 
-            ```md
+            ```sh
             # 用法
             grep -rn "目标字符串" ./
 
@@ -362,7 +362,7 @@ Tips:
 
         2. 替换
 
-            ```md
+            ```sh
             # 用法
             sed -i "s/目标字符串/替换字符串/g" `grep -rl 目标字符串 ./`
 
@@ -391,6 +391,6 @@ Tips:
 </br>
 </br>
 
-Reference
+Via
 
 - <https://picgo.github.io/picgo-Doc/zh/guide/>
