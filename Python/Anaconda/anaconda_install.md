@@ -1,28 +1,32 @@
 # Anaconda 安装与卸载
 
-> Anaconda是一个免费开源的Python和R语言的发行版本，用于计算科学（数据科学、机器学习、大数据处理和预测分析），Anaconda致力于简化软件包管理系统和部署。Anaconda的包使用软件包管理系统Conda进行管理。超过1200万人使用Anaconda发行版本，并且Anaconda拥有超过1400个适用于Windows、Linux和MacOS的数据科学软件包。     -wikipedia
+</br>
+</br>
 
 ## 安装
 
+> Anaconda是一个免费开源的Python和R语言的发行版本，用于计算科学（数据科学、机器学习、大数据处理和预测分析），Anaconda致力于简化软件包管理系统和部署。Anaconda的包使用软件包管理系统Conda进行管理。超过1200万人使用Anaconda发行版本，并且Anaconda拥有超过1400个适用于Windows、Linux和MacOS的数据科学软件包。     -wikipedia
+
 * 下载
-  * 官网下载：<https://www.anaconda.com/products/individual#Downloads>
+  * Anaconda 官网下载：<https://www.anaconda.com/products/individual#Downloads>
   * 清华大学开源软件镜像站：<https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/>
 
-    *note：* Anaconda官网是外国网站，速度非常慢，建议去清华大学开源软件镜像站下载
+  Tips: Anaconda官网是外国网站，速度非常慢，建议去清华大学开源软件镜像站下载
 
 * 安装（Linux）
   * 授权并执行
 
-    ```python
+    ```sh
     # 给下载的sh文件执行权限
     chmod a+x Anaconda3-2021.05-Linux-x86_64.sh
+
     # 执行安装文件
     ./Anaconda3-2021.05-Linux-x86_64.sh
     ```
   
   * 安装输出日志
 
-    ```python
+    ```sh
     Welcome to Anaconda3 2021.05
 
     In order to continue the installation process, please review the license
@@ -114,43 +118,49 @@
 
     ```
 
-* 配置
-  * 初始化[^1] Anaconda（安装时初始化了则跳过）
+</br>
 
-    [^1]: [Linux安装anaconda3是否初始化的区别](https://blog.csdn.net/qq_41126685/article/details/105525408)
+## 配置
 
-    ```python
-    # 如果如果anaconda安装初始化时，选择的no，那现在应该还用不了conda命令
-    # 执行 source $ANACONDA_HOME/bin/activate, 如：
-    source /usr/envs/anaconda3/bin/activate
-    # 初始化
-    conda init
-    ```
+> 如果如果anaconda安装初始化时，选择的no，那现在应该还用不了conda命令
 
-  * 关闭启动时激活Conda基础环境（可选）
+* 初始化[^1] Anaconda（安装时初始化了则跳过）
 
-    ```python
-    # 如果您不希望在启动时激活Conda基础环境，将AUTO_ACTIVATE_BASE参数设置为FALSE：
-    conda config --set auto_activate_base false
-    ```
+  [^1]: [Linux安装anaconda3是否初始化的区别](https://blog.csdn.net/qq_41126685/article/details/105525408)
 
-  * Anaconda 镜像配置
-    * [点击前往Anaconda 镜像配置](https://www.cnblogs.com/librarookie/p/15376578.html "Anaconda 镜像配置")
+  ```sh
+  # 执行 source $ANACONDA_HOME/bin/activate, 如：
+  source /usr/envs/anaconda3/bin/activate
+  # 初始化
+  conda init
+  ```
+
+* 关闭启动时激活Conda基础环境（可选）
+
+  ```sh
+  # 如果您不希望在启动时激活Conda基础环境，将AUTO_ACTIVATE_BASE参数设置为FALSE：
+  conda config --set auto_activate_base false
+  ```
+
+* Anaconda 镜像配置
+  * <https://www.cnblogs.com/librarookie/p/15376578.html>
+
+</br>
 
 ## 卸载
 
 * 删除Anaconda 文件夹
 
-    ```python
-    # rm -rf $ANACONDA_HOME，如：
-    rm -rf /usr/envs/anaconda3
-    ```
+  ```sh
+  # rm -rf $ANACONDA_HOME，如：
+  rm -rf /usr/envs/anaconda3
+  ```
 
 * 删除Anaconda 配置
 
-  ```python
+  ```sh
   # 打开配置文件
-    vim ~/.bashrc
+  vim ~/.bashrc
   
   # 删除下面这段配置
 
@@ -172,11 +182,14 @@
 
 * 更新配置文件
 
-  ```python
+  ```sh
   source ~/.bashrc
   或者 source /etc/profile
   ```
 
-Reference
+</br>
+</br>
+
+Via
 
 * <https://blog.csdn.net/qq_43529415/article/details/100847887>

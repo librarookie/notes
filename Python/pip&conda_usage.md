@@ -1,22 +1,27 @@
 # Python 包管理工具 pip 与 conda
 
+</br>
+</br>
+
 ## 简介
 
-> 1. pip是接触 python 后最早认识的包管理工具。通过使用 pip 能够自动下载和解决不同 python 模块的依赖问题，使 python 的配置过程变得简单。
+> 1. pip是接触 python 后最早认识的包管理工具。通过使用 pip 能够自动下载和解决不同 python 模块的依赖问题，使 python 的配置过程变得简单。</br>
 > 2. 与 pip 类似，conda 也是一个开源软件的包管理系统和环境管理系统。conda 可分为 anaconda 和 miniconda，anaconda 包含一些科学计算常用的 python 包，miniconda 为精简版。
+
+</br>
 
 ## 区别
 
-* 不同
+| 类别 | pip | conda |
+|----|:--:|:--:|
+| 管理 | wheel 或源码 | 二进制 |
+| 需要编译器 | yes | no |
+| 语言 | Python | any |
+| 虚拟环境 | virtualenv \| venv | 支持 |
+| 依赖性检查 | 用户选择 | yes |
+| 包来源 | PyPi | Anaconda repo和cloud |
 
-    | 类别 | pip | conda |
-    |----|:--:|:--:|
-    | 管理 | wheel 或源码 | 二进制 |
-    | 需要编译器 | yes | no |
-    | 语言 | Python | any |
-    | 虚拟环境 | virtualenv \| venv | 支持 |
-    | 依赖性检查 | 用户选择 | yes |
-    | 包来源 | PyPi | Anaconda repo和cloud |
+</br>
 
 ## 用法
 
@@ -45,26 +50,29 @@
     | 导出环境 | conda env export > environment.yaml |
     | 导入环境 | conda env create -f environment.yaml |
 
-    tips:
-    
-    * `python=3.8` 指定新建环境python版本，不填默认使用Anaconda的python版本
-    * `--clone` 
-        * 可以指环境名称（env_name），或者环境目录（/path/env_dir）
-        * 只会克隆`conda` 安装的包，`pip` 安装的包需要重新安装
+  * Tips
+
+    * `python=3.8` 指定新建环境 python版本，不填默认使用 Anaconda的 python版本
+    * `--clone`
+      * 可以指环境名称（env_name），或者环境目录（/path/env_dir）
+      * 只会克隆`conda` 安装的包，`pip` 安装的包需要重新安装
+
+</br>
 
 ## 镜像
 
 * pip 国内源配置
 
-    [Python pip配置国内源](https://www.cnblogs.com/librarookie/p/14930238.html "Python pip配置国内源")
+    <https://www.cnblogs.com/librarookie/p/14930238.html>
 
 * conda 镜像配置
 
-    [Anaconda 镜像配置](https://www.cnblogs.com/librarookie/p/15376578.html "Anaconda 镜像配置")
+    <https://www.cnblogs.com/librarookie/p/15376578.html>
 
-</br></br>
+</br>
+</br>
 
-reference
+Via
 
 * <https://www.cnblogs.com/li12242/p/13180397.html>
 * <https://www.cnblogs.com/jessepeng/p/11685170.html>

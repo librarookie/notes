@@ -9,13 +9,13 @@
 
 * 单行注释
 
-  ```python
+  ```py
   # 这是Python 单行注释内容
   ```
 
 * 多行注释
 
-  ```python
+  ```py
   '''
       这是Python 多行注释
       三个英文单引号
@@ -33,7 +33,7 @@
 
 * 换行操作
 
-  ```python
+  ```py
   # eg. 多行打印
   # “;” 表示命令结束
     print("打印在第 1 行"); print("打印在第 2 行"); print("打印在第 3 行")
@@ -41,7 +41,7 @@
 
 * 续行操作
 
-  ```Python
+  ```py
   # eg. 多行打印 
   # “;” 表示命令结束，“\” 表示下一行继续， “>>>” 表示Python交互模式， “...” 表示接上面继续
   >>> print("打印在第 1 行");\  # 回车
@@ -53,7 +53,7 @@
 
 * while 循环
 
-  ```Python
+  ```py
   while 循环条件:
     循环体
 
@@ -66,7 +66,7 @@
 
 * for 循环
 
-  ```python
+  ```py
   # for 循环；
   for 变量 in 可迭代对象:
   
@@ -95,7 +95,7 @@
 
   [字符百科](https://unicode-table.com/cn/ "传送阵")
 
-  ```python
+  ```py
   """
       ord()  解码，字 --> 数
       chr()  编码，数 --> 字
@@ -111,7 +111,7 @@
 
 * 字符串格式化
 
-  ```python
+  ```py
   """
       定义:生成一定格式的字符串
       基础语法:
@@ -143,7 +143,7 @@
 
 * 索引
 
-  ```python
+  ```py
   """
     容器名[整数]
     定位某个位置的数据
@@ -157,7 +157,7 @@
 
 * 切片
 
-  ```python
+  ```py
   """
       # 容器[整数: 整数: 整数]
       list[start: end: step]    # 范围： [start, end), 间隔：step
@@ -184,120 +184,124 @@
 
   ![202208241701909](https://gitee.com/librarookie/picgo/raw/master/img/202208241701909.png "202208241701909")
 
+</br>
+
 ## 常用函数
 
-* 字符串处理
+### 字符串处理
 
-  ```python
-  title()    # 将字符串转换成首字母大写
-  upper()    # 将字符串转换成全部大写
-  lower()    # 将字符串转换成全部小写
-  strip()    # 去除字符串两端的空白, 如 “ Hello ” -> "Hello", "\n\tHello\n\t" -> "Hello"
-    rstrip()   # 只去除字符串末尾的空白,如 “Hello  ” -> “Hello”, " Hello " -> " Hello"
-    lstrip()   # 只去除字符串前面的空白,如 “  Hello” -> “Hello”, " Hello " -> "Hello "
-  ```
+```py
+title()    # 将字符串转换成首字母大写
+upper()    # 将字符串转换成全部大写
+lower()    # 将字符串转换成全部小写
+strip()    # 去除字符串两端的空白, 如 “ Hello ” -> "Hello", "\n\tHello\n\t" -> "Hello"
+  rstrip()   # 只去除字符串末尾的空白,如 “Hello  ” -> “Hello”, " Hello " -> " Hello"
+  lstrip()   # 只去除字符串前面的空白,如 “  Hello” -> “Hello”, " Hello " -> "Hello "
+```
+
+</br>
 
 ## list 基本操作
 
-* 创建
+### 创建
 
-  ```python
-  listName = list(iterable)     # iterable: 可迭代对象
-    or
-  listName = [element, element ...]
-  ```
+```py
+listName = list(iterable)     # iterable: 可迭代对象
+# or
+listName = [element, element ...]
+```
 
-* 添加
+### 添加
 
-  ```python
-  # 新元素添加在最后面
-  listName.append(element)
-  ```
+```py
+# 新元素添加在最后面
+listName.append(element)
+```
 
-* 插入
+### 插入
 
-  ```python
-  # 新元素插入在下标index，元素向后移动
-  listName.insert(index, element)
-  ```
+```py
+# 新元素插入在下标index，元素向后移动
+listName.insert(index, element)
+```
 
-* 删除
+### 删除
 
-  ```python
-  # 1. 移除
-  listName.remove(element)
+```py
+# 1. 移除
+listName.remove(element)
 
-  # 2. 根据定位删除 del 容器名[索引或者切片]
-  ## 删除第一个元素
-  del listName[0]
-  ## 根据切片删除，删除开始到下标2 [0, 2) 
-  del listName[: 2]
-  ```
+# 2. 根据定位删除 del 容器名[索引或者切片]
+## 删除第一个元素
+del listName[0]
+## 根据切片删除，删除开始到下标2 [0, 2) 
+del listName[: 2]
+```
 
-* 倒序
+### 倒序
 
-  ```python
-  # 将list中的元素倒序排布
-  listName.reverse()
-  ```
+```py
+# 将list中的元素倒序排布
+listName.reverse()
+```
 
-* 清空
+### 清空
 
-  ```python
-  # 清空list中所有元素
-  listName.clear()
-  ```
+```py
+# 清空list中所有元素
+listName.clear()
+```
 
-* 读取
+### 读取
 
-  ```python
-  listName[index]
-  ```
+```py
+listName[index]
+```
 
-* 修改
+### 修改
 
-  ```python
-  # 当index < 0 时，从最后开始取
-  listName[index] = element
-  ```
+```py
+# 当index < 0 时，从最后开始取
+listName[index] = element
+```
 
-* 切片
+### 切片
 
-  ```python
-  # 当step < 0 时，从最后开始取
-  listName[start: end: step]
-  ```
+```py
+# 当step < 0 时，从最后开始取
+listName[start: end: step]
+```
 
   [Python3 字符串篇](https://www.runoob.com/python3/python3-string.html "菜鸟驿站")
 
-* 栗子
+### list 栗子
 
-  ```python
-  hello_list = ["你", "好", "，", "世", "界"]
-  hello_list = list("你好，世界")
-  print(hello_list)          # ['你', '好', '，', '世', '界']
+```py
+hello_list = ["你", "好", "，", "世", "界"]
+hello_list = list("你好，世界")
+print(hello_list)          # ['你', '好', '，', '世', '界']
 
-  hello_list.append("吖")
-  print(hello_list)          # ['你', '好', '，', '世', '界', '吖']
+hello_list.append("吖")
+print(hello_list)          # ['你', '好', '，', '世', '界', '吖']
 
-  hello_list(2, "啊")
-  print(hello_list)          # ['你', '好', '啊', '，', '世', '界', '吖']
+hello_list(2, "啊")
+print(hello_list)          # ['你', '好', '啊', '，', '世', '界', '吖']
 
-  hello_list.remove("好")
-  print(hello_list)        # ['你', '啊', '，', '世', '界', '吖']
+hello_list.remove("好")
+print(hello_list)        # ['你', '啊', '，', '世', '界', '吖']
 
-  del hello_list[0]
-  print(hello_list)        # ['啊', '，', '世', '界', '吖']
+del hello_list[0]
+print(hello_list)        # ['啊', '，', '世', '界', '吖']
 
-  del hello_list[: 2]
-  print(hello_list)        # ['世', '界', '吖']
+del hello_list[: 2]
+print(hello_list)        # ['世', '界', '吖']
 
-  hello_list.reverse()
-  print(hello_list)        # ['吖', '界', '世']
+hello_list.reverse()
+print(hello_list)        # ['吖', '界', '世']
 
-  hello_list.clear()
-  print(hello_list)        # []    
-  ```
+hello_list.clear()
+print(hello_list)        # []    
+```
 
 </br>
 </br>

@@ -1,6 +1,7 @@
-# Anaconda 镜像配置
+# Anaconda-conda 镜像配置
 
-</br></br>
+</br>
+</br>
 
 ## 镜像源
 
@@ -11,6 +12,8 @@
 * 重庆邮电大学: <http://mirror.cqupt.edu.cn/>
 * 上海交通大学: <https://mirror.sjtu.edu.cn/>
 * 哈尔滨工业大学: <http://mirrors.hit.edu.cn/>
+
+</br>
 
 ## 配置
 
@@ -30,31 +33,32 @@
     |conda config --show KEY|查看频道|
     |conda config --show-source|查看频道配置|
 
-* 配置.condarc
-    1. 修改~/.condarc文件
+* 配置 `.condarc`
+    1. 修改 ~/.condarc 文件
     2. 修改后内容如下：
 
-    ```python
-    channels:
-      - defaults
-    show_channel_urls: true
-    auto_activate_base: false
-    default_channels:
-      - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
-      - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
-      - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
-    custom_channels:
-      conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-      msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-      bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-      menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-      pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-      simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-     ```
+        ```sh
+        channels:
+          - defaults
+        show_channel_urls: true
+        auto_activate_base: false
+        default_channels:
+          - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+          - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+          - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+        custom_channels:
+          conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+          msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+          bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+          menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+          pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+          simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+        ```
 
-</br></br>
+</br>
+</br>
 
-Reference
+Via
 
 * <https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/>
 * <https://cxyzjd.com/article/just_h/90451935>
