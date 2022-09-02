@@ -130,7 +130,7 @@ wget  [参数列表]    [目标软件、网页的网址]
     wget https://www.rarlab.com/download.htm        # 下载 download.htm 网页
     ```
 
-- 将下载的文件名改为指定文件名 （参数 “O” ）
+- 将下载的文件名改为指定文件名 （参数 `O` ）
 
     ```sh
     wget -O edit.html https://i.cnblogs.com/posts/editpostId=14660645
@@ -138,7 +138,7 @@ wget  [参数列表]    [目标软件、网页的网址]
     # 使用 -O 参数后，保存的文件为指定文件名，这里是“edit.html”
     ```
 
-- 断点下载（参数 “c” ）
+- 断点下载（参数 `c` ）
 
     ```sh
     # 这个参数适合下载大文件，网速不理想的场景
@@ -146,29 +146,29 @@ wget  [参数列表]    [目标软件、网页的网址]
     wget -c https://www.rarlab.com/rar/rarlinux-6.0.1.tar.gz
     ```
 
-- 后台下载（参数 “b”）
+- 后台下载（参数 `b` ）
 
     ```sh
     # 对于下载大文件时，我们可以使用参数 “b”，将进程切换到后台下载
-    # 切换后台下载后，我们可以通过 “wget-log”查看下载进度
-    # -t 参数表示重试次数，例如需要重试100次，那么就写-t 100，如果设成-t 0，那么表示无穷次重试，直到连接成功
+    # 切换后台下载后，我们可以通过 “wget-log” 查看下载进度（wget-log 在当前目录下）
+    # 可以搭配 -t 参数使用，表示重试次数，例如需要重试100次，那么就写-t 100，如果设成-t 0，那么表示无穷次重试，直到连接成功
     wget -b https://www.rarlab.com/rar/rarlinux-6.0.1.tar.gz
     ```
 
-- 批量下载（参数 “i”）
+- 批量下载（参数 `i` ）
 
     ```sh
     # 自定义一个文件URLlist.txt，将需要下载的URL都输入进去，然后使用参数 “i”指定改文件即可
     wget -i URLlist.txt
     ```
 
-- 检查网页是否可访问，而不用下载（“S“：打印响应信息，“spaider”：不下载）
+- 检查网页是否可访问，而不用下载（ `S` ：打印响应信息， `spaider` ：不下载）
 
     ```sh
     wget [-S] --spaider https://www.cnblogs.com/librarookie/p/14660645.html
     ```
 
-- 指定文件格式下载（“A” 指定下载文件格式，“R”指定忽略下载文件格式）
+- 指定文件格式下载（ `A` 指定下载文件格式， `R` 指定忽略下载文件格式）
 
     ```sh
     # LIST 表示可以指定多个格式
@@ -187,7 +187,7 @@ wget  [参数列表]    [目标软件、网页的网址]
 - 下载URL中的当前位置的所有文件
 
     ```sh
-    # 场景： 我需要下载文件服务器某一路径下的全部文件，但是不需要保存主页“index.html”
+    # 场景： 我需要下载文件服务器某一路径下的全部文件，但是不需要保存主页 “index.html”
 
     wget -r -np -nd -R html,tmp  https://www.cnblogs.com/librarookie/p/
         或者：
