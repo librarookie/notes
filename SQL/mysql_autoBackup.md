@@ -3,20 +3,9 @@
 </br>
 </br>
 
-- [MySQL 数据库自动备份](#mysql-数据库自动备份)
-  - [MySQL 备份命令](#mysql-备份命令)
-    - [mysqldump 介绍](#mysqldump-介绍)
-    - [数据备份](#数据备份)
-    - [数据恢复](#数据恢复)
-    - [gzip 介绍](#gzip-介绍)
-  - [MySQL 备份脚本](#mysql-备份脚本)
-  - [Linux 定时任务-crontab](#linux-定时任务-crontab)
-
-</br>
-
 ## MySQL 备份命令
 
-> 手抖、写错条件、写错表名、错连生产库造成的误删库表和数据总有听说，那么删库之后除了跑路，还能做什么呢，当然是想办法恢复，恢复数据的基础就在于完善的备份策略。下面就来介绍下MySQL自带备份工具`mysqldump`。
+> 手抖、写错条件、写错表名、错连生产库造成的误删库表和数据总有听说，那么删库之后除了跑路，还能做什么呢，当然是想办法恢复，恢复数据的基础就在于完善的备份策略。下面就来介绍下MySQL自带备份工具`mysqldump`
 
 </br>
 
@@ -24,7 +13,7 @@
 
 - 用法
 
-    ```py
+    ```sh
     Usage: mysqldump [OPTIONS] database [tables]
     OR     mysqldump [OPTIONS] --databases [OPTIONS] DB1 [DB2 DB3...]
     OR     mysqldump [OPTIONS] --all-databases [OPTIONS]
@@ -83,113 +72,31 @@
 
     > gzip -d backup.sql.gz | mysql -h<host> -u<user> -p<passwd>
 
-    note: `gzip -d`为解压， 下面介绍下gzip用法与参数介绍（gzip命令只是压缩，不做打包操作）
+    Tips: `gzip -d`为解压， 下面介绍下gzip用法与参数介绍（gzip命令只是压缩，不做打包操作）
 
 </br>
 
 ### gzip 介绍
 
-- 用法：
-    > gzip [OPTION]... [FILE]...
-
-- 常用参数
-  - `-d` `--decompress` 解压
-  - `-c` `--stdout` 保留原始文件，把压缩/解压流重定向到新文件（如： `gzip -c aa > aa.gz`）
-  - `-l` `--list` 列出压缩文件信息，并不解压
-  - `-r` `--recursive` 对目录进行递归操作
-  - `-t` `--test` 测试压缩文件的完整性
-  - `-v` `--verbose` 冗长模式
-  - `-num` num为压缩效率，是一个介于`1~9`的数值，预设值为“`6`”，指定愈大的数值，压缩效率就会愈高；
-    - `-1` `--fast`  最快压缩方法（低压缩比）
-    - `-9` `--best`  最慢压缩方法（高压缩比）
-
-- 栗子
-
-  - 把 test目录下的每个文件压缩成.gz文件
-      > gzip test/*
-
-  - 把上例中每个压缩的文件解压，并列出详细的信息
-      > gzip -dv test/*
-
-  - 详细显示test中每个压缩的文件的信息，并不解压
-      > gzip -l test/*
-
-  - 压缩一个tar备份文件，此时压缩文件的扩展名为.tar.gz
-      > gzip -r log.tar
-
-  - 递归的压缩目录
-      > gzip -rv test
-
-    这样，所有test下面的文件都变成了*.gz，目录依然存在只是目录里面的文件相应变成了*.gz.这就是压缩，和打包不同。因为是对目录操作，所以需要加上-r选项，这样也可以对子目录进行递归了。
-
-  - 递归地解压目录
-
-    > gzip -dr test
-
-  - 保留原始文件，把压缩/解压流重定向到新文件
-
-    > gzip -c aa > aa.gz
-    >
-    > gzip -dc bb.gz > bb
+- gzip 用法参考： <https://www.cnblogs.com/librarookie/p/16650613.html>
 
 </br>
 
 ## MySQL 备份脚本
 
-- [MySQL 数据库备份脚本](https://www.cnblogs.com/librarookie/p/15767567.html "https://www.cnblogs.com/librarookie/p/15767567.html")
+- MySQL 数据库备份脚本参考： <https://www.cnblogs.com/librarookie/p/15767567.html>
 
 </br>
 
-## Linux 定时任务-crontab
+## 定时任务-crontab
 
 > `crontab` 是一个命令，常见于Unix和类Unix的操作系统之中，用于设置周期性被执行的指令。
 
-- 用法:
-
-  - crontab [-u user] file
-  - crontab [-u user] [ -e | -l | -r ]
-
-- 参数解释:
-
-  - `-e` 编辑用户的定时任务 (edit user's crontab)
-  - `-l` 列出用户的定时任务 (list user's crontab)
-  - `-r` 删除用户的定时任务 (delete user's crontab)
-  - `-i` 在删除用户的定时任务前提示 (prompt before deleting user's crontab)
-  - `-s` (selinux context)
-
-- 栗子
-
-  - 编辑
-
-    >   crontab -e
-
-  - 执行计划 (每天23点执行`service iptables status`命令)
-
-    > 00 23 \* \* \*  service iptables status
-
-  - 详情
-
-    ```py
-    *  *  *  *  *  commad
-    分 时  日 月 周  命令
-
-    第`1`列表示分钟 `1~59`, 每分钟用 `*` 或者 `*/1`表示
-
-    第`2`列表示小时 `1~23` (0表示0点)
-
-    第`3`列表示日期 `1~31`
-
-    第`4`列表示月份 `1~12`
-
-    第`5`列表示星期 `0~6` (0表示星期日)
-
-    第`6`列是要运行的命令
-    ```
+- 定时任务设置参考： <https://www.cnblogs.com/librarookie/p/16650225.html>
 
 </br>
 </br>
 
-Reference
+Via
 
 - <https://segmentfault.com/a/1190000019955399>
-- <https://wangchujiang.com/linux-command/c/gzip.html>

@@ -1,25 +1,11 @@
-# DB commands
-
-</br></br>
-
-> 常用数据库操作命令
-
-## [目录](#目录)
-
-* [MySQL](#mysql)
-* [PostgreSQL](#postgresql)
+# 数据库操作命令
 
 </br>
-
-### [MySQL](#目录)
-
-* [基础命令](#基础命令)
-* [配置命令](#配置命令)
-* [备份与还原](#备份与还原)
-
 </br>
 
-#### [基础命令](#mysql)
+## MySQL
+
+### 基础命令
 
   | Key | Command |
   | :--- | :--- |
@@ -34,7 +20,7 @@
 
 </br>
 
-#### [配置命令](#mysql)
+### 配置命令
 
   | Key | Command |
   | :--- | :--- |
@@ -47,7 +33,7 @@
 
 [^1]: 滚屏，本质上只是让终端显示页向后翻了一页，如果向上滚动屏幕还可以看到之前的操作信息。
 
-*note:*
+Tips
 
 * 在mysql中查看系统路径的方法是通过 `system` + 系统命令 `ls`
 * `SET NAMES 'utf8mb4'` 相当于
@@ -57,7 +43,7 @@
   * SET collation_connection = utf8
 * MySQL 配置文件中字符集相关变量
 
-  ```md
+  ```sh
   # 客户端请求数据的字符集
   character_set_client
 
@@ -89,14 +75,16 @@
 
 [^2]: `utf8`是MySQL中的一种字符集，表示用`UTF-8`编码方案，每个字符最多占`3`个字节。而`uft8mb4`每个字符最多占`4`个字节。
 
-#### [备份与还原](#mysql)
+</br>
+
+### 备份与还原
 
 | Key | Command |
 | :--- | :--- |
 | 备份 | `mysqldump -u root -p db_name tb_name1 [tb2 tb3...] > db_tables.sql`（表备份） </br>  `mysqldump -u root -p --databases DB1 [DB2 DB3...] > db_backup.sql`（数据库备份） </br> `mysqldump -u root -p --all-databases > db_all.sql`（备份所有数据库） |
 | 还原 | `mysql -u root -p db_name < db_backup.sql`  |
 
-*note:*
+Tips
 
 * 登录MySQL, 可以执行 `source db_backup.sql`还原数据库;
 * `--databases` `-B` 指定数据库，可以指定多个库;（备份单个数据库时不加改参数， 还原时需要手动创建数据库）
@@ -104,15 +92,9 @@
 
 </br>
 
-### [PostgreSQL](#目录)
+## PostgreSQL
 
-* [常用命令](#常用命令)
-* [查看命令](#查看命令)
-* [备份与恢复](#备份与恢复)
-
-</br>
-
-#### [常用命令](#postgresql)
+### 常用命令
 
 | Key | Command |
 | :--- | :--- |
@@ -130,7 +112,7 @@
 
 </br>
 
-#### [查看命令](#postgresql)
+### 查看命令
 
 | Key | Command |
 | :--- | :--- |
@@ -146,16 +128,15 @@
 | 查看类型（types） | `\dT` |
 | 查看访问权限（access） | `\dp` \| `\z` |
 
-*note:*
+Tips
 
 * `+` = 显示额外细节（表大小和表描述等）
 * `S` = 显示系统对象
-* 比如：
-  * `\dt` 查看表， `\dt+` 查看**当前库**所有表细节,`\dt+S` 查看所有表细节(当前库和系统库)
+* 如： `\dt` 查看表， `\dt+` 查看 **当前库** 所有表细节, `\dt+S` 查看所有表细节(当前库和系统库)
 
 </br>
 
-#### [备份与恢复](#postgresql)
+### 备份与恢复
 
 | Key | Command |
 | :--- | :--- |
@@ -163,10 +144,11 @@
 | 还原 | `psql -U username -d db_name < db_backup.sql` |
 | 恢复 | `pg_restore -U username -d db_name < db_backup.tar` |
 
-[PostgreSQL 数据库备份与还原](https://www.cnblogs.com/librarookie/p/15534021.html "https://www.cnblogs.com/librarookie/p/15534021.html")
+更多参考： <https://www.cnblogs.com/librarookie/p/15534021.html>
 
-</br></br>
+</br>
+</br>
 
-Reference
+Via
 
 * <https://blog.csdn.net/weixin_38004638/article/details/109291324>

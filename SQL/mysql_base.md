@@ -3,30 +3,6 @@
 </br>
 </br>
 
-- [MySQL 基础](#mysql-基础)
-  - [SQL 介绍](#sql-介绍)
-  - [DDL（数据定义语言）](#ddl数据定义语言)
-    - [数据库操作](#数据库操作)
-    - [数据表操作](#数据表操作)
-    - [常用约束](#常用约束)
-      - [约束操作](#约束操作)
-    - [索引操作](#索引操作)
-  - [DML（数据操作语言）](#dml数据操作语言)
-    - [SELECT - 从数据库表中获取数据](#select---从数据库表中获取数据)
-    - [UPDATE - 更新数据库表中的数据](#update---更新数据库表中的数据)
-    - [DELETE - 从数据库表中删除数据](#delete---从数据库表中删除数据)
-    - [INSERT INTO - 向数据库表中插入数据](#insert-into---向数据库表中插入数据)
-      - [常规插入](#常规插入)
-      - [插入查询结果集](#插入查询结果集)
-    - [MySQL 计算列（虚拟列）](#mysql-计算列虚拟列)
-  - [DCL（数据控制语言）](#dcl数据控制语言)
-    - [GRANT - 授权](#grant---授权)
-    - [REVOKE - 回收授权](#revoke---回收授权)
-
-</br>
-
-> CURD 是一个数据库技术中的缩写词，一般的项目开发的各种参数的基本功能都是CURD。作用是用于处理数据的基本原子操作。它代表创建（Create）、更新（Update）、读取（Retrieve）和删除（Delete）操作。
-
 ## SQL 介绍
 
 > SQL (Structured Query Language:结构化查询语言) 是用于管理关系数据库管理系统（RDBMS）。 SQL 的范围包括数据插入、查询、更新和删除，数据库模式创建和修改，以及数据访问控制。
@@ -34,9 +10,7 @@
 - SQL 是什么？
   - SQL 指结构化查询语言
   - SQL 使我们有能力访问数据库
-  - SQL 是一种 ANSI 的标准计算机语言
-
-    `note`： ANSI（American National Standards Institute），美国国家标准化组织
+  - SQL 是一种 ANSI（American National Standards Institute，美国国家标准化组织）的标准计算机语言
 
 - SQL 能做什么？
   - SQL 面向数据库执行查询
@@ -71,6 +45,8 @@
 
 > 用于定义SQL模式、基本表、视图和索引的创建和删除操作。
 
+</br>
+
 ### 数据库操作
 
 - CREATE DATABASE - 创建新数据库
@@ -82,6 +58,8 @@
   > DROP DATABASE [IF EXISTS] db_name;
 
   Tips: `IF EXISTS` 判断数据库是否存在，存在则删除，不存在就结束，不会报错。（没有该关键字，删除不存在的数据库时会报错）
+
+</br>
 
 ### 数据表操作
 
@@ -126,6 +104,8 @@
 4. TRUNCATE TABLE - 截断表（清空表）
     > TRUNCATE TABLE table_name;
 
+</br>
+
 ### 常用约束
 
 > 约束（Constraint）是Microsoft SQL Server 提供的自动保持数据库完整性的一种方法，定义了可输入表或表的单个列中的数据的限制条件。在SQL Server 中有5 种约束：主关键字约束（Primary Key Constraint）、外关键字约束（Foreign Key Constraint）、惟一性约束（Unique Constraint）、检查约束（Check Constraint）和缺省约束（Default Constraint）
@@ -146,6 +126,8 @@
   - 唯一约束：指定 `一个或多个列` 的组合的值具有惟一性，以防止在列中输入重复的值。惟一性约束指定的列可以有NULL 属性。由于主关键字值是具有惟一性的，因此主关键字列不能再设定惟一性约束。惟一性约束最多由16 个列组成。
   - 检查约束：对输入列或整个表中的值设置检查条件，以限制输入值，保证数据库的数据完整性。可以对每个列设置复合检查。
   - 默认约束：通过定义列的缺省值或使用数据库的缺省值对象绑定表的列，来指定列的缺省值。
+
+</br>
 
 #### 约束操作
 
@@ -193,6 +175,8 @@
 
     Tips：约束名的命名规则推荐采用 `约束类型_约束字段` 的形式
 
+</br>
+
 ### 索引操作
 
 > 索引是一种特殊的查询表，可以被数据库搜索引擎用来加速数据的检索。简单说来，索引就是指向表中数据的指针。数据库的索引同书籍后面的索引非常相像。
@@ -210,7 +194,7 @@
 2. DROP INDEX - 删除索引
     > DROP INDEX table_name.index_name;
 
-Tips:
+Tips
 
 - 删除索引时应当特别小心，数据库的性能可能会因此而降低或者提高
 - 隐式索引由数据库服务器在创建某些对象的时候自动生成。（例如，对于主键约束和唯一约束，数据库服务器就会自动创建索引）
@@ -225,11 +209,16 @@ Tips:
 
 ## DML（数据操作语言）
 
-> 数据操纵分成数据查询和数据更新两类。数据更新又分成插入、删除、和修改三种操作。
+> 数据操纵分成数据查询和数据更新两类。数据更新又分成插入、删除、和修改三种操作。 </br>
+> CURD 是一个数据库技术中的缩写词，一般的项目开发的各种参数的基本功能都是CURD。作用是用于处理数据的基本原子操作。它代表创建（Create）、更新（Update）、读取（Retrieve）和删除（Delete）操作。
+
+</br>
 
 ### SELECT - 从数据库表中获取数据
 
   > SELECT column_name(s) FROM table_name WHERE condition AND|OR condition;
+
+</br>
 
 ### UPDATE - 更新数据库表中的数据
 
@@ -246,6 +235,8 @@ Tips:
 - 把原表（src_table）的值设置到本表（tar_table）中
   > UPDATE src_table st,tar_table tt SET tt.tar_column=st.src_column WHERE tt.tar_condition | tt.tar_column=st.src_column;
 
+</br>
+
 ### DELETE - 从数据库表中删除数据
 
 - 请空表
@@ -253,6 +244,8 @@ Tips:
 
 - 截断表
   > TRUNCATE TABLE table_name;
+
+</br>
 
 ### INSERT INTO - 向数据库表中插入数据
 
@@ -295,6 +288,8 @@ Tips:
 - 在 INSERT 子句中随意列出列名，但是一旦列出，VALUES中要插入的value1,…valuen需要与column1,…columnn 列一一对应。如果类型不同，将无法插入，并且MySQL会产生错误。
 - INSERT语句可以同时向数据表中插入多条记录，插入时指定多个值列表，每个值列表之间用逗号分隔开;
 
+</br>
+
 #### 插入查询结果集
 
 - 将查询的结果集插入表中
@@ -309,6 +304,8 @@ Tips:
 
   - 在 `INSERT` 语句中加入子查询;
   - 不必书写 `VALUES` 子句;
+
+</br>
 
 ### MySQL 计算列（虚拟列）
 
@@ -325,7 +322,7 @@ Tips:
         [COMMENT 'string']
       ```
 
-        Tips:
+      Tips:
 
       - `GENERATED ALWAYS` 可以省略;
       - `AS (expr)` 用于生成计算列值的表达式;
@@ -369,6 +366,8 @@ Tips:
 ## DCL（数据控制语言）
 
 > DCL 包括对基本表和视图的授权，完整性规则的描述，事务控制等内容。用于控制不同数据段直接的许可和访问级别的语句。这些语句定义了数据库、表、字段、用户的访问权限和安全级别。
+
+</br>
 
 ### GRANT - 授权
 
@@ -429,6 +428,12 @@ Tips:
   - 回收 INSERT 权限
     > REVOKE INSERT ON db_name.* FROM username;
 
-Tips: `CASCADE | RESTRICT` 当检测到关联的特权时，RESTRICT(默认值) 导致REVOKE失败；`CASCADE` 可以回收所有这些关联的特权；（如U1授权U2, U2授权U3，此时使用级联（CASCADE）收回了U2和U3的权限，否则系统将拒绝执行该命令）
+Tips
 
-- [更多关于 GRANT和 REVOKE](https://www.cnblogs.com/librarookie/p/16160252.html "MySQL 的 GRANT和REVOKE 命令")
+- `CASCADE | RESTRICT` 当检测到关联的特权时，RESTRICT(默认值) 导致REVOKE失败；
+- `CASCADE` 可以回收所有这些关联的特权；（如U1授权U2, U2授权U3，此时使用级联（CASCADE）收回了U2和U3的权限，否则系统将拒绝执行该命令）
+
+更多GRANT和REVOKE参考 <https://www.cnblogs.com/librarookie/p/16160252.html>
+
+</br>
+</br>

@@ -15,27 +15,28 @@
 
     - Navicat包，[官网传送阵](https://www.navicat.com.cn/download/navicat-premium "点击进入Navicat官网")
 
-    - Navicat-Keygen工具(依赖下面三个库)
+    - Navicat-Keygen 工具(依赖下面三个库)
         - capstone
         - keystone (需要cmake)
         - rapidjson
 
-    - AppImage打包工具
+    - AppImage 打包工具
 
 2. 环境准备
     - Navicat 包下载[百度网盘(navicat premium-15.0.23)](https://pan.baidu.com/s/1iSD7bZSH6jCR6YRyN93EUw "提取码: mt9v")
-     Note: 官网最新版激活失败，可以使用这个旧版本（小编激活官网最新版的时候，卡在激活的第2 步）
 
-    - 准备Navicat-Keygen的编译环境
+        Tips: 官网最新版激活失败，可以使用这个旧版本（光标悬浮 "百度网盘" 查看提取码）
+
+    - 准备 Navicat-Keygen 编译环境
         1. capstone
 
-            ```python
+            ```sh
             sudo apt install libcapstone-dev
             ```
 
         2. keystone
 
-            ```python
+            ```sh
             # 安装编译工具cmake
             sudo apt install cmake
             # 获取keystone源码并编译安装
@@ -57,13 +58,13 @@
 
         3. rapidjson
 
-            ```python
+            ```sh
             sudo apt install rapidjson-dev
             ```
 
     - 编译安装Navicat-Keygen
 
-        ```Python
+        ```sh
         # 下载
         cd /home/
         git clone -b linux --single-branch https://github.com/Orginly/navicat-keygen.git
@@ -75,11 +76,11 @@
         sudo chmod a+x bin/*
         ```
 
-        Note: 如果`make all` 的时候，提示fatal error: openssl/opensslv.h: 没有那个文件或目录，此时请执行`sudo apt-get install libssl-dev`就可以了
+        Tips: 如果 `make all` 的时候，提示 `fatal error: openssl/opensslv.h`: 没有那个文件或目录，此时请执行 `sudo apt-get install libssl-dev` 就可以了
 
-    - 下载AppImage打包工具并授权
+    - 下载 AppImage 打包工具并授权
 
-        ```Python
+        ```sh
         # 下载
         cd /home/
         wget 'https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage'
@@ -91,9 +92,9 @@
 
 ## 激活
 
-1. 提取AppImage文件
+1. 提取 AppImage 文件
 
-    ```python
+    ```sh
     # 将navicat15-premium-cs.AppImage 移动到 /home/目录下,进入AppImage目录下，打开终端并执行
     mv navicat15-premium-cs.AppImage /home/
 
@@ -110,8 +111,8 @@
 
 2. navicat-patcher 替换官方公钥
 
-    ```python
-    # 进入navicat-keygen/bin/目录
+    ```sh
+    # 进入 navicat-keygen/bin/ 目录
     cd /home/navicat-keygen/bin/
     # 执行
     sudo ./navicat-patcher /home/navicat15
@@ -119,8 +120,7 @@
 
     - 样式输出
 
-        ```python
-
+        ```sh
         **********************************************************
         *       Navicat Patcher (Linux) by @DoubleLabyrinth      *
         *                  Version: 1.0                          *
@@ -155,13 +155,11 @@
         *           PATCH HAS BEEN DONE SUCCESSFULLY!         *
         *                  HAVE FUN AND ENJOY~                *
         *******************************************************
-
-
         ```
 
-3. 将navicat15 打包
+3. 将 navicat15 打包
 
-    ```python
+    ```sh
     cd /home/
 
     ./appimagetool-x86_64.AppImage navicat15 navicat15.AppImage
@@ -169,15 +167,15 @@
 
 4. 运行刚打包的navicat15.AppImage
 
-    ```python
+    ```sh
     ./navicat15.AppImage
     ```
 
 5. 使用 navicat-keygen 来生成 **序列号** 和 **激活码**
 
-    1. 执行navicat-keygen
+    1. 执行 navicat-keygen
 
-        ```python
+        ```sh
         cd /home/navicat-keygen/bin/
 
         ./navicat-keygen --text ./RegPrivateKey.pem
@@ -187,7 +185,7 @@
 
         ![202208241641583](https://gitee.com/librarookie/picgo/raw/master/img/202208241641583.png "202208241641583")
 
-        ```python
+        ```sh
 
         **********************************************************
         *       Navicat Keygen (Linux) by @DoubleLabyrinth       *
@@ -234,7 +232,7 @@
 
         - 之后你会被要求填写 **用户名** 和 **组织名**, 你可以随意填写，但别太长。
 
-        ```python
+        ```sh
         [*] Your name: LIBRA
         [*] Your organization: ROOKIE
         ```
@@ -243,9 +241,9 @@
 
     3. **断开网络**. 找到navicat注册窗口，填写keygen给你的 **序列号**，然后点击 **激活**，再点击 **手动激活**。(通常在线激活会失败，所以在弹出的提示中选择手动激活)
 
-    4. 复制 **请求码** 到keygen，连按两次回车结束。
+    4. 复制 **请求码** 到 keygen，连按两次回车结束。
 
-        ```python
+        ```sh
         [*] Input request code in Base64: (Double press ENTER to end)
         OaGPC3MNjJ/pINbajFzLRkrV2OaSXYLr2tNLDW0fIthPOJQFXr84OOroCY1XN8R2xl2j7epZ182PL6q+BRaSC6hnHev/cZwhq/4LFNcLu0T0D/QUhEEBJl4QzFr8TlFSYI1qhWGLIxkGZggA8vMLMb/sLHYn9QebBigvleP9dNCS4sO82bilFrKFUtq3ch8r7V3mbcbXJCfLhXgrHRvT2FV/s1BFuZzuWZUujxlp37U6Y2PFD8fQgsgBUwrxYbF0XxnXKbCmvtgh2yaB3w9YnQLoDiipKp7io1IxEFMYHCpjmfTGk4WU01mSbdi2OS/wm9pq2Y62xvwawsq1WQJoMg==
 
@@ -259,7 +257,7 @@
         i45HIr7T1g69Cm9g3bN1DBpM/Zio8idBw3LOFGXFQjXj0nPfy9yRGuxaUBQkWXSOWa5EAv7S9Z1sljlkZP6cKdfDGYsBb/4N1W5Oj1qogzNtRo5LGwKe9Re3zPY3SO8RXACfpNaKjdjpoOQa9GjQ/igDVH8r1k+Oc7nEnRPZBm0w9aJIM9kS42lbjynVuOJMZIotZbk1NloCodNyRQw3vEEP7kq6bRZsQFp2qF/mr+hIPH8lo/WF3hh+2NivdrzmrKKhPnoqSgSsEttL9a6ueGOP7Io3j2lAFqb9hEj1uC3tPRpYcBpTZX7GAloAENSasFwMdBIdszifDrRW42wzXw==
         ```
 
-    5. 将生成的 **激活码(Activation Code)** 粘贴到navicat激活即可
+    5. 将生成的 **激活码(Activation Code)** 粘贴到 Navicat激活即可
 
         ![202208241647815](https://gitee.com/librarookie/picgo/raw/master/img/202208241647815.png "202208241647815")
         ![202208241647222](https://gitee.com/librarookie/picgo/raw/master/img/202208241647222.png "202208241647222")
@@ -268,7 +266,7 @@
 
 ## 清理
 
-```python
+```sh
 cd /home/
 # 删除挂载目录
 sudo rm -rf navicat15-premium-cs
@@ -280,7 +278,6 @@ sudo rm -rf navicat15
 sudo rm -rf navicat-keygen
 # 删除AppImage打包工具
 sudo rm -rf appimagetool-x86_64.AppImage
-
 ```
 
 </br>
@@ -289,25 +286,26 @@ sudo rm -rf appimagetool-x86_64.AppImage
 
 - 方式一、默认启动方式
 
-    ```python
-    1. 先进入 AppImage文件目录
-    2. 再执行 AppImage文件
-    ```
+    1. 先进入 AppImage 文件目录
+    2. 再执行 AppImage 文件
 
-- 方式二、给`AppImage`文件创建软件连接
-- 方式三、给`AppImage`文件创建图标
+- 方式二、给 `AppImage` 文件创建软件连接
+- 方式三、给 `AppImage` 文件创建图标
   
-  由于默认启动需要进入AppImage目录，启动比较繁琐，所以推荐给AppImage文件创建`软连接`和`图标`，创建方法参考：
-    <https://www.cnblogs.com/librarookie/p/15127991.html>
+    由于默认启动需要进入AppImage目录，启动比较繁琐，所以推荐给AppImage文件创建 `软连接` 和 `图标`
 
-note:
+    创建方法参考： <https://www.cnblogs.com/librarookie/p/15127991.html>
+
+</br>
+
+## 扩展
 
 > 运行快捷键： `Ctrl + r`
 
 </br>
 </br>
 
-Ref
+Via
 
 - <https://github.com/orginly/navicat-keygen#readme>
 - <https://zhuanlan.zhihu.com/p/372997917>

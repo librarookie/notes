@@ -1,32 +1,23 @@
 # PostgreSQL 数据库备份与还原
 
-</br></br>
-
-## [目录](#目录)
-
-* [备份](#备份)
-* [还原](#还原)
-* [栗子](#栗子)
-* [拓展](#拓展)
-
+</br>
 </br>
 
-### [备份](#目录)
+## 备份
 
-> PostgreSQL提供的一个工具pg_dump,逻辑导出数据，生成sql文件或其他格式文件，pg_dump是一个客户端工具，可以远程或本地导出逻辑数据，恢复数据至导出时间点。
+> PostgreSQL提供的一个工具 pg_dump, 逻辑导出数据，生成 sql 文件或其他格式文件，pg_dump 是一个客户端工具，可以远程或本地导出逻辑数据，恢复数据至导出时间点。
 
 * Usage:
 
   > pg_dump [option]... [dbname]
 
-    *note:*
-    `dbname` 如果没有提供数据库名字, 那么使用 `PGDATABASE` 环境变量的数值.
+    Tips: `dbname` 如果没有提供数据库名字, 那么使用 `PGDATABASE` 环境变量的数值.
 
 * Options
 
   * General options:(一般选项)
 
-    ```md
+    ```sh
     -f, --file=FILENAME          输出文件或目录名
     -F, --format=c|d|t|p         输出文件格式 ((定制, 目录, tar) 明文 (默认值))
     -j, --jobs=NUM               执行多个并行任务进行备份转储工作
@@ -39,7 +30,7 @@
 
   * Options controlling the output content:(控制输出内容选项:)
 
-    ```md
+    ```sh
     -a, --data-only              只转储数据,不包括模式
     -b, --blobs                  在转储中包括大对象
     -c, --clean                  在重新创建之前，先清除（删除）数据库对象
@@ -79,7 +70,7 @@
 
   * Connection options:(联接选项:)
 
-    ```md
+    ```sh
     -d, --dbname=DBNAME       对数据库 DBNAME备份
     -h, --host=主机名        数据库服务器的主机名或套接字目录
     -p, --port=端口号        数据库服务器的端口号
@@ -94,15 +85,14 @@
 
 </br>
 
-### [还原](#目录)
+## 还原
 
 * Usage:
 
-  > psql [option]... [dbname [username]]
-  >
+  > psql [option]... [dbname [username]] </br>
   > pg_restore [option]... [file]
 
-  *note:* 还原前需要创建 table 所需的 role；
+  Tips: 还原前需要创建 table 所需的 role
 
 * Options
 
@@ -113,13 +103,6 @@
   pg_restore
   * [PG_RESTORE 文档](https://www.postgresql.org/docs/9.6/app-pgrestore.html "https://www.postgresql.org/docs/9.6/app-pgrestore.html")
   * [PG_RESTORE 中文文档](http://www.postgres.cn/docs/9.6/app-pgrestore.html "http://www.postgres.cn/docs/9.6/app-pgrestore.html")
-
-</br>
-
-### [栗子](#目录)
-
-* [备份数据库](#备份数据库)
-* [还原数据库](#还原数据库)
 
 * 基础参数
 
@@ -147,10 +130,10 @@
   | `-s` `--schema-only` | 只转储模式, 不包括数据(不导出数据) |
   | `-Z` `--compress=0-9` | 指定压缩格式的压缩级别（0-9） |
 
-*note：*
+Tips
 
 * 操作远程数据库时必须加上 `-h` `-p` 参数;
-* 还原时，不指定数据库默认还原到 `postgres` 库（环境变量中的`PGDATABASE`）;
+* 还原时，不指定数据库默认还原到 `postgres` 库（环境变量中的 `PGDATABASE` ）;
 * `--if-exists` 当删除对象时使用IF EXISTS（配合 `-c` 参数使用）
 * `-c` 删除原数据库对象（备份文件中有删除原库的SQL）
 * `-C` 创建数据库（备份文件中有创建原库名的新数据库的SQL）
@@ -160,57 +143,56 @@
 
 </br>
 
-#### [备份数据库](#栗子)
+## 栗子
+
+### 备份数据库
 
 * 常用备份
-  > pg_dump [-h host -p 5432] -U username [-c -C] -d db_name  -f db_backup.sql [-v]
-  >
+  > pg_dump [-h host -p 5432] -U username [-c -C] -d db_name  -f db_backup.sql [-v] </br>
   > pg_dump [-h host -p 5432] -U username [-c -C] -d db_name > db_backup.sql [-v]
 
-* 备份归档格式 `-F c|d|t|p`(默认为`p`)
+* 备份归档格式 `-F c|d|t|p` (默认为 `p` )
   > pg_dump [-h host -p 5432] -U username [-c -C] -F c -d db_name  -f db_backup.sql [-v]
 
 * 备份使用指定压缩级别 `-Z 0-9`
   > pg_dump [-h host -p 5432] -U username -F c -d db_name  -f db_backup.sql [-v]
   
-  *note:*
+  Tips
   * `0` 不压缩, `1-9` 压缩级别；
   * `-Fc` 对于自定义归档格式，这会指定个体表数据段的压缩，并且默认是进行中等级别的压缩；
   * `-Fp` 对于纯文本输出，设置一个非零压缩级别会导致整个输出文件被压缩，就好像它被gzip处理过一样，但是默认是不压缩；
   * `-Ft` tar 归档格式当前完全不支持压缩；
 
 * 备份指定模式（schema） `-n` `-N`
-  > pg_dump [-h host -p 5432] -U username -d db_name -n schema_name [-n schema_name2]... -f db_schema.sql [-v]
-  >
+  > pg_dump [-h host -p 5432] -U username -d db_name -n schema_name [-n schema_name2]... -f db_schema.sql [-v] </br>
   > pg_dump [-h host -p 5432] -U username  [-c -C] -d db_name -N schema_name [-N schema_name2]... -f db_exclude-schema.sql [-v]
 
 * 备份指定对象（table, view, etc） `-t` `-T`
-  > pg_dump [-h host -p 5432] -U username -d db_name [-n schema_name] -t tb_name [-t tb_name2]... -f db_table.sql [-v]
-  >
+  > pg_dump [-h host -p 5432] -U username -d db_name [-n schema_name] -t tb_name [-t tb_name2]... -f db_table.sql [-v] </br>
   > pg_dump [-h host -p 5432] -U username -d db_name [-n schema_name] -T tb_name [-T tb_name2]... -f db_exclude-table.sql [-v]
 
-  *note:* 导出表 `username` 为 表的所有者
+  Tips: 导出表 `username` 为 表的所有者
 
 * 只备份模式（只备份所有模式，不备份数据） `-s`
   > pg_dump [-h host -p 5432] -U username [-c -C] -d db_name -s -f db_only_schema_backup.sql [-v]
 
 </br>
 
-#### [还原数据库](#栗子)
+### 还原数据库
 
 * 还原
-  > psql [-h host -p 5432] -U username -d db_name -f db_backup.sql
-  >
+  > psql [-h host -p 5432] -U username -d db_name -f db_backup.sql </br>
   > psql [-h host -p 5432] -U username -d db_name < db_backup.sql
 
 * 恢复
   > pg_restore [-h host -p 5432] -U username -d db_name -f db_backup.tar
 
-  *note:*
+  Tips
+
   * 错误日志： pg_restore: [archiver] input file appears to be a text format dump. Please use psql.
   * pg_resotre仅支持Fc/Ft格式的导出文件，Fp格式的文件是sql脚本，需要使用psql工具导入脚本数据
 
-* 修改所有表 `OWNER`(postgres用户 除外)
+* 修改所有表 `OWNER` (postgres用户 除外)
   
   > REASSIGN OWNED BY old_role [, ...] TO new_role
 
@@ -219,13 +201,14 @@
 
 </br>
 
-### [拓展](#目录)
+## 拓展
 
-* [PostgreSQL 数据库备份脚本](https://www.cnblogs.com/librarookie/p/15767952.html "https://www.cnblogs.com/librarookie/p/15767952.html")
+* PostgreSQL 数据库备份脚本： <https://www.cnblogs.com/librarookie/p/15767952.html>
 
-</br></br>
+</br>
+</br>
 
-Reference
+Via
 
 * [PostgreSQL 官网手册](https://www.postgresql.org/docs/9.6/index.html "https://www.postgresql.org/docs/9.6/index.html")
 * [PostgreSQL 中文手册](http://www.postgres.cn/docs/9.6/index.html "http://www.postgres.cn/docs/9.6/index.html")
