@@ -61,15 +61,15 @@
     - Press CTRL-C to abort the installation
     - Or specify a different location below
 
-    [/home/noname/anaconda3] >>> /usr/envs/anaconda3  （此处可自定义安装路径，不填则为默认路径，一般在用户根目录）
-    PREFIX=/usr/envs/anaconda3
+    [/home/noname/anaconda3] >>> /usr/sdk/anaconda3  （此处可自定义安装路径，不填则为默认路径，一般在用户根目录）
+    PREFIX=/usr/sdk/anaconda3
     Unpacking payload ...
     Collecting package metadata (current_repodata.json): done                       
     Solving environment: done
 
     ## Package Plan ##
 
-    environment location: /usr/envs/anaconda3
+    environment location: /usr/sdk/anaconda3
 
     added / updated specs:
         - _ipyw_jlab_nb_ext_conf==0.1.0=py38_0
@@ -86,17 +86,17 @@
     Do you wish the installer to initialize Anaconda3
     by running conda init? [yes|no]
     [no] >>> yes （是否初始化）
-    no change     /usr/envs/anaconda3/condabin/conda
-    no change     /usr/envs/anaconda3/bin/conda
-    no change     /usr/envs/anaconda3/bin/conda-env
-    no change     /usr/envs/anaconda3/bin/activate
-    no change     /usr/envs/anaconda3/bin/deactivate
-    no change     /usr/envs/anaconda3/etc/profile.d/conda.sh
-    no change     /usr/envs/anaconda3/etc/fish/conf.d/conda.fish
-    no change     /usr/envs/anaconda3/shell/condabin/Conda.psm1
-    no change     /usr/envs/anaconda3/shell/condabin/conda-hook.ps1
-    no change     /usr/envs/anaconda3/lib/python3.8/site-packages/xontrib/conda.xsh
-    no change     /usr/envs/anaconda3/etc/profile.d/conda.csh
+    no change     /usr/sdk/anaconda3/condabin/conda
+    no change     /usr/sdk/anaconda3/bin/conda
+    no change     /usr/sdk/anaconda3/bin/conda-env
+    no change     /usr/sdk/anaconda3/bin/activate
+    no change     /usr/sdk/anaconda3/bin/deactivate
+    no change     /usr/sdk/anaconda3/etc/profile.d/conda.sh
+    no change     /usr/sdk/anaconda3/etc/fish/conf.d/conda.fish
+    no change     /usr/sdk/anaconda3/shell/condabin/Conda.psm1
+    no change     /usr/sdk/anaconda3/shell/condabin/conda-hook.ps1
+    no change     /usr/sdk/anaconda3/lib/python3.8/site-packages/xontrib/conda.xsh
+    no change     /usr/sdk/anaconda3/etc/profile.d/conda.csh
     modified      /home/noname/.bashrc
 
     ==> For changes to take effect, close and re-open your current shell. <==
@@ -130,7 +130,7 @@
 
   ```sh
   # 执行 source $ANACONDA_HOME/bin/activate, 如：
-  source /usr/envs/anaconda3/bin/activate
+  source /usr/sdk/anaconda3/bin/activate
   # 初始化
   conda init
   ```
@@ -153,7 +153,7 @@
 
   ```sh
   # rm -rf $ANACONDA_HOME，如：
-  rm -rf /usr/envs/anaconda3
+  rm -rf /usr/sdk/anaconda3
   ```
 
 * 删除Anaconda 配置
@@ -166,14 +166,14 @@
 
   # >>> conda initialize >>>
   # !! Contents within this block are managed by 'conda init' !!
-  __conda_setup="$('/usr/envs/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+  __conda_setup="$('/usr/sdk/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
   if [ $? -eq 0 ]; then
       eval "$__conda_setup"
   else
-      if [ -f "/usr/envs/anaconda3/etc/profile.d/conda.sh" ]; then
-          . "/usr/envs/anaconda3/etc/profile.d/conda.sh"
+      if [ -f "/usr/sdk/anaconda3/etc/profile.d/conda.sh" ]; then
+          . "/usr/sdk/anaconda3/etc/profile.d/conda.sh"
       else
-          export PATH="/usr/envs/anaconda3/bin:$PATH"
+          export PATH="/usr/sdk/anaconda3/bin:$PATH"
       fi
   fi
   unset __conda_setup
@@ -184,7 +184,8 @@
 
   ```sh
   source ~/.bashrc
-  或者 source /etc/profile
+  # 或者 
+  source /etc/profile
   ```
 
 </br>
