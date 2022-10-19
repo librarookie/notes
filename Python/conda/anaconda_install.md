@@ -135,15 +135,43 @@
   conda init
   ```
 
-* 关闭启动时激活Conda基础环境（可选）
+* 关闭启动时激活 Conda基础环境（可选）
 
   ```sh
-  # 如果您不希望在启动时激活Conda基础环境，将AUTO_ACTIVATE_BASE参数设置为FALSE：
+  # 如果您不希望在启动时激活 Conda基础环境，将 AUTO_ACTIVATE_BASE 参数设置为 FALSE：
   conda config --set auto_activate_base false
   ```
+  
+  关闭前效果（默认）
+  ![202210191005796](https://gitee.com/librarookie/picgo/raw/master/img/202210191005796.png "202210191005796")
+
+  关闭后效果（false）
+  ![202210191008946](https://gitee.com/librarookie/picgo/raw/master/img/202210191008946.png "202210191008946")
 
 * Anaconda 镜像配置
   * <https://www.cnblogs.com/librarookie/p/15376578.html>
+
+* 配置 环境和 包存放目录
+
+  ```sh
+  # 查看所有配置
+  conda config --show
+
+  # 查看环境(envs_dirs) 或包(pkgs_dirs) 配置
+  conda config --show envs_dirs
+  conda config --show pkgs_dirs
+
+  # 配置目录(第一次用 --add，后面修改使用 --set)
+  conda config --add envs_dirs /path/to/envs_dir
+  conda config --add pkgs_dirs /path/to/pkgs_dir
+
+  # 查看 conda 配置
+  conda config --show-source
+  ```
+
+  ![202210191021743](https://gitee.com/librarookie/picgo/raw/master/img/202210191021743.png "202210191021743")
+
+  Tips: 上述的操作就是在 conda 的配置文件 `~/.condarc` 中添加 envs_dirs 和 pkgs_dirs 配置，故直接编辑 `~/.condarc` 效果一样;
 
 </br>
 
