@@ -22,7 +22,7 @@
   -keystore   指定产生的密钥库的位置；
   -storepass  指定密钥库的存取口令，推荐与keypass一致
   -validity   证书有效期天数；（默认为 90天）
-  -dname      表明了密钥的发行者身份（Distinguished Names）生成证书时，其中 CN 要和服务器的域名相同，本地测试则使用localhost，其他的可以不填
+  -dname      表明了密钥的发行者身份（Distinguished Names）生成证书时，其中 CN 要和服务器的 `域名` 或 `IP` 相同，本地测试则使用localhost，其他的可以不填
   -ext        X.509 扩展
   ```
 

@@ -83,7 +83,7 @@ Tips:
 -storepass      指定密钥库口令，推荐与keypass一致（获取keystore信息所需的密码）
 -storetype      指定密钥库的类型，可用类型为：JKS、PKCS12等。（jdk9以前，默认为JKS。自jdk9开始，默认为PKCS12）
 -keypass        指定别名条目口令（私钥的密码）
--dname          指定证书发行者信息（其中 CN 要和服务器的域名相同，本地测试则使用localhost，其他的可以不填）
+-dname          指定证书发行者信息（其中 CN 要和服务器的 `域名` 或 `IP` 相同，本地测试则使用localhost，其他的可以不填）
 -list           显示密钥库中的证书信息
 -v              详细输出，显示密钥库中的证书详细信息
 -file           指定导出或导出的文件名
@@ -104,7 +104,7 @@ Tips:
   - keyalg = RSA 时，签名算法有：MD5withRSA、SHA1withRSA、SHA256withRSA（默认）、SHA384withRSA、SHA512withRSA
   - keyalg = DSA 时，签名算法有：SHA1withDSA、SHA256withDSA（默认）
 - dname      表明了密钥的发行者身份（Distinguished Names）
-  - CN = 域名或IP（Common Name）      注：生成服务器证书时，CN要和服务器的域名相同，本地测试则使用localhost，其他的可以不填（客户端证书无要求）
+  - CN = 域名或IP（Common Name）      注：生成服务器证书时，CN要和服务器的 `域名` 或 `IP` 相同，本地测试则使用localhost，其他的可以不填（客户端证书无要求）
   - OU = 组织单位名称（Organization Unit）
   - O  = 组织名称（Organization Name）
   - L  = 城市或区域名称（Locality Name）
@@ -149,7 +149,7 @@ Tips:
     -keystore   指定产生的密钥库的位置；
     -storepass  指定密钥库的存取口令，推荐与keypass一致
     -validity   证书有效期天数；（默认为 90天）
-    -dname      表明了密钥的发行者身份（Distinguished Names）生成证书时，其中 CN 要和服务器的域名相同，本地测试则使用localhost，其他的可以不填
+    -dname      表明了密钥的发行者身份（Distinguished Names）生成证书时，其中 CN 要和服务器的 `域名` 或 `IP` 相同，本地测试则使用localhost，其他的可以不填
     -ext        X.509 扩展
     ```
 
