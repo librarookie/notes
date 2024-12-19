@@ -1,86 +1,123 @@
 # Linux软件管理
 
-## apt/apt-get
-
-| 操作 | 命令 |
-| ---- | ---- |
-| 更新源 | sudo apt/apt-get update |
-| 安装包 | sudo apt/apt-get install <pkg_name>[=<version\>] |
-| 升级包 | sudo apt/apt-get upgrade <pkg_name> |
-| 卸载包 | sudo apt/apt-get remove/purge <pkg_name> |
-| 查找包 | apt search <pkg_name> --names-only |
-| 已安装 | apt list [<pkg_name>] -i/--installed |
-| 修复依赖 | sudo apt-get -f install |
-| 卸载依赖 | sudo apt-get autoremove |
-| 历史版本 | apt-cache policy <pkg_name> |
-| 可用版本 | apt list <pkg_name> -a/--all-versions </br> apt-cache madison <pkg_name> |
-| 锁定版本 | sudo apt-mark hold <pkg_name> |
-| 解锁锁定 | sudo apt-mark unhold <pkg_name> |
-| 查看锁定 | apt-mark showhold |
-
-## dpkg
-
-| 操作 | 命令 |
-| ---- | ---- |
-| 安装 | sudo dpkg -i <deb_name> [--force-depends] |
-| 卸载 | sudo dpkg -P <pkg_name> |
-| 查找 | dpkg -l <pkg_name> </br> sudo dpkg-query -W "*chrome*" |
-| 状态 | dpkg -s <pkg_name> |
+</br>
+</br>
 
 ## yum
-
-TODO yum
 
 | 操作 | 命令 |
 | ---- | ---- |
 | 更新源 | sudo yum clean all && sudo yum makecache |
-| 安装包 | sudo yum install <pkg_name>[-<version\>] |
-| 卸载包 | sudo yum remove <pkg_name> |
-| 升级包 | sudo yum upgrade <pkg_name> </br> 升级所有： sudo yum update |
-| 降级包 | sudo yum downgrade <pkg_name>-<version\> |
-| 查找包 | yum search <pkg_name> |
-| 已安装 | yum list installed [<pkg_name>] |
-| 可用版本 | yum list <pkg_name> --showduplicates |
-| 查看锁定 | yum versionlock list |
-| 锁定版本 | sudo yum versionlock add <pkg_name>[-version] |
-| 解锁锁定 | sudo yum versionlock delete <pkg_name> |
+| 安装包 | sudo yum install <package_name>[-<version\>] |
+| 升级包 | sudo yum upgrade <package_name> </br> 升级所有： sudo yum update |
+| 卸载包 | sudo yum remove <package_name> |
+| 降级包 | sudo yum downgrade <package_name>-<version\> |
+| 查找包 | yum search <package_name> |
+| 已安装 | yum list installed [<package_name>] |
+| 可用版本 | yum list <package_name> --showduplicates |
+| 锁定版本 | sudo yum versionlock add <package_name>[-version] |
+| 解锁锁定 | sudo yum versionlock delete <package_name> |
 | 清空锁定 | sudo yum versionlock clear |
+| 查看锁定 | yum versionlock list |
 
 tip: 锁定版本需要自己安装 sudo yum install yum-plugin-versionlock
 
+</br>
 
-## rpm
-
-TODO rpm
+## apt/apt-get
 
 | 操作 | 命令 |
 | ---- | ---- |
-| 安装 | sudo rpm -i <rpm_name> |
-| 卸载 | sudo rpm -e <rpm_name> |
-| 升级 | sudo rpm -U <rpm_name> |
-| 查找 | rpm -qa <rpm_name> |
+| 编辑源 | sudo apt edit-sources [<source_name>] |
+| 更新源 | sudo apt/apt-get update |
+| 安装包 | sudo apt/apt-get install <package_name>[=<version\>] |
+| 升级包 | sudo apt/apt-get upgrade <package_name> |
+| 卸载包 | sudo apt/apt-get remove <package_name> |
+| 清除包 | sudo apt/apt-get purge <package_name> |
+| 已安装 | apt list [<package_name>] -i/--installed |
+| 查找包 | apt/apt-cache search <package_name> --names-only |
+| 安装细节 | apt/apt-cache show <package_name> |
+| 修复依赖 | sudo apt-get -f install |
+| 卸载依赖 | sudo apt-get autoremove |
+| 历史版本 | apt-cache policy <package_name> |
+| 可用版本 | apt list <package_name> -a/--all-versions </br> apt-cache madison <package_name> |
+| 锁定版本 | sudo apt-mark hold <package_name> |
+| 解锁锁定 | sudo apt-mark unhold <package_name> |
+| 查看锁定 | apt-mark showhold |
 
+</br>
+
+## dpkg/rpm
+
+| 操作 | dpkg | rpm |
+| ---- | ---- | ---- |
+| 安装 | sudo dpkg -i <deb_name> [--force-depends] | sudo rpm -ivh <rpm_name> |
+| 升级 |  | sudo rpm -Uvh <rpm_name> |
+| 卸载 | sudo dpkg -r <deb_name> | sudo rpm -e [--nodeps] <rpm_name> |
+| 清除 | sudo dpkg -P/--purge <deb_name> |  |
+| 查找 | dpkg -l <deb_name> </br> sudo dpkg-query -W "*chrome*" | rpm -qa <rpm_name> |
+| 包信息 | dpkg -s <deb_name> | rpm -qi <rpm_name> |
+| 包内容 | dpkg -L <deb_name> | rpm -ql <rpm_name> |
+| 查包名 | dpkg -S <file_name> |rpm -qf <file_name> |
+
+</br>
 
 ## 源码编译安装
 
-1. 检查环境
-2. 
+> 以 nginx 安装为例：
+
+1. 准备源代码包
+
+    ```sh
+    #从项目的官方网站或代码仓库（如 GitHub）下载源代码
+    wget https://nginx.org/download/nginx-1.24.0.tar.gz     #下载
+    tar -xzvf nginx-1.24.0.tar.gz       #解压
+    cd nginx-1.24.0
+    ```
+
+2. 准备编译环境
+
+    ```sh
+    #安装编译工具和依赖，比如 gcc（GNU 编译器集合）和 make。
+    sudo yum install pcre-devel zlib-devel # 安装 nginx 依赖包
+    ```
 
 3. 安装（3步曲）
-./configure
-make
-make install
-2. 卸载
-make uninstall（卸载时的源码目录所在路径与安装时的源码目录所在路径不同，不影响最终结果）
 
-- 方便性角度。从方便性角度来看，“apt-get机制”最优，“dpkg机制”次之，“从源码编译安装机制”最末。“apt-get机制”已经预先解决依赖问题，“从源码编译安装机制”需要我们自己解决依赖问题
-- 可定制性角度。从可定制性角度来看，“从源码编译安装机制”最优，“dpkg机制”次之，“apt-get机制”最末。“从源码编译安装机制”允许我们自定义安装参数，“apt-get机制”几乎完全采用默认的安装参数
-- 安装用户所需权限角度。从安装用户所需权限角度来看，“从源码编译安装机制”所需权限可以是最小，“dpkg机制”次之，“apt-get机制”所需权限最大。在我们不拥有较高权限（比如root权限）的情况下，只能采用“从源码编译安装机制”
+    ```sh
+    #配置构建环境
+    ./configure --prefix=/usr/local/nginx  #--prefix指定了Nginx的安装目录，其他的配置项按需添加
 
-由于源码安排可以指定安装位置，所以在我们不拥有较高权限（比如root权限）的情况下，只能采用“从源码编译安装机制”
-如果安装到目标目录需要是”root”权限才能操作，那么以上4个命令中，分别加上”sudo”
+    make    #编译
 
-TODO 编译安装
+    sudo make install    #安装
+    ```
+
+4. 验证
+
+    ```sh
+    #启动验证
+    /usr/local/nginx/sbin/nginx
+    /usr/local/nginx/sbin/nginx -version
+    ```
+
+5. 卸载
+
+    ```sh
+    sudo rm -rf /usr/local/nginx
+
+    # make uninstall（部分软件支持）
+    ```
+
+    note：因为没有使用包管理器安装，所以需要手动删除安装的文件。如果你在配置时指定了 --prefix，只需删除该目录即可。
+
+</br>
+
+## 结论
+
+- 方便性：“apt-get机制”最优，“dpkg机制”次之，“从源码编译安装机制”最末。“apt-get机制”已经预先解决依赖问题，“从源码编译安装机制”需要我们自己解决依赖问题
+- 可定制性：“从源码编译安装机制”最优，“dpkg机制”次之，“apt-get机制”最末。“从源码编译安装机制”允许我们自定义安装参数，“apt-get机制”几乎完全采用默认的安装参数
+- 所需权限：“从源码编译安装机制”所需权限可以是最小，“dpkg机制”次之，“apt-get机制”所需权限最大。在我们不拥有较高权限（比如root权限）的情况下，只能采用“从源码编译安装机制”
 
 </br>
 </br>
@@ -89,7 +126,4 @@ Via
 
 - <http://c.biancheng.net/view/2952.html>
 - <https://rqsir.github.io/2019/04/13/linux-make-install%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD/>
-- <https://blog.csdn.net/wangkai_123456/article/details/109071813>
 - <https://blog.csdn.net/liudsl/article/details/79200134>
-
-TAG Unreleased
