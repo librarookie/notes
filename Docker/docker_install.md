@@ -1,6 +1,7 @@
 # Docker 介绍与使用
 
-
+</br>
+</br>
 
 ```sh
 curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
@@ -11,7 +12,7 @@ curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key
 -s，--silent：安静模式。不显示进度表或错误信息。使curl静音。它仍然会输出您请求的数据，甚至可能输出到终端stdout，除非您对它进行重定向。
 ```
 
-
+</br>
 
 2.4.删除镜像
 
@@ -21,6 +22,7 @@ docker rmi -f ${docker images -aq}
 
 docker images -qa |grep - rmi
 
+</br>
 
 ## FAQ
 
