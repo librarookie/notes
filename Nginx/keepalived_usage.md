@@ -79,7 +79,7 @@ global_defs {       #全局配置标识
         sysadmin@firewall.loc
     }
     notification_email_from Alexandre.Cassen@firewall.loc   #邮件的发送地址
-    smtp_server 192.168.200.1   #邮件SMTP服务器地址
+    smtp_server 192.168.106.1   #邮件SMTP服务器地址
     smtp_connect_timeout 30     #连接超时时间（邮件SMTP服务器）
     router_id LVS_DEVEL    #路由id：当前安装 keepalived的节点主机唯一标识，但多节点重名不影响（建议使用主机名）
     vrrp_skip_check_adv_addr    #对所有通告报文都检查，会比较消耗性能（启用后，如果收到的通告报文和上一个报文是同一个路由器，则跳过检查，默认值为全检查）
@@ -113,9 +113,9 @@ vrrp_instance VI_1 {    #VRRP实例名并设定实例名称（一般为业务名
         auth_pass 1111
     }
     virtual_ipaddress {    #虚拟IP，可以有多个（vip），VIP将绑定至interface参数配置的网络接口上
-        192.168.200.16    #指定VIP，不指定网卡，默认eth0；不指定/prefix, 默认/32
-        192.168.200.17/24 dev eth1      #指定VIP，网卡
-        192.168.200.18/24 dev eth2 label eth2:1     #指定VIP，网卡，label
+        192.168.106.16    #指定VIP，不指定网卡，默认eth0；不指定/prefix, 默认/32
+        192.168.106.17/24 dev eth1      #指定VIP，网卡
+        192.168.106.18/24 dev eth2 label eth2:1     #指定VIP，网卡，label
         #<IPADDR>/<PREFIX> brd <IPADDR> dev <STRING> scope <SCOPE> label <LABEL>
     }
 
@@ -153,7 +153,7 @@ vrrp_instance VI_1 {    #VRRP实例名并设定实例名称（一般为业务名
 ```sh
 vrrp_script check_haproxy {    #自定义脚本并设定脚本名称，脚本可被多个实例调用。
     script "/usr/bin/killall -0 haproxy"    #自定义服务监控脚本，通过监控脚本返回的状态码，来识别集群服务是否正常；如果返回状态码是0，则服务正常，反之亦然。
-    #script "/usr/bin/nc -nvz -w 2 127.0.0.1 5000"    #使用 netcat (nc) 命令来检查本地主机上的端口 5000 是否处于监听状态。
+    #script "/usr/bin/nc -nzv -w 2 127.0.0.1 5000"    #使用 netcat (nc) 命令来检查本地主机上的端口 5000 是否处于监听状态。
     interval 3    #脚本检查的间隔时间（监控间隔，单位为秒）。
     fall 3    #失败次数：设置判定 script结果为"失败"时的次数。
     rise 2    #成功次数：设置判定 script结果为"成功"的次数。
@@ -162,11 +162,11 @@ vrrp_script check_haproxy {    #自定义脚本并设定脚本名称，脚本可
 }
 ```
 
-nc 命令参数介绍：
+命令 nc（netcat）参数介绍：
 
-- n： 不进行 DNS 解析。
+- n： 不进行 DNS 解析。（直接使用 IP 地址）
+- z： 以扫描模式检查端口。（不发送数据）
 - v： 显示详细信息。
-- z： 扫描但不发送数据。
 - w 2： 设置超时时间为 2 秒。
 
 ### 2.4  配置独立日志文件（利用rsyslog服务）
@@ -236,7 +236,7 @@ nc 命令参数介绍：
             auth_pass 1111
         }
         virtual_ipaddress {
-            192.168.200.16
+            192.168.106.16
         }
 
         track_script {
@@ -245,6 +245,7 @@ nc 命令参数介绍：
     }
 
     include /etc/keepalived/keepalived.conf.d/*.conf   #引入相关子配置文件
+    #include keepalived.conf.d/*.conf   #绝对路径与相对路径都行
     ```
 
 2. 新建子配置目录与文件
@@ -254,15 +255,15 @@ nc 命令参数介绍：
     mkdir /etc/keepalived/keepalived.conf.d
 
     # 创建子配置文件
-    touch /etc/keepalived/keepalived.conf.d/192.168.200.18.conf
+    touch /etc/keepalived/keepalived.conf.d/192.168.106.18.conf
     ```
 
 3. 添加子配置内容
 
     ```sh
-    tee /etc/keepalived/keepalived.conf.d/192.168.200.18.conf <<-EOF
-    vrrp_script check_local_5000 {    #子配置文件的检测脚本，也可以使用keepalived.conf文件内的
-        script "/usr/bin/nc -nvz -w 2 127.0.0.1 5000"
+    tee /etc/keepalived/keepalived.conf.d/192.168.106.18.conf <<-EOF
+    vrrp_script check_port {    #子配置文件的检测脚本，也可以使用keepalived.conf文件内的
+        script "/usr/bin/nc -nzv -w 2 127.0.0.1 5000"
         interval 5
         fall 3
         rise 1
@@ -279,15 +280,23 @@ nc 命令参数介绍：
             auth_pass 1111
         }
         virtual_ipaddress {
-            192.168.200.18
+            192.168.106.18
         }
 
         track_script {
-            check_local_5000
+            check_port
         }
     }
     EOF
     ```
+
+    命令 `nc -nzv -w 2 127.0.0.1 5000` 的作用是：
+
+     - 不进行 DNS 解析。
+     - 以扫描模式检查端口。
+     - 显示详细信息。
+     - 设置超时时间为 2 秒。
+     - 检查本地主机（127.0.0.1）上的端口 5000 是否开放。
 
 4. 重启生效
 
@@ -451,6 +460,12 @@ ip link set multicast on dev eth0   ##启用网卡 eth0 的多播 multicast
     #4. 停止主机的的web1 服务，然后再访问，查看index.html是否更新
     curl 192.168.31.199:8080/inde.html
     ```
+
+    命令 `wget -q --spider 127.0.0.1:8080/index.html` 的作用是：
+
+      - 静默模式下（-q）
+      - 模拟访问（--spider）本地主机 127.0.0.1 的 8080 端口上的 index.html 文件。
+      - 该命令不会下载文件，只会检查文件是否存在，并返回服务器的响应状态码。
 
 </br>
 </br>
