@@ -1,4 +1,4 @@
-# Linux软件管理
+# Linux 软件管理（yum, apt/apt-get, dpkg/rpm）
 
 </br>
 </br>
@@ -96,17 +96,38 @@ tip: 锁定版本需要自己安装 sudo yum install yum-plugin-versionlock
 4. 验证
 
     ```sh
-    #启动验证
-    /usr/local/nginx/sbin/nginx
+    #启停验证
     /usr/local/nginx/sbin/nginx -version
+    sudo /usr/local/nginx/sbin/nginx
+    sudo /usr/local/nginx/sbin/nginx -s stop
     ```
 
-5. 卸载
+5. 软链接（可选）
 
     ```sh
+    #查看 PATH 环境
+    echo $PATH
+
+    #创建软链接
+    sudo ls -s /usr/local/nginx/sbin/nginx /usr/sbin/nginx
+
+    #测试软链接
+    nginx -version
+    sudo nginx
+    sudo nginx -s stop
+    ```
+
+6. 卸载
+
+    ```sh
+    #1. 删除软链接
+    sudo rm -f /usr/sbin/nginx
+
+    #2. 删除安装目录
     sudo rm -rf /usr/local/nginx
 
-    # make uninstall（部分软件支持）
+    #2. 执行make自带的卸载程序卸载（部分软件支持）
+    #sudo make uninstall
     ```
 
     note：因为没有使用包管理器安装，所以需要手动删除安装的文件。如果你在配置时指定了 --prefix，只需删除该目录即可。
