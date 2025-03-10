@@ -103,7 +103,7 @@ vrrp_strict （建议不加此项配置）：严格遵守VRRP协议，启用此�
 
 ```sh
 vrrp_instance VI_1 {    #VRRP实例名并设定实例名称（一般为业务名称）
-    state MASTER    #设定初始VRRP实例角色，表示主机初始状态名称是MASTER（自由定义，体现主从关系即可，如：MASTER/BACKUP,MASTER/SLAVE）
+    state MASTER    #设定初始VRRP实例角色，表示主机初始状态名称是MASTER（主机 MASTER/备机 BACKUP）
     interface eth0    #该实例绑定的网卡名称
     virtual_router_id 51    #虚拟路由ID标识，范围 0-255；同一VRRP实例中主备设置必须一致，否则将出现脑裂问题；
     priority 100    #优先级设定，权重值范围 1-254，数字越大，表示实例优先级越高；同一个VRRP实例中，Master节点优先级要高于Backup节点；
@@ -244,23 +244,23 @@ nc 命令参数介绍：
         }
     }
 
-    include /etc/keepalived/conf.d/*.conf   #引入相关子配置文件
+    include /etc/keepalived/keepalived.conf.d/*.conf   #引入相关子配置文件
     ```
 
 2. 新建子配置目录与文件
 
     ```sh
     # 创建子配置目录
-    mkdir /etc/keepalived/conf.d
+    mkdir /etc/keepalived/keepalived.conf.d
 
     # 创建子配置文件
-    touch /etc/keepalived/conf.d/192.168.200.18.conf
+    touch /etc/keepalived/keepalived.conf.d/192.168.200.18.conf
     ```
 
 3. 添加子配置内容
 
     ```sh
-    tee /etc/keepalived/conf.d/192.168.200.18.conf <<-EOF
+    tee /etc/keepalived/keepalived.conf.d/192.168.200.18.conf <<-EOF
     vrrp_script check_local_5000 {    #子配置文件的检测脚本，也可以使用keepalived.conf文件内的
         script "/usr/bin/nc -nvz -w 2 127.0.0.1 5000"
         interval 5
