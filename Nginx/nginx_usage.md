@@ -14,6 +14,8 @@ Nginx特点：
 - 热部署、平滑升级；
 - 完全开源，生态繁荣；
 
+更多内容查看这篇：《[Nginx 离线安装与介绍](https://www.cnblogs.com/librarookie/p/18779489)》
+
 </br>
 
 ## 一、配置（nginx.conf）
@@ -279,7 +281,7 @@ location /test { ... }
     }
     ```
 
-#### 1.3.4 proxy_pass
+#### 1.3.4 proxy_pass 代理转发
 
 用于配置代理服务器，如：[正向代理](#正向代理)，[反向代理](#反向代理)（点击即可查看演示）
 
@@ -299,7 +301,7 @@ URL 参数原则：
 
 在配置代理时，proxy_pass 有末尾 带和 不带 / 两种用法，它们的区别可大了：[proxy_pass实例演示](#proxy_pass实例演示)
 
-#### 1.3.5 upstream
+#### 1.3.5 upstream 负载均衡
 
 用于定义上游服务器（指的就是后台提供的应用服务器）的相关信息。
 
@@ -330,9 +332,9 @@ upstream back_end_server {
 - `keepalive_requests <number>`    #一个长连接最多请求 HTTP 的个数（默认100）；：单个长连接可以处理的最多 HTTP 请求个数。
 - `keepalive_timeout <time>`     #空闲情形下，一个长连接的超时时长；空闲长连接的最长保持时间（默认60s）。
 - `hash`    #哈希负载均衡算法；
-- `ip_hash`   #依据 IP 进行哈希计算的负载均衡算法；
-- `least_conn`    #最少连接数负载均衡算法；
-- `least_time`    #最短响应时间负载均衡算法；
+- `ip_hash`   #客户端 ip 绑定策略：依据 IP 进行哈希计算，使来自同一个 ip 的请求永远只分配一台服务器。
+- `least_conn`    #最少连接数算法：将请求优先分配给压力较小的服务器。
+- `least_time`    #最短响应时间算法：优先分配给响应时间最短的服务器。
 - `random`    #随机负载均衡算法，random 还支持两种可选的负载均衡模式如下：
   1. `random two`：从后端服务器列表中，随机选择两个服务器，然后根据配置的权重（weight）选择其中一个。
   2. `random two least_conn`：从后端服务器列表中，随机选择两个服务器，然后选择其中连接数较少的服务器。（结合了随机性和最少连接数的优点）
@@ -474,7 +476,7 @@ server {
 
 这就是 HTTPS 的基本运作原理，使用对称加密和非对称机密配合使用，保证传输内容的安全性。
 
-有兴趣的可点此查看：[什么是 SSL、TLS 和 HTTPS？](https://www.cnblogs.com/librarookie/p/16373398.html)
+有兴趣的可点此查看：《[什么是 SSL、TLS 和 HTTPS？](https://www.cnblogs.com/librarookie/p/16373398.html)》
 
 #### 1.4.2 配置证书
 
@@ -859,7 +861,7 @@ server{
 
 </br>
 
-### [负载均衡](#135-upstream)演示
+### [负载均衡](#135-upstream-负载均衡)演示
 
 配置负载均衡主要是要使用 upstream 指令。
 
@@ -979,7 +981,7 @@ EOF
 
 </br>
 
-### [proxy_pass](#134-proxy_pass)实例演示
+### [proxy_pass](#134-proxy_pass-代理转发)实例演示
 
 用户请求URL：/bbs/abc/test.html
 
@@ -1015,7 +1017,7 @@ EOF
 
 </br>
 
-#### 正向[代理](#134-proxy_pass)
+#### 正向[代理](#134-proxy_pass-代理转发)
 
 > 如果把局域网外的Internet想象成一个巨大的资源库，则局域网中的客户端要访问Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理。
 
@@ -1045,7 +1047,7 @@ server {
 
 </br>
 
-#### 反向[代理](#134-proxy_pass)
+#### 反向[代理](#134-proxy_pass-代理转发)
 
 为了演示更加接近实际，准备了两台云服务器，分别是：121.42.11.34 与 121.5.180.193
 
