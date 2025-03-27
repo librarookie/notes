@@ -177,24 +177,39 @@ vrrp_script check_haproxy {    #自定义脚本并设定脚本名称，脚本可
 > 默认日志存放在系统日志：/var/log/messages
 > </br> 如果ubuntu 没有 /var/log/messages 文件，则将 /etc/rsyslog.d/50-default.conf 中 -/var/log/messages 项放开
 
-1. 配置日志选项
+1. 配置 keepalived 日志选项
 
     ```sh
-    #将 /etc/sysconfig/keepalived 文件中的文件中的 KEEPALIVED_OPTIONS 行，改为 KEEPALIVED_OPTIONS="-D -S 0"
-    sudo sed -i '/KEEPALIVED_OPTIONS/c\KEEPALIVED_OPTIONS="-D -S 0"' /etc/sysconfig/keepalived
-
-    ## KEEPALIVED_OPTIONS 参数介绍：
-    # --log-detail         -D     详细日志信息。
-    # --log-facility       -S     设置本地系统日志设备0-7，即 -S 0 为 local0（默认值：LOG_DAEMON）
+    #将 /etc/sysconfig/keepalived 文件中的 KEEPALIVED_OPTIONS 行，改为 KEEPALIVED_OPTIONS="-D -S 0"
+    sudo sed -i '/KEEPALIVED_OPTIONS/c\KEEPALIVED_OPTIONS="-D -S 4"' /etc/sysconfig/keepalived
     ```
 
-2. 配置日志规则
+    - `-D, --log-detail`    #详细日志信息。
+    - `-S, --log-facility`  #设置本地系统日志设备0-7，即 -S 4 为 local4（默认值：LOG_DAEMON）
+
+2. 配置 rsyslog 日志规则
+
+    在 rsyslog 服务的配置中，添加 keepalived服务的日志配置，如：
+
+    `local4.*    /var/log/keepalived.log`
 
     ```sh
-    #在 /etc/rsyslog.conf 文件的“RULES”下面，添加 keepalived 服务日志配置
-    #添加内容：“local0.*    /var/log/keepalived.log”
-    sudo sed -i '/RULES/a\\n\local0.*    /var/log/keepalived.log' /etc/rsyslog.conf
+    #方法一、新建 /etc/rsyslog.d/keepalived.conf 并配置
+    echo 'local4.*    /var/log/keepalived.log' |sudo tee /etc/rsyslog.d/keepalived.conf
+
+
+    #方法二、在 /etc/rsyslog.conf 文件的 “RULES” 下面追加配置
+    sudo sed -i '/RULES/a\\n\local4.*    /var/log/keepalived.log' /etc/rsyslog.conf
     ```
+
+    - `local4`  #网络设备，如：路由器、交换机日志
+    - `local0-local2`：核心业务应用，`local3-local5`：基础设施/中间件，`local6-local7`：开发调试/临时日志
+    - `local4.*`  #记录local4设施的所有优先级（生产环境通常记录到 `info` 级别，调试时临时开启 `debug` 级别）
+      - `local4.error`  #错误情况，如：应用程序错误、IO操作失败
+      - `local4.warning`  #警告情况，如：磁盘空间不足、非关键故障
+      - `local4.notice`  #正常但重要的情况，如：服务启动/停止、配置变更
+      - `local4.info`  #一般信息性消息，如：运行状态信息、统计数据
+      - `local4.debug`  #调试级信息，如：开发调试信息、详细流程跟踪
 
 3. 重启生效
 
