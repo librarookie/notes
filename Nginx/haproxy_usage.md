@@ -16,7 +16,7 @@ OSI 网络七层模型（OSI：Open System Interconnection, 开放系统互联�
 
 - 二层负载均衡（mac）：一般是用虚拟mac地址方式，外部对虚拟MAC地址请求，负载均衡接收后分配后端实际的MAC地址响应；
 - 三层负载均衡（ip）：一般采用虚拟IP地址方式，外部对虚拟的ip地址请求，负载均衡接收后分配后端实际的IP地址响应；
-- 四层负载均衡（tcp）：在三次负载均衡的基础上，用 ip+port 接收请求，再转发到对应的机器；（如：F5，lvs，nginx，haproxy）
+- 四层负载均衡（tcp）：在三层负载均衡的基础上，用 ip+port 接收请求，再转发到对应的机器；（如：F5，lvs，nginx，haproxy）
 - 七层负载均衡（http）：根据虚拟的url或是IP，主机名接收请求，再转向相应的处理服务器。（如：haproxy，nginx，apache）
 
 负载均衡模型介绍
@@ -56,9 +56,9 @@ OSI 网络七层模型（OSI：Open System Interconnection, 开放系统互联�
 
 ## 一、介绍
 
-HAProxy 是一款 TCP/HTTP 反向代理负载均衡服务器软件，可工作在OSI模型中的四层传输层以及七层应用层。
+HAProxy 是一款 TCP/HTTP 反向代理负载均衡服务器软件，可工作在OSI模型中的 "四层传输层" 以及 "七层应用层"。
 
-HAProxy特别适用于那些负载压力大的web站点，这些站点通常需要会话保持或七层处理。
+HAProxy特别适用于那些负载压力大的web站点，这些站点通常需要 "会话保持" 或 "七层处理"。
 
 HAproxy允许用户定义多组服务代理，代理由前端和后端组成，前端定义了服务监听的IP及端口，后端则定义了一组服务器及负载均衡的算法。通过服务代理将流量由前端负载均衡至后端服务器节点上。
 
@@ -191,7 +191,7 @@ haproxy官网：<https://www.haproxy.org/>
 
 ### 2.4 日志配置
 
-默认情况下, HAProxy是没有配置日志的，在centos7.2 下默认管理日志的是 rsyslog, 可以实现UDP日志的接收, 将日志写入文件, 写入数据库
+默认情况下, HAProxy是没有配置日志的，在 centos7 下默认管理日志的是 rsyslog, 可以实现UDP日志的接收, 将日志写入文件, 写入数据库
 
 1. HAproxy 启动日志
 
@@ -200,8 +200,8 @@ haproxy官网：<https://www.haproxy.org/>
     ```sh
     defaults                      
         log global
-        option httplog
         log 127.0.0.1 local2
+        option httplog
     ```
 
 2. 添加系统日志配置
@@ -254,8 +254,8 @@ HAProxy 核心配置文件（/etc/haproxy/haproxy.cfg）定义了前端、后端
 - `global`： 全局配置，配置影响 HAProxy 全局的指令，如最大连接数、进程数、日志和统计报告（Statistics Report）等。
 - `defaults`：默认配置项，针对以下的frontend、backend 和 listen生效，可以多个name也可以没有name
 - `frontend`：接收请求的前端虚拟节点，类似于Nginx的一个虚拟主机 server 和LVS服务集群。可以根据配置的规则进行处理（指定具体使用后端的backend）
-- `backend`：实际处理请求的后端服务器组，处理前端转发的请求。等于nginx的upstream和LVS中的RS服务器。一个backend对应一个或者多个实体服务器。
-- `listen`：fronted 和 backend 的组合体，配置更简洁，生产常用，比如haproxy实例状态监控部分配置。Haproxy1.3之前的唯一配置方式。
+- `backend`：实际处理请求的后端服务器组，处理前端转发的请求。类似 nginx的upstream 和 LVS的RS 服务器。一个backend对应一个或者多个实体服务器。
+- `listen`：fronted 和 backend 的组合体，配置更简洁，生产常用，比如haproxy实例状态监控部分配置。（Haproxy1.3之前的唯一配置方式）
 
 HAProxy 配置文件介绍
 
@@ -267,11 +267,11 @@ global
     log /dev/log local2 notice  #local2是日志输出设备，日志级别设为 notice 或 info，避免 debug 影响性能
 
     # 进程与安全
-    daemon          #以后台守护进程模式运行
     user haproxy    #指定运行 HAProxy 的用户和组，也可使用uid，gid关键字替代之
     group haproxy
     chroot /var/lib/haproxy     #切换根目录，增强安全性（默认 /）
     #pidfile /var/run/haproxy.pid    #设置进程 ID 文件路径（默认由系统管理，多实例隔离时，需为每个实例指定不同的 PID 文件）
+    daemon          #以后台守护进程模式运行
 
     # 性能调优
     nbproc 4        #设置进程数（多核优化，建议与 CPU 核心数一致，默认 1）
@@ -280,7 +280,7 @@ global
     #spread-checks 5     #分散健康检查时间
 
     # 统计与监控（未配置则禁用）
-    stats socket /var/lib/haproxy/stats mode 660 level admin    #启用统计套接字（文件路径，文件权限，访问权限）
+    stats socket /var/lib/haproxy/stats [mode 660] [level admin]   #启用统计套接字（文件路径，文件权限，访问权限）
     stats timeout 30s   #统计接口超时设置
 
     # SSL/TLS 配置
@@ -300,10 +300,10 @@ defaults
     option  dontlognull  #不记录空连接（如：健康检查日志等）
 
     # HTTP选项
-    option  redispatch      #当连接失败时，允许重新分发到其他服务器
     option  forwardfor except 127.0.0.0/8  #在 HTTP 请求中添加 X-Forwarded-For 头，以便后端获取客户端的真实 IP 地址。
-    option  http-server-close  #是否保持长连接（http-keep-alive(默认)启用长连接、http-server-close：客户端启用长连接 和 httpclos：禁用长连接）
+    option  http-server-close  #是否保持长连接（http-keep-alive(默认)启用长连接、http-server-close：客户端启用长连接 和 httpclose：禁用长连接）
     #timeout http-keep-alive 10s  #默认持久连接超时时间
+    option  redispatch      #当连接失败时，允许重新分发到其他服务器
     retries 3       #HAProxy 会在连接后端服务器失败时，自动重试 3 次（请求级别的重试）；解决临时性网络抖动或后端服务器短暂不可用的问题。（默认 3）
     #maxconn 3000      #设置前端的最大并发连接数（默认 2000）
     #balance roundrobin  #定义默认负载均衡算法（roundrobin（默认）, leastconn, source, uri, hdr, rdp-cookie 等）
@@ -333,8 +333,7 @@ defaults
 listen status
     #bind *:8080    #可能同时监听 IPv4 和 IPv6（不推荐，不同版本兼容不一样）
     bind 0.0.0.0:8080    #定义监听 IPv4
-    bind :::8080 v6only off  #定义监听 IPv6，v6only off：允许 IPv4 映射到 IPv6（:::8080 或 ::0:8080）
-    #bind :::8080 v4v6           # 同时监听IPv4和IPv6
+    bind :::8080 v6only off  #定义监听 IPv6，v6only off：允许 IPv4 映射到 IPv6
     #mode http    #定义代理模式（http|tcp）
     #log global    #继承 global中log的定义
     stats realm Haproxy\ Statistics    #设置统计页面认证时的提示内容
@@ -354,8 +353,8 @@ frontend http_80_in
     #option dontlognull          #不记录空连接
     # 启用X-Forwarded-For，在requests头部插入客户端IP发送给后端的server，使后端server获取到客户端的真实IP
     #option forwardfor           #添加X-Forwarded-For头
-    #option redispatch           #连接失败时重试其他服务器
     #option httpclose            #关闭HTTP连接
+    #option redispatch           #连接失败时重试其他服务器
 
     #超时设置
     #timeout client 30s        #客户端超时
@@ -388,9 +387,9 @@ frontend http_80_in
 
 #定义一个名为 php_server 的后端部分
 backend php_server
-    #mode http    # 设置为http模式
-    balance source    # 设置haproxy的调度算法为源地址hash
-    cookie SERVERID    # 允许向cookie插入SERVERID，每台服务器的SERVERID可在下面使用cookie关键字定义
+    #mode http    #设置为http模式
+    balance source    #设置haproxy的调度算法为源地址hash
+    cookie SERVERID    #允许向cookie插入SERVERID，每台服务器的SERVERID可在下面使用cookie关键字定义
     option httpchk GET /test/index.php    # 开启对后端服务器的健康检测，通过GET /test/index.php来判断后端服务器的健康情况
 
     #server语法：server [:port] [param*] 
@@ -405,12 +404,12 @@ backend static_server
     server serv_1 10.12.25.83:80 cookie 3 check inter 2000 rise 3 fall 3
 ```
 
-`server server_1 10.12.25.68:80 cookie 1 check inter 2000 rise 3 fall 3 weight 2`
+`server server_1 10.12.25.68:80 cookie s1 check inter 2000 rise 3 fall 3 weight 2`
 
 - server：使用 server 关键字来设置后端服务器；
 - server_1：为后端服务器所设置的内部名称，该名称将会呈现在日志或警报中
 - 10.12.25.68:80：后端服务器的IP地址，支持端口映射
-- cookie 1：指定该服务器的SERVERID 为 1
+- cookie 1：指定该服务器的SERVERID 为 s1
 - check：接受健康监测
 - inter 2000：监测的间隔时长，单位毫秒
 - rise 3：监测正常多少次后被认为后端服务器是可用的
@@ -429,19 +428,19 @@ backend static_server
 | log | 无 | 日志输出目标（未配置则不记录） | log 127.0.0.1 local2 notice |
 | log-tag | haproxy | 日志前缀标识 | log-tag "LB_HAPROXY" |
 | log-send-hostname | 无 | 在日志中添加主机名（多节点时有用） | log-send-hostname lb1 |
-| daemon | 无 | 以后台守护进程运行（生产环境必选） | daemon |
 | user / group | root | 运行用户/组（安全建议：专用低权用户） | user haproxy |
 | chroot | 无 | 切换根目录（生产环境建议启用） | chroot /var/lib/haproxy |
+| daemon | 无 | 以后台守护进程运行（生产环境必选） | daemon |
 | nbproc | 1 | 工作进程数（多核需配置） | nbproc 4（<=CPU核心数） |
 | maxconn | 2000 | 单进程最大并发连接数 | maxconn 50000 |
 | ulimit-n | 自动 | 文件描述符限制（需 > maxconn） | ulimit-n 65536 |
 | spread-checks | 0 | 健康检查时间分散（0=同时检查，建议>2） | spread-checks 5 |
-| stats socket | 无 | 管理套接字路径（未配置则禁用） | stats socket /var/lib/haproxy/stats level admin |
+| stats socket | 无 | 管理套接字文件路径，文件权限，访问权限（未配置则禁用） | stats socket /var/lib/haproxy/stats [mode 660] [level admin] |
 | stats timeout | 10s | 管理接口超时时间 | stats timeout 30s |
 | ssl-default-bind-ciphers | 系统依赖 | 加密套件（旧版本可能包含不安全套件） | ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384 |
 | ssl-default-bind-options | 无 | SSL/TLS 选项（需显式禁用不安全协议） | no-sslv3 no-tlsv10 no-tlsv11 |
 | tune.ssl.default-dh-param | 1024 | DH 参数大小（1024 不安全，必须修改） | tune.ssl.default-dh-param 2048 |
-| ca-base / crt-base | 无 | CA/证书默认目录（简化配置路径） | ca-base /etc/ssl/certs </br> crt-base /etc/ssl/private |
+| ca-base </br> crt-base | 无 | CA/证书默认目录（简化配置路径） | ca-base /etc/ssl/certs </br> crt-base /etc/ssl/private |
 
 log 参数中的 /dev/log 与 127.0.0.1
 
@@ -475,19 +474,19 @@ defaults 部分用于定义全局默认配置，这些配置会被后续的 fron
 | log global | 设置日志继承全局配置段的设置。 |
 | option httplog | 日志记录选项，httplog表示记录与 HTTP会话相关的各种属性值。包括HTTP请求、会话状态、连接数、源地址以及连接时间等 |
 | option dontlognull | 表示不记录空会话连接日志 |
-| option redispatch | 允许在连接失败时重新分发请求（默认禁用） |
 | option forwardfor except 127.0.0.0/8 | 用于透传客户端真实 IP 至后端web服务器；except排除指定的 IP 或网段（避免本地回环请求被误处理） |
 | option http-keep-alive（默认）</br> option http-server-close </br> option httpclose | 是否启用长连接（Keep-Alive） </br> http-keep-alive：客户端和服务器均保持长连接。（默认） </br> http-server-close：客户端保持长连接，但服务器端主动关闭。 </br> httpclose：强制关闭所有连接（无 Keep-Alive）。 |
 | timeout http-keep-alive 60s | session会话保持超时时间，此时间段内会转发到相同的后端服务器 </br> http-keep-alive：控制空闲 Keep-Alive 连接的存活时间。 </br> http-server-close：仅作用于客户端连接（服务器连接不受影响）。 </br> httpclose：失效（因为无长连接）。 |
+| option redispatch | 允许在连接失败时重新分发请求（默认禁用） |
 | retries 3 | 连接后端服务器失败次数，超过此值就认为后端服务器不可用。（默认 3） |
 | maxconn 3000 | 最大并发连接数 |
 | balance roundrobin | 定义负载均衡算法（默认值：roundrobin） |
-| default-server inter 1000 weight 3 | 为所有服务器设置默认参数。每隔 1000 毫秒对服务器的状态进行检查 |
-| timeout http-request 10s | 客户端发送 http 请求的超时时间。 |
-| timeout queue 1m | 定义放入这个队列的超时时间。当上游服务器在高负载响应haproxy时，会把haproxy发送来的请求放进一个队列中。 |
+| default-server inter 1000 | 为所有服务器设置默认参数。每隔 1000 毫秒对服务器的状态进行检查 |
 | timeout connect 5s | 定义haproxy与 后端服务器连接超时时间（如果在同一个局域网可设置较小的时间） |
 | timeout client 1m | 定义客户端与 haproxy连接后，非活动连接（数据传输完毕，不再有数据传输）的超时时间。 |
 | timeout server 1m | 定义haproxy 与上游服务器，非活动连接的超时时间。 |
+| timeout http-request 10s | 客户端发送 http 请求的超时时间。 |
+| timeout queue 1m | 定义放入这个队列的超时时间。当上游服务器在高负载响应haproxy时，会把haproxy发送来的请求放进一个队列中。 |
 | option  httpchk GET /health | 启用 HTTP 健康检查 |
 | http-check expect status 200 | 定义健康检查期望响应 |
 | timeout check 10s | 后端服务器健康检查的超时时间 |
@@ -517,9 +516,9 @@ HAProxy 的 frontend 部分定义了客户端如何连接到代理服务。以�
 | log global | 日志配置 |
 | option httplog | 开启详细日志（httplog/tcplog） |
 | option dontlognull | 不记录空连接 |
-| option redispatch | 连接失败时重试其他服务器 |
 | option forwardfor | 在请求中添加X-Forwarded-For Header，记录客户端ip |
 | option http-keep-alive </br> option httpclose | 是否启用KeepAlive模式，如果HAProxy主要提供的是接口类型的服务，可以考虑采用httpclose模式，以节省连接数资源。但接口的调用端将不能使用HTTP连接池 |
+| option redispatch | 连接失败时重试其他服务器 |
 | timeout client 30s | 客户端超时。连接创建后，客户端持续不发送数据的超时时间 |
 | timeout http-request 10s | HTTP请求超时。连接创建后，客户端没能发送完整HTTP请求的超时时间，即创建连接后，以非常缓慢的速度发送请求包，导致HAProxy连接被长时间占用（主要用于防止DoS类攻击） |
 | maxconn <number\> | 最大并发连接数。同global域的maxconn，但仅用于此frontend |
@@ -877,9 +876,9 @@ http-request redirect location https://%[hdr(host)]%[capture.req.uri] code 301 i
 | option httpchk [METHOD] [URL] [VERSION] </br> option tcp-check | 定义健康检查策略。如option httpchk GET /healthCheck.html HTTP/1.1 |
 | log global | 日志配置，类似frontend |
 | option httplog | 开启详细日志（httplog/tcplog），类似frontend |
-| option redispatch | 连接失败时重试其他服务器，类似frontend |
 | option forwardfor | 在请求中添加X-Forwarded-For Header，记录客户端ip，类似frontend |
 | option http-keep-alive（默认）</br> option http-server-close </br> option httpclose | 是否启用长连接（Keep-Alive） </br> http-keep-alive：客户端和服务器均保持长连接。（默认） </br> http-server-close：客户端保持长连接，但服务器端主动关闭。 </br> httpclose：强制关闭所有连接（无 Keep-Alive）。 |
+| option redispatch | 连接失败时重试其他服务器，类似frontend |
 | timeout connect 5s | 定义haproxy与 后端服务器（server）连接超时时间（如果在同一个局域网可设置较小的时间） |
 | timeout server 1m | 定义后端服务器（server）响应HAProxy请求的超时时间。 |
 | timeout check 10s | 后端服务器健康检查的超时时间 </br> 默认情况下，健康检查的连接超时 + 响应超时时间为server命令中指定的inter值 </br> 如果配置了timeout check，HAProxy在健康检查请求中，会以inter作为的连接超时时间，并以timeout check的值作为响应超时时间 |
@@ -983,7 +982,7 @@ backend web_backend
 
 </br>
 
-### 3.5 聚合配置（listen）
+### 3.5 监听器配置（listen）
 
 listen 是HAProxy配置中的一个重要部分，它允许在一个配置块中同时定义前端(frontend)和后端(backend)的设置，简化了配置过程，特别适用于简单的代理场景。
 
@@ -1210,7 +1209,7 @@ HAProxy 的健康检查（Health Check）是确保后端服务器（Backend Serv
     backend web_servers
         server server1 192.168.1.10:80 check
         server server2 192.168.1.11:80 check
-    check 表示启用健康检查（默认间隔 2 秒）。
+        #check 表示启用健康检查（默认间隔 2 秒）。
 
     #（2）HTTP 健康检查（应用层）：发送 HTTP 请求并验证响应状态码（如 200 OK）。
     backend web_servers
@@ -1256,14 +1255,13 @@ HAProxy 的健康检查（Health Check）是确保后端服务器（Backend Serv
 
     ```sh
     #启用统计页面
-    haproxy
     listen stats
         bind :9000
         stats enable
         stats uri /haproxy_stats
     ```
 
-    访问 http://<haproxy_ip>:9000/haproxy_stats 查看服务器状态（颜色标记健康/故障）。
+    访问 `http://<haproxy_ip>:9000/haproxy_stats` 查看服务器状态（颜色标记健康/故障）。
 
 4. 常见问题
 
