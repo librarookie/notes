@@ -307,7 +307,6 @@ defaults
     retries 3       #HAProxy 会在连接后端服务器失败时，自动重试 3 次（请求级别的重试）；解决临时性网络抖动或后端服务器短暂不可用的问题。（默认 3）
     #maxconn 3000      #设置前端的最大并发连接数（默认 2000）
     #balance roundrobin  #定义默认负载均衡算法（roundrobin（默认）, leastconn, source, uri, hdr, rdp-cookie 等）
-    default-server check inter 3s fall 3 rise 2  #定义后端服务器的默认参数
 
     # 超时设置
     timeout connect 10s  #客户端与服务器建立连接的最大超时时间
@@ -317,9 +316,10 @@ defaults
     #timeout http-request 10s  #HTTP请求完成的超时时间（默认 5s）
 
     # 健康检查
-    option  httpchk GET /health  # 启用 HTTP 健康检查
+    option  httpchk GET /healthURL  # 启用 HTTP 健康检查，/healthURL 是检查server的uri，通常配置在backend中（默认使用tcp-check）
     http-check expect status 200    # 设置状态码
     #timeout check  10s   #健康检查的最大超时时间（默认 5s）
+    default-server check inter 3s fall 3 rise 2  #定义后端服务器的默认参数
     stats uri    /haproxy       #默认前端路径
     stats auth   admin:asd123   #默认认证信息（可以多个）
 
@@ -481,15 +481,15 @@ defaults 部分用于定义全局默认配置，这些配置会被后续的 fron
 | retries 3 | 连接后端服务器失败次数，超过此值就认为后端服务器不可用。（默认 3） |
 | maxconn 3000 | 最大并发连接数 |
 | balance roundrobin | 定义负载均衡算法（默认值：roundrobin） |
-| default-server inter 1000 | 为所有服务器设置默认参数。每隔 1000 毫秒对服务器的状态进行检查 |
 | timeout connect 5s | 定义haproxy与 后端服务器连接超时时间（如果在同一个局域网可设置较小的时间） |
 | timeout client 1m | 定义客户端与 haproxy连接后，非活动连接（数据传输完毕，不再有数据传输）的超时时间。 |
 | timeout server 1m | 定义haproxy 与上游服务器，非活动连接的超时时间。 |
 | timeout http-request 10s | 客户端发送 http 请求的超时时间。 |
 | timeout queue 1m | 定义放入这个队列的超时时间。当上游服务器在高负载响应haproxy时，会把haproxy发送来的请求放进一个队列中。 |
-| option  httpchk GET /health | 启用 HTTP 健康检查 |
+| option httpchk [METHOD] [URL] [VERSION] </br> option tcp-check（默认） | 定义健康检查策略。如option httpchk GET /healthCheck.html HTTP/1.1 |
 | http-check expect status 200 | 定义健康检查期望响应 |
 | timeout check 10s | 后端服务器健康检查的超时时间 |
+| default-server inter 1000 | 为所有服务器设置默认参数。每隔 1000 毫秒对服务器的状态进行检查 |
 
 `balance roundrobin`：定义负载均衡算法为轮询，常用算法有：roundrobin (轮询)、static-rr (静态轮询)、leastconn (最少连接)、first (第一个可用服务器)、source (源IP哈希)、uri (URI哈希)、url_param (URL参数哈希)、hdr (HTTP头哈希)
 
@@ -873,7 +873,7 @@ http-request redirect location https://%[hdr(host)]%[capture.req.uri] code 301 i
 | mode http | 模式设置（http/tcp），类似frontend |
 | balance <algorithm\> | 负载均衡算法 |
 | cookie <name\> <action\> [params ...] | 启用基于cookie的会话保持策略，最常用的是insert方式 |
-| option httpchk [METHOD] [URL] [VERSION] </br> option tcp-check | 定义健康检查策略。如option httpchk GET /healthCheck.html HTTP/1.1 |
+| option httpchk [METHOD] [URL] [VERSION] </br> option tcp-check（默认） | 定义健康检查策略。如option httpchk GET /healthCheck.html HTTP/1.1 |
 | log global | 日志配置，类似frontend |
 | option httplog | 开启详细日志（httplog/tcplog），类似frontend |
 | option forwardfor | 在请求中添加X-Forwarded-For Header，记录客户端ip，类似frontend |
@@ -960,21 +960,20 @@ backend web_backend
     server srv1 192.168.1.10:80 weight 3    #权重设置
     server srv1 192.168.1.10:80 cookie s1
 
-    #HTTP健康检查
+    #HTTP健康检查（使用7层，检查具体的路径）
     mode http
     option httpchk GET /health
     #http-check expect status 200
     server srv1 192.168.1.10:80 check [port 9000]
     #port 9000 指定健康检查使用9000端口而非服务端口(8080)
 
-    #TCP健康检查
+    #TCP健康检查（默认，如果没有指定 httpchk，则使用4层 tcp检测端口）
     mode tcp
-    option tcp-check
-    #tcp-check connect
-    #tcp-check send "PING\r\n"
-    #tcp-check expect string "PONG"
+    option tcp-check       #显式声明使用 TCP 检查
+    tcp-check connect      #检查 TCP 连接
+    tcp-check send "PING\r\n"  #可发送自定义数据（如 Redis 的 PING）
+    tcp-check expect string "PONG"  #期望响应
     server srv1 192.168.1.10:80 check
-    
     #错误处理
     errorfile 503 /etc/haproxy/errors/503.http    #自定义错误页面
     errorloc 503 http://www.example.com/maintenance.html    #重定向到维护页面
