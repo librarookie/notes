@@ -68,6 +68,8 @@ yum install -y keepalived
 
 > 配置文件 `/etc/keepalived/keepalived.conf` 中主要由全局段、VRRP实例段、脚本段组成
 
+配置文档：<https://keepalived.org/manpage.html>
+
 ### 2.1 全局配置（global_defs）
 
 > 允许用户设置全局相关信息，例如邮件通知信息、关键参数配置等，该段配置在Master节点和Backup节点上应当一致。
@@ -75,7 +77,7 @@ yum install -y keepalived
 ```sh
 ! Configuration File for keepalived
 
-global_defs {       #全局配置标识
+global_defs {       #全局配置标识（如果下面的配置都不用，此模块也可以删除）
     notification_email {    #设置报警的邮件地址（依赖本机的 sendmail服务）
         acassen@firewall.loc    #keepalived 发生故障切换时邮件发送的目标邮箱，可以按行区分写多个
         failover@firewall.loc
@@ -84,7 +86,7 @@ global_defs {       #全局配置标识
     notification_email_from Alexandre.Cassen@firewall.loc   #邮件的发送地址
     smtp_server 192.168.106.1   #邮件SMTP服务器地址
     smtp_connect_timeout 30     #连接超时时间（邮件SMTP服务器）
-    router_id LVS_DEVEL    #路由id：当前安装 keepalived的节点主机唯一标识，但多节点重名不影响（建议使用主机名）
+    router_id LVS_DEVEL      #标识此节点机器的字符串（不必是主机名，默认：本地主机名）
     vrrp_skip_check_adv_addr    #对所有通告报文都检查，会比较消耗性能（启用后，如果收到的通告报文和上一个报文是同一个路由器，则跳过检查，默认值为全检查）
     vrrp_strict         #严格遵守VRRP协议，默认会导致 VIP 无法访问（建议注释此项配置）
     vrrp_garp_interval 0    #报文发送延迟，0表示不延迟
@@ -97,6 +99,8 @@ vrrp_strict （建议不加此项配置）：严格遵守VRRP协议，启用此�
 1. 无 VIP 地址
 2. 配置了单播邻居
 3. 在VRRP版本2中有IPv6地址，开启动此项并且没有配置vrrp_iptables时会自动开启iptables防火墙规则，默认导致VIP无法访问
+
+如果不配置邮件报警，主备主机名不重复时，可以省略 global_defs 块，router_id 默认使用本机主机名。
 
 ### 2.2 虚拟路由配置（vrrp_instance）
 
@@ -232,8 +236,9 @@ vrrp_script check_haproxy {    #自定义脚本并设定脚本名称，脚本可
     vim /etc/keepalived/keepalived.conf
 
     ```sh
-    global_defs {   #此处将不需要的全局配置都删除了
-        router_id LVS_DEVEL
+    #此处将不需要的全局配置都删除了（如果主备主机名不重复，此模块也可以删除）
+    global_defs {
+        router_id LVS_DEVEL    #默认值是本地主机名
     }
 
     vrrp_script check_haproxy {
@@ -354,7 +359,7 @@ ip link set multicast on dev eth0   ##启用网卡 eth0 的多播 multicast
     ! Configuration File for keepalived
 
     global_defs {
-        router_id LVS_DEVEL
+        router_id LVS_DEVEL_MASTER
     }
 
     vrrp_script check_haproxy {
@@ -392,7 +397,7 @@ ip link set multicast on dev eth0   ##启用网卡 eth0 的多播 multicast
     ! Configuration File for keepalived
 
     global_defs {
-        router_id LVS_DEVEL
+        router_id LVS_DEVEL_BACKUP
     }
 
     vrrp_script check_haproxy {
