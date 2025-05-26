@@ -149,8 +149,9 @@ haproxy官网：<https://www.haproxy.org/>
     #创建服务用户
     sudo useradd -r -M -s /sbin/nologin haproxy
 
-    #创建配置文件目录
+    #创建配置目录
     sudo mkdir /etc/haproxy
+    sudo mkdir /var/lib/haproxy
 
     #使用配置文件（可选）
     sudo cp addons/ot/test/empty/haproxy.cfg /etc/haproxy
