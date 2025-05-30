@@ -84,7 +84,7 @@ global_defs {       #全局配置标识（如果下面的配置都不用，此�
         sysadmin@firewall.loc
     }
     notification_email_from Alexandre.Cassen@firewall.loc   #邮件的发送地址
-    smtp_server 192.168.106.1   #邮件SMTP服务器地址
+    smtp_server 192.168.31.1   #邮件SMTP服务器地址
     smtp_connect_timeout 30     #连接超时时间（邮件SMTP服务器）
     router_id LVS_DEVEL      #标识此节点机器的字符串（不必是主机名，默认：本地主机名）
     vrrp_skip_check_adv_addr    #对所有通告报文都检查，会比较消耗性能（启用后，如果收到的通告报文和上一个报文是同一个路由器，则跳过检查，默认值为全检查）
@@ -120,9 +120,9 @@ vrrp_instance VI_1 {    #VRRP实例名并设定实例名称（一般为业务名
         auth_pass 1111
     }
     virtual_ipaddress {    #虚拟IP，可以有多个（vip），VIP将绑定至interface参数配置的网络接口上
-        192.168.106.16    #指定VIP，不指定网卡，默认eth0；不指定/prefix, 默认/32
-        192.168.106.17/24 dev eth1      #指定VIP，网卡
-        192.168.106.18/24 dev eth2 label eth2:1     #指定VIP，网卡，label
+        192.168.31.116    #指定VIP，不指定网卡，默认eth0；不指定/prefix, 默认/32
+        192.168.31.117/24 dev eth1      #指定VIP，网卡
+        192.168.31.118/24 dev eth2 label eth2:1     #指定VIP，网卡，label
         #<IPADDR>/<PREFIX> brd <IPADDR> dev <STRING> scope <SCOPE> label <LABEL>
     }
 
@@ -259,7 +259,7 @@ vrrp_script check_haproxy {    #自定义脚本并设定脚本名称，脚本可
             auth_pass 1111
         }
         virtual_ipaddress {
-            192.168.106.16
+            192.168.31.116
         }
 
         track_script {
@@ -275,16 +275,16 @@ vrrp_script check_haproxy {    #自定义脚本并设定脚本名称，脚本可
 
     ```sh
     # 创建子配置目录
-    mkdir /etc/keepalived/keepalived.conf.d
+    mkdir -p /etc/keepalived/keepalived.conf.d
 
     # 创建子配置文件
-    touch /etc/keepalived/keepalived.conf.d/192.168.106.18.conf
+    touch /etc/keepalived/keepalived.conf.d/192.168.31.118.conf
     ```
 
 3. 添加子配置内容
 
     ```sh
-    tee /etc/keepalived/keepalived.conf.d/192.168.106.18.conf <<-EOF
+    tee /etc/keepalived/keepalived.conf.d/192.168.31.118.conf <<-EOF
     vrrp_script check_port {    #子配置文件的检测脚本，也可以使用keepalived.conf文件内的
         script "/usr/bin/nc -nzv -w 2 127.0.0.1 5000"
         interval 5
@@ -303,7 +303,7 @@ vrrp_script check_haproxy {    #自定义脚本并设定脚本名称，脚本可
             auth_pass 1111
         }
         virtual_ipaddress {
-            192.168.106.18
+            192.168.31.118
         }
 
         track_script {
@@ -382,7 +382,7 @@ ip link set multicast on dev eth0   ##启用网卡 eth0 的多播 multicast
             auth_pass 1111
         }
         virtual_ipaddress {
-            192.168.31.199      #对外提供的虚拟IP
+            192.168.31.99      #对外提供的虚拟IP
         }
 
         track_script {    #根据vrrp_script结果，调整服务
@@ -420,7 +420,7 @@ ip link set multicast on dev eth0   ##启用网卡 eth0 的多播 multicast
             auth_pass 1111
         }
         virtual_ipaddress {
-            192.168.31.199      #对外提供的虚拟 VIP
+            192.168.31.99      #对外提供的虚拟 VIP
         }
 
         track_script {    #根据vrrp_script结果，调整服务
@@ -478,10 +478,10 @@ ip link set multicast on dev eth0   ##启用网卡 eth0 的多播 multicast
     }
 
     #3. 访问 VIP:8080/index.html
-    curl 192.168.31.199:8080/inde.html
+    curl 192.168.31.99:8080/inde.html
 
     #4. 停止主机的的web1 服务，然后再访问，查看index.html是否更新
-    curl 192.168.31.199:8080/inde.html
+    curl 192.168.31.99:8080/inde.html
     ```
 
     命令 `wget -q --spider 127.0.0.1:8080/index.html` 的作用是：
