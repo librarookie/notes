@@ -1,10 +1,6 @@
 # Notes
 
-Note repository
-
-![[Pasted image 20251119161605.png]]
-
-
+![](assets/Windows/README/file-20251119164106025.png)
 
 
 ![](file-20251119162836331.png)
@@ -15,4 +11,6 @@ Note repository
 ![](assets/README/file-20251119163024331.png)
 
 
-![](assets/README/file-20251119163406330.png)
+![](assets/Windows/README/file-20251119164149408.png)
+
+![](assets/Windows/README/file-20251119164030710.png)
