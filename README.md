@@ -2,4 +2,4 @@
 
 Note repository
 
-123
+![[Pasted image 20251119161605.png]]

@@ -1,5 +1,8 @@
--- database
+# 测试数据表
 
+### 1. 数据表
+
+```pgsql
 -- 1.学生表
 -- Student(s_id, s_name, s_birth, s_sex) --s_id 学生编号,s_name 学生姓名,s_birth 出生年月,s_sex 学生性别
 
@@ -11,9 +14,11 @@
 
 -- 4.成绩表
 -- Score(s_id, c_id, s_score) --s_id 学生编号,c_id 课程编号,s_score 分数
+```
 
+### 2. 添加测试数据
 
--- 添加测试数据
+```pgsql
 -- 1.学生表
 
 create table Student(s_id varchar(10), s_name nvarchar(10), s_birth nvarchar(10), s_sex nvarchar(10));
@@ -93,28 +98,27 @@ insert into Score values('06' , '03' , 34);
 insert into Score values('07' , '02' , 89);
 
 insert into Score values('07' , '03' , 98);
+```
 
+notes：
 
-
-
-
-/*
 varchar 和 nvarchar的区别（推荐是用nvarchar）
-    1. varchar是非unicode可变长度类型，nvarchar是unicode编码可变长度类型
-    2. 它们两者的最大长度不一样。(nvarchar的最大值是4000， varchar最大值是8000)
-    3. varchar能存储的字节数就是它的长度，nvarchar能存储的字节数是它 长度的2倍
-    4. nvarchar是支持多种语言，可以避免每次从数据库读取或写入时候，进行编码转换，转换需要时间，并且很容易出错。
-*/
 
-/*
+* varchar是非unicode可变长度类型，nvarchar是unicode编码可变长度类型
+* 它们两者的最大长度不一样。(nvarchar的最大值是4000， varchar最大值是8000)
+* varchar能存储的字节数就是它的长度，nvarchar能存储的字节数是它 长度的2倍
+* nvarchar是支持多种语言，可以避免每次从数据库读取或写入时候，进行编码转换，转换需要时间，并且很容易出错。
+
 decimal是mysql中存在的精准数据类型，语法格式“decimal(m,d)”。
-    -- 其中，m是数字的最大数（精度），其范围为“1～65”，默认值是10；
-    -- d是小数点右侧数字的数目（标度），其范围是“0～30”，但不得超过m。
 
-mysql中支持浮点数的类型有float、double和decimal类型，decimal 类型不同于float和double，decimal 实际是以串存放的。
-    decimal 可能的最大取值范围与double 一样，但是其有效的取值范围由m 和d 的值决定。如果改变m 而固定d，则其取值范围将随m 的变大而变大
-    说明：float占4个字节，double占8个字节，decimail(m,d)占m+2个字节。
+- 其中，m是数字的最大数（精度），其范围为“1～65”，默认值是10；
+- d是小数点右侧数字的数目（标度），其范围是“0～30”，但不得超过m。
 
-    当数值在其取值范围之内，小数位多了，则直接截断小数位。
-    若数值在其取值范围之外，则用最大(小)值对其填充。
-*/
+mysql中支持浮点数的类型有float、double和decimal类型
+
+- decimal 类型不同于float和double，decimal 实际是以串存放的。
+- decimal 可能的最大取值范围与double 一样，但是其有效的取值范围由m 和d 的值决定。
+- 如果改变m 而固定d，则其取值范围将随m 的变大而变大
+  说明：float占4个字节，double占8个字节，decimail(m,d)占m+2个字节。
+  - 当数值在其取值范围之内，小数位多了，则直接截断小数位。
+  - 若数值在其取值范围之外，则用最大(小)值对其填充。
