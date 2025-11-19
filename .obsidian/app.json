@@ -1,5 +1,7 @@
 {
   "newFileLocation": "root",
   "promptDelete": false,
-  "attachmentFolderPath": "./附件"
+  "attachmentFolderPath": "./附件",
+  "useMarkdownLinks": true,
+  "newLinkFormat": "relative"
 }

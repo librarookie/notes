@@ -13,3 +13,6 @@ Note repository
 
 
 ![](assets/README/file-20251119163024331.png)
+
+
+![](assets/README/file-20251119163406330.png)
