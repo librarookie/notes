@@ -1,17 +1,2 @@
 # Notes
-
-![](assets/README/file-20251119164425870.png)
-
-
-![](assets/-README/file-20251119165237170.png)
-
-![](Windows/assets/README/file-20251119162859931.png)
-
-
-![](Windows/assets/README/file-20251119163024331.png)
-
-
-![](assets/README/file-20251119164425869.png)
-![](assets/README/file-20251119164425868.png)
-![](assets/README/file-20251119164425870%201.png)
-![](assets//README/file-20251119164835206.png)![](assets/-README/file-20251119165010939.png)
+![](assets//README/file-20251119165425270.png)

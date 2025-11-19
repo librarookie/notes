@@ -12,7 +12,7 @@
   "generatedAttachmentFileName": "file-${date:YYYYMMDDHHmmssSSS}",
   "includePaths": [],
   "jpegQuality": 0.8,
-  "markdownUrlFormat": "assets/${noteFolderName}-${noteFileName}/${generatedAttachmentFileName}",
+  "markdownUrlFormat": "assets/${noteFolderName}/${noteFileName}/${generatedAttachmentFileName}",
   "shouldConvertPastedImagesToJpeg": false,
   "shouldDeleteOrphanAttachments": false,
   "shouldRenameAttachmentFiles": true,
