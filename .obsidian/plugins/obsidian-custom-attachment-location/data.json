@@ -1,5 +1,5 @@
 {
-  "attachmentFolderPath": "assets/${noteFolderName}/${noteFileName}",
+  "attachmentFolderPath": "assets/${noteFileName}",
   "attachmentRenameMode": "All",
   "collectAttachmentUsedByMultipleNotesMode": "Skip",
   "customTokensStr": "",
