@@ -1,20 +1,24 @@
 # Windows系统中管理和迁移“恢复分区“
 
 
+
+
+```sh
 1. 分区环境
 
 - 查看“恢复分区”信息
   reagentc /info
--  启用enable/停用disable“恢复分区”
+- 启用enable/停用disable“恢复分区”
   reagentc /disable
 
 2. 磁盘管理
-
 diskpart    #进入磁盘
 list disk    #查看磁盘信息
 select disk 0    #进入”磁盘 0“
 list partition    #查看分区信息
 select partition 4    #进入”分区 4“
+```
+
 
 
 ## 一、迁移“恢复分区”
@@ -65,7 +69,7 @@ exit
 
 6. 重启系统生效
 
-        **重启后检查**：使用 `shift + 重启` (此命令实际用于强制关机或重启，检查恢复分区通常在FEDL服务中操作，此步骤描述可能略有简化或不准确，请以实际情况为准)。
+ **重启后检查**：使用 `shift + 重启` (此命令实际用于强制关机或重启，检查恢复分区通常在FEDL服务中操作，此步骤描述可能略有简化或不准确，请以实际情况为准)。
      
 7. 删除“旧恢复分区”：
 ```diskpart
