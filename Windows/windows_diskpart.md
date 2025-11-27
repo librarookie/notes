@@ -4,19 +4,17 @@
 
 
 ```cmd
-1. 分区环境（管理员模式）
+#1. 分区环境（管理员模式）
+reagentc /info    #查看“恢复分区”信息
+reagentc /disable    #停用“恢复分区”
+reagentc /enable    #启用“恢复分区”
 
-- 查看“恢复分区”信息
-  reagentc /info
-- 启用enable/停用disable“恢复分区”
-  reagentc /disable
-
-2. 磁盘管理
-diskpart    #进入磁盘
+#2. 磁盘管理
+diskpart    #进入磁盘管理
 list disk    #查看磁盘信息
-select disk 0    #进入”磁盘 0“
+select disk 0    #进入“磁盘 0（即第一个磁盘）”
 list partition    #查看分区信息
-select partition 4    #进入”分区 4“
+select partition 4    #进入“分区 4”
 ```
 
 
@@ -84,11 +82,11 @@ delete partition override  #使用 override 参数强制删除
 exit
 ```
   
- **注意事项**：操作前请确保已备份重要数据。分区编号和盘符分配需根据实际磁盘布局确认。
+tips：操作前请确保已备份重要数据。分区编号和盘符分配需根据实际磁盘布局确认。
 
 ---
 
-## 二、使用 C 盘作为目标迁移“恢复分区”
+## 二、将”恢复分区“迁移到”C盘“
 
 * **创建日期**：创建于 2025-09-22 09:34:11;
 
