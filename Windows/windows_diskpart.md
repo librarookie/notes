@@ -24,11 +24,13 @@ exit
 ### 1.3 生成”分区镜像“并保存：
 ```cmd
 dism /capture-image /imagefile:D:\recovery.wim /sourceDir:R:\ /sourceDir:R:\ /name:"recovery"
+dism /capture-image /imagefile:D:\recovery.wim /captureDir:R:\ /name:"recovery"
 ```
 
 ### 1.4 在新分区（F：\）中部署镜像：
 ```cmd
 dism /apply-image /imagefile:D:\recovery.wim /index:1 /destinationdir:F:\
+dism /apply-image /imagefile:D:\recovery.wim /index:1 /applyDir:F:\
 ```
 
 ### 1.5 更新“恢复分区”的指针
