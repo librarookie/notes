@@ -30,7 +30,7 @@ select partition 4    #进入”分区 4“
 在磁盘 0 的最右侧分出一块新分区（分区 F），其容量需略大于当前的“恢复分区”（例如分区 4）。
 
 1. 给“恢复分区”分配盘符：
-```diskpart
+```diskpa
 select disk 0
 list partition
 select partition 4
