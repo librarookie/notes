@@ -3,7 +3,7 @@
 
 
 
-```sh
+```cmd
 1. 分区环境（管理员模式）
 
 - 查看“恢复分区”信息
@@ -51,32 +51,36 @@ dism /apply-image /imagefile:D:\recovery.wim /index:1 /destinationdir:F:\
 
 ### 1.5 更新“恢复分区”的指针（停用、设置路径、启用）：
 ```cmd
-reagentc /disable
+reagentc /info    #查看分区
+reagentc /disable    #停用恢复分区
 reagentc /setreimage /path F:\Recovery\WindowsRE
-reagentc /enable
+reagentc /enable    #启用恢复分区
 ```
 
 ### 1.6 将新分区（分区F）属性改为“恢复分区”：
 
-```diskpart
+```cmd
+diskpart
 select disk 0
-select partition 6  # 注意：原文直接跳到partition 6，需确认是否正确
+list partition
+select partition 6  #根据自己的环境选择
 set id="de94bba4-06d1-4d40-a16a-bfd50179d6ac"
 gpt attributes=0x8000000000000001
 attributes volume set nodefaultdriveletter
-remove  # 注意：原文为“remove”，原始意图似乎是“remove letter”，但此处保留操作。
+remove    #移除分区盘符
 exit
 ```
 
 ### 1.7 重启系统生效
 
- **重启后检查**：使用 `shift + 重启` (此命令实际用于强制关机或重启，检查恢复分区通常在FEDL服务中操作，此步骤描述可能略有简化或不准确，请以实际情况为准)。
-     
+`shift + 重启`：重启后检查 (此命令实际用于强制关机或重启)。
+
 ### 1.8 删除“旧恢复分区”：
-```diskpart
+```cmd
+diskpart
 select disk 0
 select partition 4
-delete partition override  # 注意：使用 override 参数强制删除
+delete partition override  #使用 override 参数强制删除
 exit
 ```
   
