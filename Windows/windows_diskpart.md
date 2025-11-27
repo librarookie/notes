@@ -100,7 +100,6 @@ reagentc /info  # 注意：原文此处拼写为“reagerc”，但正确应为�
 
 ### 2.2 给“恢复分区”分配盘符（如 R）
  
- 1. ****：
 ```cmd
 diskpart  #进入磁盘工具
 
@@ -111,7 +110,7 @@ select partition 4  #选择“恢复分区”，例如“分区 4”（分区号
 assign letter=R  #分配盘符R
 ```
   
-### 2.3 移动”恢复分区“文件
+### 2.3 迁移”恢复分区“文件
 
 **手动复制恢复文件**：将`R:/Recovery/WindowsRE`"复制到 `C:/Recovery` 目录下
 tips：此操作可能会遇到权限问题，可尝试使用管理员权限，或 administrator用户操作。
