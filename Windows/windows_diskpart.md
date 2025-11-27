@@ -2,9 +2,6 @@
 
 
 
-
-
-
 ## 方案一、将“恢复分区”迁移到“新分区”
 
 > 将“恢复分区（例如分区 4）”迁移到新分区（分区F）中。
@@ -34,7 +31,8 @@ dism /capture-image /imagefile:D:\recovery.wim /sourceDir:R:\ /sourceDir:R:\ /na
 dism /apply-image /imagefile:D:\recovery.wim /index:1 /destinationdir:F:\
 ```
 
-### 1.5 更新“恢复分区”的指针（停用、设置路径、启用）：
+### 1.5 更新“恢复分区”的指针
+
 ```cmd
 reagentc /info    #查看分区
 reagentc /disable    #停用恢复分区
@@ -125,22 +123,3 @@ reagentc /enable  #启用“恢复分区”
 ### 2.6 重启检查
 
 `shift + 重启`：重启系统后检查 (此命令实际用于强制关机或重启)。
-
----
-
-## 三、分区环境与磁盘管理基础
-
-
-```cmd
-#1. 分区环境（管理员模式）
-reagentc /info    #查看“恢复分区”信息
-reagentc /disable    #停用“恢复分区”
-reagentc /enable    #启用“恢复分区”
-
-#2. 磁盘管理
-diskpart    #进入磁盘管理
-list disk    #查看磁盘信息
-select disk 0    #进入“磁盘 0（即第一个磁盘）”
-list partition    #查看分区信息
-select partition 4    #进入“分区 4”
-```
