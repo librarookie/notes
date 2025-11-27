@@ -3,6 +3,23 @@
 
 ## 一、创建新分区并迁移“恢复分区”
 
+
+1. 分区环境
+
+- 查看“恢复分区”信息
+  reagentc /info
+-  启用enable/停用disable“恢复分区”
+  reagentc /disable
+
+2. 磁盘管理
+
+diskpart    #进入磁盘
+list disk    #查看磁盘信息
+select disk 0    #进入”磁盘 0“
+list partition    #查看分区信息
+select partition 4    #进入”分区 4“
+
+
 * **创建日期**：
 
   1. **目标**：将“恢复分区”迁移到新分区（分区F）中。
