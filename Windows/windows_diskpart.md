@@ -25,25 +25,30 @@ exit
 ### 1.3 生成”分区镜像“并保存：
 
 ```cmd
-#dism /capture-image /imagefile:D:\recovery.wim /sourceDir:R:\ /name:"recovery"
 dism /capture-image /imagefile:D:\recovery.wim /captureDir:R:\ /name:"recovery"
 ```
 
  **参数解释**：
-    
-    - `/capture-image`： 指定操作是“捕获镜像”。
-    - `/imagefile:D:\recovery.wim`： 指定生成的镜像文件存放路径和名称。这里是在D盘根目录下创建名为`recovery.wim`的文件。
-    - `/sourceDir:R:\`： **指定要备份的源目录**。这里指定了`R:\`盘。
-    - `/name:"recovery"`： 为这个镜像提供一个名称。当同一个WIM文件中存储多个镜像时，这个名字用于区分它们。
-        
-- **总结**： 这条命令的意图是将`R:\`盘的内容备份到`D:\recovery.wim`，并给这个备份命名为“recovery”。但由于重复的`/sourceDir`参数，它可能无法正常执行。
+  - `/capture-image`： 指定操作是“捕获镜像”。
+  - `/imagefile:D:\recovery.wim`： 指定生成的镜像文件存放路径和名称。这里是在D盘根目录下创建名为`recovery.wim`的文件。
+  - `/captureDir:R:\`： **指定要备份的源目录（旧参数sourceDir）**。这里指定了`R:\`盘。
+  - `/name:"recovery"`： 为这个镜像提供一个名称。当同一个WIM文件中存储多个镜像时，这个名字用于区分它们。
 
+ **总结**： 此命令是将`R:\`盘的内容备份到`D:\recovery.wim`，并给这个备份命名为“recovery”。
+ 
 ### 1.4 在新分区（F：\）中部署镜像：
 
 ```cmd
-#dism /apply-image /imagefile:D:\recovery.wim /index:1 /destinationdir:F:\
 dism /apply-image /imagefile:D:\recovery.wim /index:1 /applyDir:F:\
 ```
+
+**参数解释**：
+  - `/apply-image`： 指定操作是“应用镜像”（即解包还原）。
+  - `/imagefile:D:\recovery.wim`： 指定要使用的镜像文件路径。
+  - `/index:1`： 指定要应用哪个镜像。WIM文件可以包含多个镜像（例如，一个“纯净系统”，一个“带软件的系统”），它们通过索引号（1, 2, 3...）来区分。这里应用的是第一个镜像。
+  - `/applyDir:F:\`： **指定还原的目标路径（旧参数destinationdir）**。这里是要还原到`F:\`盘的根目录。
+
+**总结**： 此条命令将`recovery.wim`文件中的第一个镜像（也就是我们上一步备份的那个）还原到`F:\`盘。
 
 ### 1.5 更新“恢复分区”的指针
 
