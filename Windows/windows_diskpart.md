@@ -1,5 +1,4 @@
-# Windows系统磁盘管理——迁移“恢复分区“
-
+# Windows系统磁盘管理——迁移“恢复分区”
 
 
 ## 方案一、将“恢复分区”迁移到“新分区”
@@ -22,7 +21,7 @@ assign letter=R    #分配盘符为 R
 exit
 ```
 
-### 1.3 生成”分区镜像“并保存：
+### 1.3 生成“分区镜像”并保存：
 
 ```cmd
 dism /capture-image /imagefile:D:\recovery.wim /captureDir:R:\ /name:"recovery"
@@ -94,12 +93,12 @@ tips：操作前请确保已备份重要数据。分区编号和盘符分配需�
 
 ---
 
-## 方案二、将”恢复分区“迁移到”C盘“
+## 方案二、将“恢复分区”迁移到“C盘”
 
 ### 2.1 查看“恢复分区”信息：
 
 ```cmd
-reagentc /info  # 注意：原文此处拼写为“reagerc”，但正确应为“reagentc”。见第 3 条。
+reagentc /info
 ```
 
 ### 2.2 给“恢复分区”分配盘符（如 R）
@@ -114,7 +113,7 @@ select partition 4  #选择“恢复分区”，例如“分区 4”（分区号
 assign letter=R  #分配盘符R
 ```
   
-### 2.3 迁移”恢复分区“文件
+### 2.3 迁移“恢复分区”文件
 
 **手动复制恢复文件**：将`R:/Recovery/WindowsRE`"复制到 `C:/Recovery` 目录下
 tips：此操作可能会遇到权限问题，可尝试使用管理员权限，或 administrator用户操作。
@@ -143,3 +142,4 @@ reagentc /enable  #启用“恢复分区”
 ### 2.6 重启检查
 
 `shift + 重启`：重启系统后检查 (此命令实际用于强制关机或重启)。
+
