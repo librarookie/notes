@@ -24,55 +24,57 @@ select partition 4    #进入”分区 4“
 ### 1.1 创建新分区
 
 在磁盘 0 的最右侧分出一块新分区（分区 F），其容量需略大于当前的“恢复分区”（例如分区 4）。
-     1. **给“恢复分区”分配盘符**：
+1. 给“恢复分区”分配盘符：
+```diskpart
+select disk 0
+list partition
+select partition 4
+assign letter=R
+exit
+```
 
-        ```diskpart
-        select disk 0
-        list partition
-        select partition 4
-        assign letter=R  # 注意：原文为 assign letter=R，此处保留。
-        exit
-        ```
-     2. **生成分区镜像并保存**：
+2. 生成分区镜像并保存：
+```cmd
+dism /capture-image /imagefile:D:\recovery.wim /sourceDir:R:\ /sourceDir:R:\ /name:"recovery"
+```
 
-        ```cmd
-        dism /capture-image /imagefile:D:\recovery.wim /sourceDir:R:\ /sourceDir:R:\ /name:"recovery"
-        ```
-     3. **在新分区（F：\）中部署镜像**：
+3. 在新分区（F：\）中部署镜像：
+```cmd
+dism /apply-image /imagefile:D:\recovery.wim /index:1 /destinationdir:F:\
+```
 
-        ```cmd
-        dism /apply-image /imagefile:D:\recovery.wim /index:1 /destinationdir:F:\
-        ```
-     4. **更新“恢复分区”的指针（停用、设置路径、启用）**：
+4. 更新“恢复分区”的指针（停用、设置路径、启用）：
+```cmd
+reagentc /disable
+reagentc /setreimage /path F:\Recovery\WindowsRE
+reagentc /enable
+```
 
-        ```cmd
-        reagentc /disable
-        reagentc /setreimage /path F:\Recovery\WindowsRE
-        reagentc /enable
-        ```
-     5. **将新分区（分区F）属性改为“恢复分区”**：
+5. 将新分区（分区F）属性改为“恢复分区”：
 
-		```diskpart
-		select disk 0
-		select partition 6  # 注意：原文直接跳到partition 6，需确认是否正确
-		set id="de94bba4-06d1-4d40-a16a-bfd50179d6ac"
-		gpt attributes=0x8000000000000001
-		attributes volume set nodefaultdriveletter
-		remove  # 注意：原文为“remove”，原始意图似乎是“remove letter”，但此处保留操作。
-		exit
-		```
-     6. **重启系统生效**。
+```diskpart
+select disk 0
+select partition 6  # 注意：原文直接跳到partition 6，需确认是否正确
+set id="de94bba4-06d1-4d40-a16a-bfd50179d6ac"
+gpt attributes=0x8000000000000001
+attributes volume set nodefaultdriveletter
+remove  # 注意：原文为“remove”，原始意图似乎是“remove letter”，但此处保留操作。
+exit
+```
+
+6. 重启系统生效
 
         **重启后检查**：使用 `shift + 重启` (此命令实际用于强制关机或重启，检查恢复分区通常在FEDL服务中操作，此步骤描述可能略有简化或不准确，请以实际情况为准)。
-     7. **删除“旧恢复分区”**：
-
-     ```diskpart
-        select disk 0
-        select partition 4
-        delete partition override  # 注意：使用 override 参数强制删除
-        exit
-        ```
-  3. **注意事项**：操作前请确保已备份重要数据。分区编号和盘符分配需根据实际磁盘布局确认。
+     
+7. 删除“旧恢复分区”：
+```diskpart
+select disk 0
+select partition 4
+delete partition override  # 注意：使用 override 参数强制删除
+exit
+```
+  
+8. **注意事项**：操作前请确保已备份重要数据。分区编号和盘符分配需根据实际磁盘布局确认。
 
 ---
 
