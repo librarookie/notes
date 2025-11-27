@@ -29,34 +29,34 @@ select partition 4    #进入”分区 4“
 
 在磁盘 0 的最右侧分出一块新分区（分区 F），其容量需略大于当前的“恢复分区”。
 
-1. 给“恢复分区”分配盘符：
+### 1.2 给“恢复分区”分配盘符：
 ```cmd
 diskpart    #进入磁盘管理
 select disk 0    #选择第一个磁盘
-list partition
-select partition 4
+list partition   #列出所有分区
+select partition 4    #选择分区 4
 assign letter=R
 exit
 ```
 
-2. 生成分区镜像并保存：
+### 1.3 生成”分区镜像“并保存：
 ```cmd
 dism /capture-image /imagefile:D:\recovery.wim /sourceDir:R:\ /sourceDir:R:\ /name:"recovery"
 ```
 
-3. 在新分区（F：\）中部署镜像：
+### 1.4 在新分区（F：\）中部署镜像：
 ```cmd
 dism /apply-image /imagefile:D:\recovery.wim /index:1 /destinationdir:F:\
 ```
 
-4. 更新“恢复分区”的指针（停用、设置路径、启用）：
+### 1.5 更新“恢复分区”的指针（停用、设置路径、启用）：
 ```cmd
 reagentc /disable
 reagentc /setreimage /path F:\Recovery\WindowsRE
 reagentc /enable
 ```
 
-5. 将新分区（分区F）属性改为“恢复分区”：
+### 1.6 将新分区（分区F）属性改为“恢复分区”：
 
 ```diskpart
 select disk 0
@@ -68,11 +68,11 @@ remove  # 注意：原文为“remove”，原始意图似乎是“remove letter
 exit
 ```
 
-6. 重启系统生效
+### 1.7 重启系统生效
 
  **重启后检查**：使用 `shift + 重启` (此命令实际用于强制关机或重启，检查恢复分区通常在FEDL服务中操作，此步骤描述可能略有简化或不准确，请以实际情况为准)。
      
-7. 删除“旧恢复分区”：
+### 1.8 删除“旧恢复分区”：
 ```diskpart
 select disk 0
 select partition 4
@@ -80,7 +80,7 @@ delete partition override  # 注意：使用 override 参数强制删除
 exit
 ```
   
-8. **注意事项**：操作前请确保已备份重要数据。分区编号和盘符分配需根据实际磁盘布局确认。
+ **注意事项**：操作前请确保已备份重要数据。分区编号和盘符分配需根据实际磁盘布局确认。
 
 ---
 
