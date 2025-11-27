@@ -1,9 +1,6 @@
 # Windows系统中管理和迁移“恢复分区“
 
 
-## 一、创建新分区并迁移“恢复分区”
-
-
 1. 分区环境
 
 - 查看“恢复分区”信息
@@ -20,13 +17,14 @@ list partition    #查看分区信息
 select partition 4    #进入”分区 4“
 
 
-* **创建日期**：
+## 一、迁移“恢复分区”
 
-  1. **目标**：将“恢复分区”迁移到新分区（分区F）中。
-  2. **操作步骤**：
+> 将“恢复分区”迁移到新分区（分区F）中。
 
-     1. **创建新分区**：在磁盘 0 的最右侧分出一块新分区（分区 F），其容量需略大于当前的“恢复分区”（例如分区 4）。
-     2. **给“恢复分区”分配盘符**：
+### 1.1 创建新分区
+
+在磁盘 0 的最右侧分出一块新分区（分区 F），其容量需略大于当前的“恢复分区”（例如分区 4）。
+     1. **给“恢复分区”分配盘符**：
 
         ```diskpart
         select disk 0
@@ -35,24 +33,24 @@ select partition 4    #进入”分区 4“
         assign letter=R  # 注意：原文为 assign letter=R，此处保留。
         exit
         ```
-     3. **生成分区镜像并保存**：
+     2. **生成分区镜像并保存**：
 
         ```cmd
         dism /capture-image /imagefile:D:\recovery.wim /sourceDir:R:\ /sourceDir:R:\ /name:"recovery"
         ```
-     4. **在新分区（F：\）中部署镜像**：
+     3. **在新分区（F：\）中部署镜像**：
 
         ```cmd
         dism /apply-image /imagefile:D:\recovery.wim /index:1 /destinationdir:F:\
         ```
-     5. **更新“恢复分区”的指针（停用、设置路径、启用）**：
+     4. **更新“恢复分区”的指针（停用、设置路径、启用）**：
 
         ```cmd
         reagentc /disable
         reagentc /setreimage /path F:\Recovery\WindowsRE
         reagentc /enable
         ```
-     6. **将新分区（分区F）属性改为“恢复分区”**：
+     5. **将新分区（分区F）属性改为“恢复分区”**：
 
 		```diskpart
 		select disk 0
@@ -63,10 +61,10 @@ select partition 4    #进入”分区 4“
 		remove  # 注意：原文为“remove”，原始意图似乎是“remove letter”，但此处保留操作。
 		exit
 		```
-     7. **重启系统生效**。
+     6. **重启系统生效**。
 
         **重启后检查**：使用 `shift + 重启` (此命令实际用于强制关机或重启，检查恢复分区通常在FEDL服务中操作，此步骤描述可能略有简化或不准确，请以实际情况为准)。
-     8. **删除“旧恢复分区”**：
+     7. **删除“旧恢复分区”**：
 
      ```diskpart
         select disk 0
