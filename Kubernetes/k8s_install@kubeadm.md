@@ -528,6 +528,11 @@ kubeadm join 192.168.31.110:6443 --token abcdef.0123456789abcdef \
     sudo iptables -F && sudo iptables -t nat -F
     ```
 
+2. 重启服务
+```sh
+sudo systemctl restart kubelet containerd
+```
+
 ### 3.4 安装 Pod 网络插件（CNI）
 
 - [Calico 安装文档](https://docs.tigera.io/calico/3.28/getting-started/kubernetes/self-managed-onprem/onpremises "Install Calico")
