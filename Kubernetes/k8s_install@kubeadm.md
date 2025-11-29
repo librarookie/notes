@@ -63,21 +63,21 @@ sudo systemctl enable --now chronyd
 ### 1.2 配置内核转发及网桥过滤
 
 ```sh
-#1. 启用网络桥接和转发功能
-sudo tee /etc/modules-load.d/containerd.conf <<-EOF
-overlay
-br_netfilter
-EOF
-sudo modprobe overlay
-sudo modprobe br_netfilter
-
-#2. 加载网桥过滤和内核转发模块（将桥接的 IPv4流量传递到 iptables的链）
+#1. 加载网桥过滤和内核转发模块（将桥接的 IPv4流量传递到 iptables的链）
 sudo tee /etc/sysctl.d/kubernetes.conf <<-EOF
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 net.ipv4.ip_forward = 1
 EOF
 sudo sysctl --system
+
+#2. 启用网络桥接和转发功能
+sudo tee /etc/modules-load.d/containerd.conf <<-EOF
+overlay
+br_netfilter
+EOF
+sudo modprobe overlay
+sudo modprobe br_netfilter
 ```
 
 - overlay: 文件系统支持，允许创建多个覆盖层（overlay），对容器技术有帮助
