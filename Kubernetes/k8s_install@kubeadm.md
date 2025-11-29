@@ -27,7 +27,7 @@
 ### 1.1 系统基本配置
 
 ```sh
-#1. 关闭防火墙
+#1. 关闭防火墙（firewalld, ufw/iptables/nftables）
 #sudo systemctl stop firewalld
 #sudo systemctl disable firewalld
 sudo systemctl disable --now firewalld  # 上面两个命令效果
