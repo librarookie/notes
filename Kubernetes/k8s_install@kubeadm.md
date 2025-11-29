@@ -76,8 +76,7 @@ sudo tee /etc/modules-load.d/containerd.conf <<-EOF
 overlay
 br_netfilter
 EOF
-sudo modprobe overlay
-sudo modprobe br_netfilter
+sudo modprobe overlay br_netfilter
 ```
 
 - overlay: 文件系统支持，允许创建多个覆盖层（overlay），对容器技术有帮助
