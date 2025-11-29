@@ -64,7 +64,7 @@ sudo systemctl enable --now chronyd
 
 ```sh
 #1. 加载网桥过滤和内核转发模块（将桥接的 IPv4流量传递到 iptables的链）
-sudo tee /etc/sysctl.d/kubernetes.conf <<-EOF
+sudo tee /etc/sysctl.d/k8s.conf <<-EOF
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 net.ipv4.ip_forward = 1
