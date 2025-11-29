@@ -45,7 +45,7 @@ sudo hostnamectl set-hostname master && bash
 
 #5. 配置 hosts
 sudo tee -a /etc/hosts <<-EOF
-192.168.31.110 master
+192.168.31.110 master 
 192.168.31.111 node01
 192.168.31.112 node02
 EOF
