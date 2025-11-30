@@ -72,7 +72,7 @@ EOF
 sudo sysctl --system
 
 #2. 启用网络桥接和转发功能
-sudo tee /etc/modules-load.d/containerd.conf <<-EOF
+sudo tee /etc/modules-load.d/k8s.conf <<-EOF
 overlay
 br_netfilter
 EOF
