@@ -285,8 +285,7 @@ EOF
     yum versionlock add <pkg_name>[-version] 
 
     # 锁定 containerd，kubeadm，kubelet，kubectl
-    sudo yum versionlock add containerd.io-1.6.32 \
-        kubeadm-1.28.15 kubelet-1.28.15 kubectl-1.28.15
+    sudo yum versionlock add containerd.io kubeadm kubelet kubectl
     ```
 
 - Ubuntu
