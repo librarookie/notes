@@ -301,7 +301,6 @@ EOF
 
     更多 yum/apt 命令参考：<https://www.cnblogs.com/librarookie/p/18617956>
 
-</br>
 
 ## 三、K8S 集群搭建
 
