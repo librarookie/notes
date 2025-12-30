@@ -250,7 +250,12 @@ setenforce 0
 #安装指定版本
 sudo yum install -y kubelet-1.28.15 kubeadm-1.28.15 kubectl-1.28.15
 
-# Step 3: 设置 kubelet 自启并启动
+# Step 3: 配置 
+/etc/default/kubelet                                                                                            
+
+KUBELET_EXTRA_ARGS=
+
+# Step 4: 设置 kubelet 自启并启动
 sudo systemctl enable --now kubelet
 ```
 
