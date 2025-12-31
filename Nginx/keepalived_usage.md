@@ -278,13 +278,13 @@ vrrp_script check_haproxy {    #自定义脚本并设定脚本名称，脚本可
     mkdir -p /etc/keepalived/keepalived.conf.d
 
     # 创建子配置文件
-    touch /etc/keepalived/keepalived.conf.d/192.168.31.118.conf
+    touch /etc/keepalived/keepalived.conf.d/118-keepalived.conf
     ```
 
 3. 添加子配置内容
 
     ```sh
-    tee /etc/keepalived/keepalived.conf.d/192.168.31.118.conf <<-EOF
+    tee /etc/keepalived/keepalived.conf.d/118-keepalived.conf <<-EOF
     vrrp_script check_port {    #子配置文件的检测脚本，也可以使用keepalived.conf文件内的
         script "/usr/bin/nc -nzv -w 2 127.0.0.1 5000"
         interval 5
