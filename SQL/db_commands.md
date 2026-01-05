@@ -114,19 +114,19 @@ Tips
 
 ### 查看命令
 
-| Key | Command |
-| :--- | :--- |
-| 查看数据库 | `\l` |
-| 查看结构 | `\d tb_name` |
-| 查看所有 | `\d` |
-| 查看表 | `\dt` |
-| 查看角色（roles） | `\dg` \| `\du` |
-| 查看模式（schemas） | `\dn` |
-| 查看索引（indexes） | `\di` |
-| 查看序列（sequences） | `\ds` |
-| 查看视图（views） | `\dv` |
-| 查看类型（types） | `\dT` |
-| 查看访问权限（access） | `\dp` \| `\z` |
+| Key             | Command        |
+| :-------------- | :------------- |
+| 查看数据库           | `\l`           |
+| 查看结构            | `\d tb_name`   |
+| 查看所有            | `\d`           |
+| 查看表             | `\dt`          |
+| 查看角色（roles）     | `\dg` \| `\du` |
+| 查看模式（schemas）   | `\dn`          |
+| 查看索引（indexes）   | `\di`          |
+| 查看序列（sequences） | `\ds`          |
+| 查看视图（views）     | `\dv`          |
+| 查看类型（types）     | `\dT`          |
+| 查看访问权限（access）  | `\dp` \| `\z`  |
 
 Tips
 
@@ -138,11 +138,11 @@ Tips
 
 ### 备份与恢复
 
-| Key | Command |
-| :--- | :--- |
-| 备份| `pg_dump -U username db_name > db_backup.sql` </br> `pg_dump -U username -Fc db_name > db_backup.tar` |
-| 还原 | `psql -U username -d db_name < db_backup.sql` |
-| 恢复 | `pg_restore -U username -d db_name < db_backup.tar` |
+| Key | Command                                                                                               |
+| :-- | :---------------------------------------------------------------------------------------------------- |
+| 备份  | `pg_dump -U username db_name > db_backup.sql` </br> `pg_dump -U username -Fc db_name > db_backup.tar` |
+| 还原  | `psql -U username -d db_name < db_backup.sql`                                                         |
+| 恢复  | `pg_restore -U username -d db_name < db_backup.tar`                                                   |
 
 更多参考： <https://www.cnblogs.com/librarookie/p/15534021.html>
 
