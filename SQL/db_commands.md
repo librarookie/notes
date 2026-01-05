@@ -7,12 +7,6 @@
 
 ### 基础命令
 
-
-
-  | Key | Command |
-  | ---- | ---- |
-  | 12 | 123 |
-
   | Key | Command |
   | :--- | :--- |
   | 清屏 | `system clear`  </br> `Ctrl + l` (滚屏[^1]) |
