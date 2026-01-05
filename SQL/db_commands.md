@@ -7,6 +7,12 @@
 
 ### 基础命令
 
+
+
+  | Key | Command |
+  | ---- | ---- |
+  | 12 | 123 |
+
   | Key | Command |
   | :--- | :--- |
   | 清屏 | `system clear`  </br> `Ctrl + l` (滚屏[^1]) |
@@ -79,10 +85,10 @@ Tips
 
 ### 备份与还原
 
-| Key | Command |
-| :--- | :--- |
-| 备份 | `mysqldump -u root -p db_name tb_name1 [tb2 tb3...] > db_tables.sql`（表备份） </br>  `mysqldump -u root -p --databases DB1 [DB2 DB3...] > db_backup.sql`（数据库备份） </br> `mysqldump -u root -p --all-databases > db_all.sql`（备份所有数据库） |
-| 还原 | `mysql -u root -p db_name < db_backup.sql`  |
+| Key | Command                                                                                                                                                                                                                        |
+| :-- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 备份  | `mysqldump -u root -p db_name tb_name1 [tb2 tb3...] > db_tables.sql`（表备份） </br>  `mysqldump -u root -p --databases DB1 [DB2 DB3...] > db_backup.sql`（数据库备份） </br> `mysqldump -u root -p --all-databases > db_all.sql`（备份所有数据库） |
+| 还原  | `mysql -u root -p db_name < db_backup.sql`                                                                                                                                                                                     |
 
 Tips
 
