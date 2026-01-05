@@ -50,7 +50,7 @@
 ### 数据库操作
 
 - CREATE DATABASE - 创建新数据库
-  > CREATE DATABASE [IF NOT EXISTS] db_name character set utf8;
+  > CREATE DATABASE [IF NOT EXISTS] db_name character set uft8mb4;
 
   Tips: `IF NOT EXISTS` 判断数据库是否存在，不存在则创建数据；存在则忽略创建语句，不再创建数据库。
 
