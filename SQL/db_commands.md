@@ -11,12 +11,12 @@
   | :--- | :--- |
   | 清屏 | `system clear`  </br> `Ctrl + l` (滚屏[^1]) |
   | 登录 | `mysql -u root -p` |
-  | 切换数据库 |`USE dbname`|
-  | 查看数据库 |`SHOW DATABASES`|
-  | 查看表 |`SHOW TABLES`|
-  | 查看表结构 |`DESC tb_name` \| `SHOW COLUMNS FROM tb_name`|
-  | 退出 |`quit` \| `exit` \| `\q`|
-  | 帮助 |`？` \| `help`|
+  | 切换数据库 | `USE dbname` |
+  | 查看数据库 | `SHOW DATABASES` |
+  | 查看表 | `SHOW TABLES` |
+  | 查看表结构 | `DESC tb_name` \| `SHOW COLUMNS FROM tb_name` |
+  | 退出 |`quit` \| `exit` \| `\q` |
+  | 帮助 | `？` \| `help` |
 
 </br>
 
@@ -96,19 +96,19 @@ Tips
 
 ### 常用命令
 
-| Key | Command |
-| :--- | :--- |
-| 清屏 | `Ctrl + l` (滚屏[^1]) |
-| 登录 | `psql -U username [-d db_name] [-h db_host] [-p db_port]` |
-| 查看数据库 | `\l` |
-| 查看表 | `\dt` |
-| 切换数据库 | `\c db_name [db_user]`|
-| 显示历史命令 | `\s [file]` |
-| 退出 | `\q` |
-| 帮助 | `\? [commands]` |
-| SQL语法 | `\h [sql_name]` |
-| 修改用户密码 | `\password [username]` |
-| 显示 /修改字符集 | `\encoding [utf8]` |
+| Key       | Command                                                   |
+| :-------- | :-------------------------------------------------------- |
+| 清屏        | `Ctrl + l` (滚屏[^1])                                       |
+| 登录        | `psql -U username [-d db_name] [-h db_host] [-p db_port]` |
+| 查看数据库     | `\l`                                                      |
+| 查看表       | `\dt`                                                     |
+| 切换数据库     | `\c db_name [db_user]`                                    |
+| 显示历史命令    | `\s [file]`                                               |
+| 退出        | `\q`                                                      |
+| 帮助        | `\? [commands]`                                           |
+| SQL语法     | `\h [sql_name]`                                           |
+| 修改用户密码    | `\password [username]`                                    |
+| 显示 /修改字符集 | `\encoding [utf8]`                                        |
 
 </br>
 
