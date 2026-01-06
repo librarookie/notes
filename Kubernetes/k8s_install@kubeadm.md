@@ -548,10 +548,9 @@ sudo systemctl restart kubelet containerd
 
 - [Calico 安装文档](https://docs.tigera.io/calico/3.28/getting-started/kubernetes/self-managed-onprem/onpremises "Install Calico")
 - [Calico 版本兼容](https://docs.tigera.io/calico/3.28/getting-started/kubernetes/requirements#kubernetes-requirements "Kubernetes requirements")
+- [Calico-v3.25版本的yaml文件](https://docs.projectcalico.org/manifests/calico.yaml)
 
 ```sh
-# [Calico-v3.25版本的yaml文件](https://docs.projectcalico.org/manifests/calico.yaml)
-
 #1. 安装 Tigera Calico 运算符
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.5/manifests/tigera-operator.yaml
 ## 离线的话，可以先将 tigera-operator.yaml 下载，然后再使用 kubectl create
