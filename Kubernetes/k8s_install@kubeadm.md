@@ -503,11 +503,11 @@ sudo kubeadm reset
 # Step 4：重新加入集群（join）
 ```
 
-  - --delete-emptydir-data：删除使用 emptyDir 卷的 Pod 的数据
+- --delete-emptydir-data：删除使用 emptyDir 卷的 Pod 的数据
     - 默认情况下，drain 会保留 emptyDir 卷的数据
     - 使用此标志表示你确认可以删除这些临时数据
-  - --force：强制排空，即使某些 Pod 不受 ReplicationController、ReplicaSet、Job、DaemonSet 或 StatefulSet 管理（通常用于排空那些没有控制器管理的 Pod）
-  - --ignore-daemonsets：忽略 DaemonSet 管理的 Pod
+- --force：强制排空，即使某些 Pod 不受 ReplicationController、ReplicaSet、Job、DaemonSet 或 StatefulSet 管理（通常用于排空那些没有控制器管理的 Pod）
+- --ignore-daemonsets：忽略 DaemonSet 管理的 Pod
     - 默认情况下，drain 不会处理 DaemonSet Pod（因为它们设计为在特定节点上运行）
     - 此标志明确告诉 kubectl 忽略它们而不是报错
 
@@ -515,30 +515,31 @@ sudo kubeadm reset
 
 1. 重置节点
 
-    当 master 节点初始化失败，或 node 节点加入集群失败，则重置
+当 master 节点初始化失败，或 node 节点加入集群失败，则重置
 
-    `sudo kubeadm reset`
+`sudo kubeadm reset`
 
 2. 清理配置
 
-    ```sh
-    #1. 清理残留文件（可选但推荐）
-    sudo rm -rf /etc/cni/net.d        #清理 CNI 配置
-    sudo rm -rf /var/lib/kubelet      #清理 kubelet 数据
-    sudo rm -rf /var/lib/etcd         #如果节点曾是 etcd 成员
-    sudo rm -rf /etc/kubernetes       #清理 kubeconfig 等配置
-    sudo rm -rf $HOME/.kube           #清理 kubectl 配置
-    
-    #2. 清理 IPVS 表（如果使用 IPVS）
-    sudo ipvsadm --clear
-    
-    #3. 重置网络接口（如有必要）
-    #如果使用了 Calico、Flannel 等 CNI 插件，可能需要手动清理网络接口和 iptables 规则：
-    sudo ip link delete [name] 接口名
-    sudo iptables -F && sudo iptables -t nat -F
-    ```
+```sh
+#1. 清理残留文件（可选但推荐）
+sudo rm -rf /etc/cni/net.d        #清理 CNI 配置
+sudo rm -rf /var/lib/kubelet      #清理 kubelet 数据
+sudo rm -rf /var/lib/etcd         #如果节点曾是 etcd 成员
+sudo rm -rf /etc/kubernetes       #清理 kubeconfig 等配置
+sudo rm -rf $HOME/.kube           #清理 kubectl 配置
 
-2. 重启服务
+#2. 清理 IPVS 表（如果使用 IPVS）
+sudo ipvsadm --clear
+
+#3. 重置网络接口（如有必要）
+#如果使用了 Calico、Flannel 等 CNI 插件，可能需要手动清理网络接口和 iptables 规则：
+sudo ip link delete [name] 接口名
+sudo iptables -F && sudo iptables -t nat -F
+```
+
+3. 重启服务
+
 ```sh
 sudo systemctl restart kubelet containerd
 ```
