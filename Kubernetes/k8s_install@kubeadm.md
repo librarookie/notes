@@ -368,7 +368,7 @@ sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml
 
 - Kubernetes v1.28 支持自动检测 cgroup 驱动程序。
 - Kubernetes官方推荐使用cgroup driver 为 systemd 。
-- 从 v1.22 开始，在使用 kubeadm 创建集群时，如果用户没有在 KubeletConfiguration 下设置 cgroupDriver 字段，kubeadm 默认使用 systemd。<https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/>
+- [从 v1.22 开始，在使用 kubeadm 创建集群时，如果用户没有在 `KubeletConfiguration` 下设置 `cgroupDriver` 字段，kubeadm 默认使用 `systemd`。](https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/#systemd-cgroup-driver)
 
 
 日志如下：
