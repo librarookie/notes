@@ -310,7 +310,7 @@ EOF
 
 > 以下初始化以主机名："master"，IP："192.168.31.110"，k8s版本："1.28.15" 为例。
 
-- 方式一：以配置文件的方式初始化 master（推荐）
+方式一：以配置文件的方式初始化 master（推荐）
 
 ```sh
 #创建 k8s 资源目录
@@ -343,32 +343,31 @@ EOF
 #3.1 检验配置文件，--dry-run 试运行（可选）
 sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml --dry-run --v=5
 
-#3.2 提前下载镜像文件（可选）
-# kubeadm config images list --config $HOME/kube-home/kubeadm-config.yaml   #查看镜像
+#3.2 提前下载镜像文件，list/pull：查看/下载（可选）
 sudo kubeadm config images pull --config $HOME/kube-home/kubeadm-config.yaml
 
 sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml
 ```
 
-- 方式二：以传参的方式初始化 master
-
-```sh
-#sudo kubeadm init --apiserver-advertise-address=192.168.31.110 \
-#        --image-repository=registry.aliyuncs.com/google_containers \
-#        --kubernetes-version=v1.28.15 \
-#        --pod-network-cidr=10.244.0.0/16
-
-## 参数介绍：
-# --apiserver-advertise-address：指定 Master Api组件监听的ip地址，与其他地址通信的地址，通常是master节点的IP地址
-# --image-repository：指定镜像仓库，默认访问google下载源，所以需要指定一个国内的下载源
-# --kubernetes-version：指定 kubernetes 版本（默认使用最新版本号，可能会存在兼容问题）
-# --service-cidr：指定 service 网络的ip地址段，可以理解为同一类 pod 负载均衡的虚拟ip（默认：10.96.0.0/12）
-# --pod-network-cidr：指 pod 网络的ip地址段，分配给每个pod (calico 默认：192.168.0.0/16，flannel默认：10.244.0.0/16)
-```
-
 - Kubernetes v1.28 支持自动检测 cgroup 驱动程序。
 - Kubernetes官方推荐使用cgroup driver 为 systemd 。
 - [从 v1.22 开始，在使用 kubeadm 创建集群时，如果用户没有在 `KubeletConfiguration` 下设置 `cgroupDriver` 字段，kubeadm 默认使用 `systemd`。](https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/#systemd-cgroup-driver)
+
+方式二：以传参的方式初始化 master
+
+```sh
+sudo kubeadm init --apiserver-advertise-address=192.168.31.110 \
+        --image-repository=registry.aliyuncs.com/google_containers \
+        --kubernetes-version=v1.28.15 \
+        --pod-network-cidr=10.244.0.0/16
+```
+
+参数介绍：
+- `--apiserver-advertise-address`：指定 Master Api组件监听的ip地址，与其他地址通信的地址，通常是master节点的IP地址
+- `--image-repository`：指定镜像仓库，默认访问google下载源，所以需要指定一个国内的下载源
+- `--kubernetes-version`：指定 kubernetes 版本（默认使用最新版本号，可能会存在兼容问题）
+- `--service-cidr`：指定 service 网络的ip地址段，可以理解为同一类 pod 负载均衡的虚拟ip（默认：10.96.0.0/12）
+- `--pod-network-cidr`：指 pod 网络的ip地址段，分配给每个pod (calico 默认：192.168.0.0/16，flannel默认：10.244.0.0/16)
 
 
 日志如下：
