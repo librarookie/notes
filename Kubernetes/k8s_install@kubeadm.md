@@ -327,7 +327,7 @@ sed -i -e '/advertiseAddress/s/1.2.3.4/192.168.31.110/' \
     -e '/kubernetesVersion/c\kubernetesVersion: 1.28.15' \
     -e '/serviceSubnet/a\ \ podSubnet: 10.244.0.0\/16' $HOME/kube-home/kubeadm-config.yaml
 
-#2.2 指定 CgroupDriver
+#2.2 指定CgroupDriver
 tee -a $HOME/kube-home/kubeadm-config.yaml <<-EOF
 ---
 apiVersion: kubelet.config.k8s.io/v1beta1

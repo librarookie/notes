@@ -424,7 +424,7 @@ sudo systemctl enable --now haproxy
     EOF
 ```
 
-  其他备用节点同理，virtual_router_id 相同，priority 小于 MASTER。
+  其他备用节点同理，virtual_router_id 相同，priority值小于 MASTER。
 
 4. 验证
 
@@ -451,7 +451,7 @@ sudo systemctl enable --now haproxy
 
     在所有控制节点中配置
 
-    ```sh
+```sh
     sudo tee /etc/haproxy/haproxy.cfg <<-EOF
     global
         log     127.0.0.1 local2    #日志
@@ -491,9 +491,9 @@ sudo systemctl enable --now haproxy
         server  k8s-m2 192.168.31.111:6443 check
         server  k8s-m3 192.168.31.112:6443 check
     EOF
-    ```
+```
 
-    配置完重启 haproxy 服务生效
+  配置完重启 haproxy 服务生效
 
 ### 3.3 初始化控制面板（master）
 
@@ -503,16 +503,17 @@ sudo systemctl enable --now haproxy
 > VIP："192.168.31.99:16443",
 > k8s版本："1.28.15"
 
+方式一：以配置文件的方式初始化 master（推荐）
+
 ```sh
 #创建 k8s 资源目录
 mkdir -p $HOME/kube-home
 
-## 方式一：以配置文件的方式初始化 master（推荐）
 #1. 生成初始化配置文件
 kubeadm config print init-defaults > $HOME/kube-home/kubeadm-config.yaml
 
 #2. 初始化配置
-## 指定初始化参数
+#2.1 指定初始化参数
 sed -i -e '/advertiseAddress/s/1.2.3.4/192.168.31.110/' \
     -e '/controllerManager/i\controlPlaneEndpoint: 192.168.31.99:16443' \
     -e '/name: node/s/node/k8s-m1/' \
@@ -520,8 +521,7 @@ sed -i -e '/advertiseAddress/s/1.2.3.4/192.168.31.110/' \
     -e '/kubernetesVersion/c\kubernetesVersion: 1.28.15' \
     -e '/serviceSubnet/a\ \ podSubnet: 10.244.0.0\/16' $HOME/kube-home/kubeadm-config.yaml
 
-## 指定 CgroupDriver (从 v1.22 开始，kubeadm创建集群默认 cgroupDriver: systemd)
-## systemd配置：<https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/>
+#2.2 指定CgroupDriver
 tee -a $HOME/kube-home/kubeadm-config.yaml <<-EOF
 ---
 apiVersion: kubelet.config.k8s.io/v1beta1
@@ -533,30 +533,33 @@ kind: KubeProxyConfiguration
 mode: "ipvs"
 EOF
 
-#3. 检验配置文件，--dry-run 试运行
+#3. 初始化控制面板（master）
+#3.1 检验配置文件，--dry-run 试运行（可选）
 sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml --upload-certs --dry-run --v=5
 
-#4. 提前下载镜像文件
-# kubeadm config images list --config $HOME/kube-home/kubeadm-config.yaml   # 查看镜像
+#3.2 提前下载镜像文件，list/pull：查看/下载（可选）
 sudo kubeadm config images pull --config $HOME/kube-home/kubeadm-config.yaml
 
-#5. 初始化控制面板（master）
 sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml --upload-certs
-
-## 方式二：以传参的方式初始化 master
-#sudo kubeadm init --control-plane-endpoint=192.168.31.99:16443 --upload-certs \
-#        --image-repository=registry.aliyuncs.com/google_containers \
-#        --kubernetes-version=v1.28.15 \
-#        --pod-network-cidr=10.244.0.0/16
-
-## 参数介绍：
-# --control-plane-endpoint：标志应该被设置成负载均衡器的地址或 DNS 和端口（使用了此参数，就不用--apiserver-advertise-address参数）
-#  --upload-certs：将证书保存到 kube-system 名称空间下名为 extension-apiserver-authentication 的 configmap 中，这样其他控制平面加入的话只要加上 '--control-plane --certificate-key' 并带上相应的key就可以拿到证书并下载到本地。
-# --image-repository：指定镜像仓库，默认访问google下载源，所以需要指定一个国内的下载源
-# --kubernetes-version：指定 kubernetes 版本（默认使用最新版本号，可能会存在兼容问题）
-# --service-cidr：指定 service 网络的ip地址段，可以理解为同一类 pod 负载均衡的虚拟ip（默认：10.96.0.0/12）
-# --pod-network-cidr：指 pod 网络的ip地址段，分配给每个pod (calico 默认：192.168.0.0/16，flannel默认：10.244.0.0/16)
 ```
+
+方式二：以传参的方式初始化 master
+
+```sh
+sudo kubeadm init --control-plane-endpoint=192.168.31.99:16443 --upload-certs \
+        --image-repository=registry.aliyuncs.com/google_containers \
+        --kubernetes-version=v1.28.15 \
+        --pod-network-cidr=10.244.0.0/16
+```
+
+参数介绍：
+ - `--control-plane-endpoint`：标志应该被设置成负载均衡器的地址或 DNS 和端口（使用了此参数，就不用--apiserver-advertise-address参数）
+ - `--upload-certs`：将证书保存到 kube-system 名称空间下名为 extension-apiserver-authentication 的 configmap 中，这样其他控制平面加入的话只要加上 '--control-plane --certificate-key' 并带上相应的key就可以拿到证书并下载到本地。
+- `--image-repository`：指定镜像仓库，默认访问google下载源，所以需要指定一个国内的下载源
+- `--kubernetes-version`：指定 kubernetes 版本（默认使用最新版本号，可能会存在兼容问题）
+- `--service-cidr`：指定 service 网络的ip地址段，可以理解为同一类 pod 负载均衡的虚拟ip（默认：10.96.0.0/12）
+- `--pod-network-cidr`：指 pod 网络的ip地址段，分配给每个pod (`calico` 默认：192.168.0.0/16，`flannel` 默认：10.244.0.0/16)
+
 
 - Kubernetes v1.28 支持自动检测 cgroup 驱动程序。
 - Kubernetes官方推荐使用cgroup driver 为 systemd 。
