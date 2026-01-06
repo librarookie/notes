@@ -339,7 +339,7 @@ kind: KubeProxyConfiguration
 mode: "ipvs"
 EOF
 
-## 从 v1.22 开始，kubeadm创建集群默认 cgroupDriver: systemd)systemd配置：<https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/>
+## 从 v1.22 开始，kubeadm创建集群默认 cgroupDriver: systemd；systemd配置：<https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/>
 
 #3. 检验配置文件，--dry-run 试运行
 sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml --dry-run --v=5
