@@ -135,8 +135,8 @@ Kubernetes、containerd 与 pause 镜像版本对照表
 
 ```sh
 #离线安装：
-wget https://github.com/containerd/containerd/releases/download/v1.7.29/cri-containerd-1.7.29-linux-amd64.tar.gz
-tar -zxvf cri-containerd-cni-1.7.11-linux-amd64.tar.gz -C /
+wget https://github.com/containerd/containerd/releases/download/v1.6.32/cri-containerd-1.6.32-linux-amd64.tar.gz
+tar -zxvf cri-containerd-cni-1.6.32-linux-amd64.tar.gz -C /
 
 
 #在线安装：
