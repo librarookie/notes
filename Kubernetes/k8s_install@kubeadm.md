@@ -118,12 +118,12 @@ tips: 高版本的 centos 内核 nf_conntrack_ipv4 被 nf_conntrack 替换了
 
 Kubernetes、containerd 与 pause 镜像版本对照表
 
-| Kubernetes 版本 | 推荐/最低 containerd 版本 | 推荐 pause 镜像版本 | 关键变化 |
-| ---- | ---- | ---- | ---- |
-| 1.24.x | 1.6.x /  1.5.x | pause:3.6+ | 移除 dockershim，必须使用 CRI v1 运行时。 |
-| 1.25.x-1.27.x | 1.7.x / 1.6.x | pause:3.8+ | 稳定性优化，支持新 CRI 特性。 |
-| 1.28.x | 1.7.x / 1.6.x | pause:3.9 | 默认沙箱镜像升级至 3.9（官方公告）。 |
-| 1.29.x-1.30.x | 1.7.x 或 2.0.x / 1.7.x | pause:3.10 | containerd 2.0 开始支持新功能（如镜像加 密）。 |
+| Kubernetes 版本 | 推荐/最低 containerd 版本 | 推荐 pause 镜像版本 | 关键变化                            |
+| ------------- | ------------------- | ------------- | ------------------------------- |
+| 1.24.x        | 1.6.x /  1.5.x      | pause:3.6+    | 移除 dockershim，必须使用 CRI v1 运行时。  |
+| 1.25.x-1.27.x | 1.7.x / 1.6.x       | pause:3.8+    | 稳定性优化，支持新 CRI 特性。               |
+| 1.28.x        | 1.7.x / 1.6.x       | pause:3.9     | 默认沙箱镜像升级至 3.9（官方公告）。            |
+| 1.29.x-1.30.x | 2.0.x / 1.7.x       | pause:3.10    | containerd 2.0 开始支持新功能（如镜像加 密）。 |
 
 [常用软件兼容版本参考](https://blog.csdn.net/oSmileAngel/article/details/143252624)
 
