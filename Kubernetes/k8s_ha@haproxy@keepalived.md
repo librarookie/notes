@@ -686,7 +686,7 @@ kubectl drain node02 --delete-emptydir-data --force --ignore-daemonsets
 kubectl delete node node02
 
 # Step 3：重置配置（在移除的节点上执行）
-sudo kubeadm reset
+yes | sudo kubeadm reset
 
 # Step 4：重新加入集群（join）
 ```
