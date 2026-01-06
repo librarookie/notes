@@ -310,11 +310,12 @@ EOF
 
 > 以下初始化以主机名："master"，IP："192.168.31.110"，k8s版本："1.28.15" 为例。
 
+- 方式一：以配置文件的方式初始化 master（推荐）
+
 ```sh
 #创建 k8s 资源目录
 mkdir -p $HOME/kube-home
 
-## 方式一：以配置文件的方式初始化 master（推荐）
 #1. 生成初始化配置文件
 kubeadm config print init-defaults > $HOME/kube-home/kubeadm-config.yaml
 
@@ -327,7 +328,6 @@ sed -i -e '/advertiseAddress/s/1.2.3.4/192.168.31.110/' \
     -e '/serviceSubnet/a\ \ podSubnet: 10.244.0.0\/16' $HOME/kube-home/kubeadm-config.yaml
 
 ## 指定 CgroupDriver (从 v1.22 开始，kubeadm创建集群默认 cgroupDriver: systemd)
-## systemd配置：<https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/>
 tee -a $HOME/kube-home/kubeadm-config.yaml <<-EOF
 ---
 apiVersion: kubelet.config.k8s.io/v1beta1
@@ -339,6 +339,8 @@ kind: KubeProxyConfiguration
 mode: "ipvs"
 EOF
 
+## systemd配置：<https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/>
+
 #3. 检验配置文件，--dry-run 试运行
 sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml --dry-run --v=5
 
@@ -348,8 +350,11 @@ sudo kubeadm config images pull --config $HOME/kube-home/kubeadm-config.yaml
 
 #5. 初始化控制面板（master）
 sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml
+```
 
-## 方式二：以传参的方式初始化 master
+- 方式二：以传参的方式初始化 master
+
+```sh
 #sudo kubeadm init --apiserver-advertise-address=192.168.31.110 \
 #        --image-repository=registry.aliyuncs.com/google_containers \
 #        --kubernetes-version=v1.28.15 \
