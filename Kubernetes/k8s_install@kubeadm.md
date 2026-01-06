@@ -233,6 +233,7 @@ sudo systemctl restart containerd
 #### 2.2.1 安装 kubelet kubeadm kubectl
 
 > <https://developer.aliyun.com/mirror/kubernetes?spm=a2c6h.13651102.0.0.560a1b11KBf3Cq>
+> [Kubernetes镜像-Kubernetes镜像下载安装-开源镜像站-阿里云](https://developer.aliyun.com/mirror/kubernetes)
 
 ```sh
 # Step 1: 添加软件源信息
