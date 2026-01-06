@@ -346,15 +346,13 @@ sudo systemctl enable --now haproxy
 
 > Keepalived 参考链接：<https://www.cnblogs.com/librarookie/p/18615518>
 
-1. 配置文件备份
+1. 配置文件 keepalived.cfg 备份
 
     `sudo cp /etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf.bak`
 
-2. 配置 keepalived.cfg
+2. 在控制节点的 “主节点” 中配置
 
-    - 在控制节点的 “主节点” 中配置
-
-    ```sh
+```sh
     sudo tee /etc/keepalived/keepalived.conf <<-EOF
     global_defs {
         router_id k8s-m1    #服务器路由标识（默认为hostname）
@@ -387,11 +385,11 @@ sudo systemctl enable --now haproxy
         }
     }
     EOF
-    ```
+```
 
-    - 在控制节点的 “备用节点” 中配置
+3. 在控制节点的 “备用节点” 中配置
 
-    ```sh
+```sh
     sudo tee /etc/keepalived/keepalived.conf <<-EOF
     global_defs {
         router_id k8s-m2    #服务器路由标识
@@ -424,13 +422,13 @@ sudo systemctl enable --now haproxy
         }
     }
     EOF
-    ```
+```
 
-    其他备用节点同理，virtual_router_id 相同，priority 小于 MASTER。
+  其他备用节点同理，virtual_router_id 相同，priority 小于 MASTER。
 
-3. 验证
+4. 验证
 
-    ```sh
+```sh
     # keepavlied 服务重启生效
     sudo systemctl restart keepvlived
 
@@ -439,7 +437,7 @@ sudo systemctl enable --now haproxy
 
     #查看网卡，检查 vip 是否漂移
     ip addr show eth0
-    ```
+```
 
 ### 3.2 Haproxy 配置
 
