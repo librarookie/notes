@@ -543,6 +543,10 @@ sudo kubeadm config images pull --config $HOME/kube-home/kubeadm-config.yaml
 sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml --upload-certs
 ```
 
+- Kubernetes v1.28 支持自动检测 cgroup 驱动程序。
+- Kubernetes官方推荐使用cgroup driver 为 systemd 。
+- [从 v1.22 开始，在使用 kubeadm 创建集群时，如果用户没有在 `KubeletConfiguration` 下设置 `cgroupDriver` 字段，kubeadm 默认使用 `systemd`。](https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/#systemd-cgroup-driver)
+
 方式二：以传参的方式初始化 master
 
 ```sh
@@ -559,11 +563,6 @@ sudo kubeadm init --control-plane-endpoint=192.168.31.99:16443 --upload-certs \
 - `--kubernetes-version`：指定 kubernetes 版本（默认使用最新版本号，可能会存在兼容问题）
 - `--service-cidr`：指定 service 网络的ip地址段，可以理解为同一类 pod 负载均衡的虚拟ip（默认：10.96.0.0/12）
 - `--pod-network-cidr`：指 pod 网络的ip地址段，分配给每个pod (`calico` 默认：192.168.0.0/16，`flannel` 默认：10.244.0.0/16)
-
-
-- Kubernetes v1.28 支持自动检测 cgroup 驱动程序。
-- Kubernetes官方推荐使用cgroup driver 为 systemd 。
-- 从 v1.22 开始，在使用 kubeadm 创建集群时，如果用户没有在 KubeletConfiguration 下设置 cgroupDriver 字段，kubeadm 默认使用 systemd。
 
 日志如下：
 
