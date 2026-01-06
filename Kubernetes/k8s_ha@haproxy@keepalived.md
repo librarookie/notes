@@ -308,22 +308,22 @@ EOF
 
 - CentOS
 
-    ```sh
-    #1. 安装插件
-    sudo yum install yum-plugin-versionlock
-    #2. 添加锁定的软件 
-    yum versionlock add <pkg_name>[-version] 
+```sh
+#1. 安装插件
+sudo yum install yum-plugin-versionlock
+#2. 添加锁定的软件 
+yum versionlock add <pkg_name>[-version] 
 
-    # 锁定 containerd，kubeadm，kubelet，kubectl
-    sudo yum versionlock add containerd.io-1.6.32 \
-        kubeadm-1.28.15 kubelet-1.28.15 kubectl-1.28.15
-    ```
+# 锁定 containerd，kubeadm，kubelet，kubectl
+sudo yum versionlock add containerd.io-1.6.32 \
+	kubeadm-1.28.15 kubelet-1.28.15 kubectl-1.28.15
+```
 
 - Ubuntu
 
-    `sudo apt-mark hold containerd.io kubeadm kubelet kubectl`
+`sudo apt-mark hold containerd.io kubeadm kubelet kubectl`
 
-    更多 yum/apt 命令参考：<https://www.cnblogs.com/librarookie/p/18617956>
+更多 yum/apt 命令参考：<https://www.cnblogs.com/librarookie/p/18617956>
 
 ### 2.4 安装 Keepalived + Haproxy
 
@@ -348,80 +348,80 @@ sudo systemctl enable --now haproxy
 
 1. 配置文件 keepalived.cfg 备份
 
-    `sudo cp /etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf.bak`
+`sudo cp /etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf.bak`
 
 2. 在控制节点的 “主节点” 中配置
 
 ```sh
-    sudo tee /etc/keepalived/keepalived.conf <<-EOF
-    global_defs {
-        router_id k8s-m1    #服务器路由标识（默认为hostname）
-    }
+sudo tee /etc/keepalived/keepalived.conf <<-EOF
+global_defs {
+	router_id k8s-m1    #服务器路由标识（默认为hostname）
+}
 
-    vrrp_script check_haproxy {
-        script "/usr/bin/killall -0 haproxy"    #检查 haproxy 服务
-        timeout 1       #脚本超时时间
-        interval 3      #脚本执行间隔
-        fall 3      #连续失败 3 次，标记失败
-        rise 2      #连续成功 2 次，标记成功
-    }
+vrrp_script check_haproxy {
+	script "/usr/bin/killall -0 haproxy"    #检查 haproxy 服务
+	timeout 1       #脚本超时时间
+	interval 3      #脚本执行间隔
+	fall 3      #连续失败 3 次，标记失败
+	rise 2      #连续成功 2 次，标记成功
+}
 
-    vrrp_instance VI_1 {
-        state MASTER        #角色类型（MASTER/BACKUP）
-        interface eth0      #虚拟网卡桥接的真实网卡
-        virtual_router_id 51    #虚拟路由ID标识，同一VRRP实例中主备设置必须一致
-        priority 100        #初始优先级设定
-        advert_int 1
-        authentication {
-            auth_type PASS
-            auth_pass 1111
-        }
-        virtual_ipaddress {
-            192.168.31.99   # #对外提供的虚拟IP
-        }
+vrrp_instance VI_1 {
+	state MASTER        #角色类型（MASTER/BACKUP）
+	interface eth0      #虚拟网卡桥接的真实网卡
+	virtual_router_id 51    #虚拟路由ID标识，同一VRRP实例中主备设置必须一致
+	priority 100        #初始优先级设定
+	advert_int 1
+	authentication {
+		auth_type PASS
+		auth_pass 1111
+	}
+	virtual_ipaddress {
+		192.168.31.99   # #对外提供的虚拟IP
+	}
 
-        track_script {      #根据vrrp_script结果，调整服务
-            check_haproxy   #健康检查
-        }
-    }
-    EOF
+	track_script {      #根据vrrp_script结果，调整服务
+		check_haproxy   #健康检查
+	}
+}
+EOF
 ```
 
 3. 在控制节点的 “备用节点” 中配置
 
 ```sh
-    sudo tee /etc/keepalived/keepalived.conf <<-EOF
-    global_defs {
-        router_id k8s-m2    #服务器路由标识
-    }
+sudo tee /etc/keepalived/keepalived.conf <<-EOF
+global_defs {
+	router_id k8s-m2    #服务器路由标识
+}
 
-    vrrp_script check_haproxy {
-        script "/usr/bin/killall -0 haproxy"
-        timeout 1
-        interval 3
-        fall 3
-        rise 2
-    }
+vrrp_script check_haproxy {
+	script "/usr/bin/killall -0 haproxy"
+	timeout 1
+	interval 3
+	fall 3
+	rise 2
+}
 
-    vrrp_instance VI_1 {
-        state BACKUP        #角色类型（MASTER/BACKUP）
-        interface eth0
-        virtual_router_id 51
-        priority 90        #初始优先级设定（小于 MASTER）
-        advert_int 1
-        authentication {
-            auth_type PASS
-            auth_pass 1111
-        }
-        virtual_ipaddress {
-            192.168.31.99
-        }
+vrrp_instance VI_1 {
+	state BACKUP        #角色类型（MASTER/BACKUP）
+	interface eth0
+	virtual_router_id 51
+	priority 90        #初始优先级设定（小于 MASTER）
+	advert_int 1
+	authentication {
+		auth_type PASS
+		auth_pass 1111
+	}
+	virtual_ipaddress {
+		192.168.31.99
+	}
 
-        track_script {
-            check_haproxy
-        }
-    }
-    EOF
+	track_script {
+		check_haproxy
+	}
+}
+EOF
 ```
 
   其他备用节点同理，virtual_router_id 相同，priority值小于 MASTER。
@@ -429,14 +429,14 @@ sudo systemctl enable --now haproxy
 4. 验证
 
 ```sh
-    # keepavlied 服务重启生效
-    sudo systemctl restart keepvlived
+# keepavlied 服务重启生效
+sudo systemctl restart keepvlived
 
-    #停止 主节点的 haproxy 服务
-    sudo systemctl stop haproxy
+#停止 主节点的 haproxy 服务
+sudo systemctl stop haproxy
 
-    #查看网卡，检查 vip 是否漂移
-    ip addr show eth0
+#查看网卡，检查 vip 是否漂移
+ip addr show eth0
 ```
 
 ### 3.2 Haproxy 配置
@@ -445,52 +445,52 @@ sudo systemctl enable --now haproxy
 
 1. 配置文件备份
 
-    `sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak`
+`sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak`
 
 2. 配置 haproxy.cfg
 
-    在所有控制节点中配置
+在所有控制节点中配置
 
 ```sh
-    sudo tee /etc/haproxy/haproxy.cfg <<-EOF
-    global
-        log     127.0.0.1 local2    #日志
-        chroot  /var/lib/haproxy    #haproxy根目录
-        user    haproxy
-        group   haproxy
-        daemon              #后台运行
+sudo tee /etc/haproxy/haproxy.cfg <<-EOF
+global
+	log     127.0.0.1 local2    #日志
+	chroot  /var/lib/haproxy    #haproxy根目录
+	user    haproxy
+	group   haproxy
+	daemon              #后台运行
 
-    defaults
-        mode    http
-        log     global
-        option  httplog
-        option  dontlognull         #不记录空连接
-        option  http-server-close   #客户端保持长连接
-        option  redispatch          #允许失败发往其他节点
-        retries 3                   #连续失败 3次，标记不可用
+defaults
+	mode    http
+	log     global
+	option  httplog
+	option  dontlognull         #不记录空连接
+	option  http-server-close   #客户端保持长连接
+	option  redispatch          #允许失败发往其他节点
+	retries 3                   #连续失败 3次，标记不可用
 
-        timeout http-request    10s
-        timeout queue           1m
-        timeout connect         10s
-        timeout client          1m
-        timeout server          1m
-        timeout http-keep-alive 10s
-        timeout check           10s
-        maxconn                 3000
+	timeout http-request    10s
+	timeout queue           1m
+	timeout connect         10s
+	timeout client          1m
+	timeout server          1m
+	timeout http-keep-alive 10s
+	timeout check           10s
+	maxconn                 3000
 
-    listen k8s-apiserver
-        bind    0.0.0.0:16443    #配置负载均衡的端口（这里配置kubeadm --control-plane-endpoint 端口）
-        mode    tcp
-        log     global
-        option  tcplog
-        timeout client 1h
-        timeout connect 1h
+listen k8s-apiserver
+	bind    0.0.0.0:16443    #配置负载均衡的端口（这里配置kubeadm --control-plane-endpoint 端口）
+	mode    tcp
+	log     global
+	option  tcplog
+	timeout client 1h
+	timeout connect 1h
 
-        balance roundrobin      #轮询
-        server  k8s-m1 192.168.31.110:6443 check
-        server  k8s-m2 192.168.31.111:6443 check
-        server  k8s-m3 192.168.31.112:6443 check
-    EOF
+	balance roundrobin      #轮询
+	server  k8s-m1 192.168.31.110:6443 check
+	server  k8s-m2 192.168.31.111:6443 check
+	server  k8s-m3 192.168.31.112:6443 check
+EOF
 ```
 
   配置完重启 haproxy 服务生效
@@ -543,9 +543,9 @@ sudo kubeadm config images pull --config $HOME/kube-home/kubeadm-config.yaml
 sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml --upload-certs
 ```
 
-- Kubernetes v1.28 支持自动检测 cgroup 驱动程序。
-- Kubernetes官方推荐使用cgroup driver 为 systemd 。
-- [从 v1.22 开始，在使用 kubeadm 创建集群时，如果用户没有在 `KubeletConfiguration` 下设置 `cgroupDriver` 字段，kubeadm 默认使用 `systemd`。](https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/#systemd-cgroup-driver)
+  - Kubernetes v1.28 支持自动检测 cgroup 驱动程序。
+  - Kubernetes官方推荐使用cgroup driver 为 systemd 。
+  - [从 v1.22 开始，在使用 kubeadm 创建集群时，如果用户没有在 `KubeletConfiguration` 下设置 `cgroupDriver` 字段，kubeadm 默认使用 `systemd`。](https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/#systemd-cgroup-driver)
 
 方式二：以传参的方式初始化 master
 
@@ -557,12 +557,12 @@ sudo kubeadm init --control-plane-endpoint=192.168.31.99:16443 --upload-certs \
 ```
 
 参数介绍：
- - `--control-plane-endpoint`：标志应该被设置成负载均衡器的地址或 DNS 和端口（使用了此参数，就不用--apiserver-advertise-address参数）
- - `--upload-certs`：将证书保存到 kube-system 名称空间下名为 extension-apiserver-authentication 的 configmap 中，这样其他控制平面加入的话只要加上 `--control-plane和--certificate-key` 并带上相应的key就可以拿到证书并下载到本地。
-- `--image-repository`：指定镜像仓库，默认访问google下载源，所以需要指定一个国内的下载源
-- `--kubernetes-version`：指定 kubernetes 版本（默认使用最新版本号，可能会存在兼容问题）
-- `--service-cidr`：指定 service 网络的ip地址段，可以理解为同一类 pod 负载均衡的虚拟ip（默认：10.96.0.0/12）
-- `--pod-network-cidr`：指 pod 网络的ip地址段，分配给每个pod (`calico` 默认：192.168.0.0/16，`flannel` 默认：10.244.0.0/16)
+  - `--control-plane-endpoint`：标志应该被设置成负载均衡器的地址或 DNS 和端口（使用了此参数，就不用--apiserver-advertise-address参数）
+  - `--upload-certs`：将证书保存到 kube-system 名称空间下名为 extension-apiserver-authentication 的 configmap 中，这样其他控制平面加入的话只要加上 `--control-plane和--certificate-key` 并带上相应的key就可以拿到证书并下载到本地。
+  - `--image-repository`：指定镜像仓库，默认访问google下载源，所以需要指定一个国内的下载源
+  - `--kubernetes-version`：指定 kubernetes 版本（默认使用最新版本号，可能会存在兼容问题）
+  - `--service-cidr`：指定 service 网络的ip地址段，可以理解为同一类 pod 负载均衡的虚拟ip（默认：10.96.0.0/12）
+  - `--pod-network-cidr`：指 pod 网络的ip地址段，分配给每个pod (`calico` 默认：192.168.0.0/16，`flannel` 默认：10.244.0.0/16)
 
 日志如下：
 
