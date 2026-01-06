@@ -691,13 +691,13 @@ sudo kubeadm reset
 # Step 4：重新加入集群（join）
 ```
 
-- --delete-emptydir-data：删除使用 emptyDir 卷的 Pod 的数据
-  - 默认情况下，drain 会保留 emptyDir 卷的数据
-  - 使用此标志表示你确认可以删除这些临时数据
-- --force：强制排空，即使某些 Pod 不受 ReplicationController、ReplicaSet、Job、DaemonSet 或 StatefulSet 管理（通常用于排空那些没有控制器管理的 Pod）
-- --ignore-daemonsets：忽略 DaemonSet 管理的 Pod
-  - 默认情况下，drain 不会处理 DaemonSet Pod（因为它们设计为在特定节点上运行）
-  - 此标志明确告诉 kubectl 忽略它们而不是报错
+  - --delete-emptydir-data：删除使用 emptyDir 卷的 Pod 的数据
+    - 默认情况下，drain 会保留 emptyDir 卷的数据
+    - 使用此标志表示你确认可以删除这些临时数据
+  - --force：强制排空，即使某些 Pod 不受 ReplicationController、ReplicaSet、Job、DaemonSet 或 StatefulSet 管理（通常用于排空那些没有控制器管理的 Pod）
+  - --ignore-daemonsets：忽略 DaemonSet 管理的 Pod
+    - 默认情况下，drain 不会处理 DaemonSet Pod（因为它们设计为在特定节点上运行）
+    - 此标志明确告诉 kubectl 忽略它们而不是报错
 
 ### 3.4 安装 Pod 网络插件（CNI）
 
