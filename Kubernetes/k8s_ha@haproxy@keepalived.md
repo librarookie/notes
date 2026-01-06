@@ -254,6 +254,7 @@ sudo systemctl restart containerd
 ### 2.2 安装 Kubernetes
 
 #### 2.2.1 安装 kubelet kubeadm kubectl
+ [Kubernetes镜像下载安装-开源镜像站-阿里云](https://developer.aliyun.com/mirror/kubernetes)
 
 ```sh
 # Step 1: 添加软件源信息
@@ -275,10 +276,15 @@ setenforce 0
 #安装指定版本
 sudo yum install -y kubelet-1.28.15 kubeadm-1.28.15 kubectl-1.28.15
 
-# Step 3: 设置 kubelet 自启并启动
+# Step 3: 配置 kubelet
+#debain: /etc/default/kubelet
+#centos: /etc/sysconfig/kubelet
+#KUBELET_EXTRA_ARGS="--cgroup-driver systemd"
+sudo sed -i 's/KUBELET_EXTRA_ARGS=/&"--cgroup-driver systemd"/' /etc/sysconfig/kubelet
+
+# Step 4: 设置 kubelet 自启并启动
 sudo systemctl enable --now kubelet
 ```
-
 #### 2.2.2 配置 crictl 工具环境（选配）
 
 > [crictl 工具中文文档（k8s工具，通常在 Kubernetes 节点上使用）](https://kubernetes.io/zh-cn/docs/tasks/debug/debug-cluster/crictl "crictl 文档")
