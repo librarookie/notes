@@ -369,7 +369,6 @@ sudo kubeadm init --apiserver-advertise-address=192.168.31.110 \
 - `--service-cidr`：指定 service 网络的ip地址段，可以理解为同一类 pod 负载均衡的虚拟ip（默认：10.96.0.0/12）
 - `--pod-network-cidr`：指 pod 网络的ip地址段，分配给每个pod (`calico` 默认：192.168.0.0/16，`flannel` 默认：10.244.0.0/16)
 
-
 日志如下：
 
 ```log

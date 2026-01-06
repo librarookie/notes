@@ -558,7 +558,7 @@ sudo kubeadm init --control-plane-endpoint=192.168.31.99:16443 --upload-certs \
 
 参数介绍：
  - `--control-plane-endpoint`：标志应该被设置成负载均衡器的地址或 DNS 和端口（使用了此参数，就不用--apiserver-advertise-address参数）
- - `--upload-certs`：将证书保存到 kube-system 名称空间下名为 extension-apiserver-authentication 的 configmap 中，这样其他控制平面加入的话只要加上 '--control-plane --certificate-key' 并带上相应的key就可以拿到证书并下载到本地。
+ - `--upload-certs`：将证书保存到 kube-system 名称空间下名为 extension-apiserver-authentication 的 configmap 中，这样其他控制平面加入的话只要加上 `--control-plane和--certificate-key` 并带上相应的key就可以拿到证书并下载到本地。
 - `--image-repository`：指定镜像仓库，默认访问google下载源，所以需要指定一个国内的下载源
 - `--kubernetes-version`：指定 kubernetes 版本（默认使用最新版本号，可能会存在兼容问题）
 - `--service-cidr`：指定 service 网络的ip地址段，可以理解为同一类 pod 负载均衡的虚拟ip（默认：10.96.0.0/12）
