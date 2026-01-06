@@ -286,22 +286,22 @@ EOF
 
 - CentOS
 
-    ```sh
-    #1. 安装插件
-    sudo yum install yum-plugin-versionlock
+```sh
+#1. 安装插件
+sudo yum install yum-plugin-versionlock
 
-    #2. 添加锁定的软件 
-    yum versionlock add <pkg_name>[-version] 
+#2. 添加锁定的软件 
+yum versionlock add <pkg_name>[-version] 
 
-    # 锁定 containerd，kubeadm，kubelet，kubectl
-    sudo yum versionlock add containerd.io kubeadm kubelet kubectl
-    ```
+# 锁定 containerd，kubeadm，kubelet，kubectl
+sudo yum versionlock add containerd.io kubeadm kubelet kubectl
+```
 
 - Ubuntu
 
-    `sudo apt-mark hold containerd.io kubeadm kubelet kubectl`
+`sudo apt-mark hold containerd.io kubeadm kubelet kubectl`
 
-    更多 yum/apt 命令参考：<https://www.cnblogs.com/librarookie/p/18617956>
+更多 yum/apt 命令参考：<https://www.cnblogs.com/librarookie/p/18617956>
 
 
 ## 三、K8S 集群搭建
@@ -404,54 +404,55 @@ kubeadm join 192.168.31.110:6443 --token abcdef.0123456789abcdef \
 
 1. 修改配置
 
-    在 kube-proxy 的 ConfigMap 配置中，将 mode 字段的值更新为 "ipvs"
+在 kube-proxy 的 ConfigMap 配置中，将 mode 字段的值更新为 "ipvs"
 
-    `kubectl get configmaps -n kube-system kube-proxy -o yaml |sed 's/mode: ""/mode: "ipvs"/' |kubectl apply -f -`
+`kubectl get configmaps -n kube-system kube-proxy -o yaml |sed 's/mode: ""/mode: "ipvs"/' |kubectl apply -f -`
 
-    ```yaml
-    apiVersion: v1
-    data:
-    config.conf: |-
-        apiVersion: kubeproxy.config.k8s.io/v1alpha1
-        ...
-        kind: KubeProxyConfiguration
-        ...
-        #将 mode: "" 修改为 mode: "ipvs"
-        mode: "ipvs"
-        ...
-    ```
+```yaml
+apiVersion: v1
+data:
+config.conf: |-
+	apiVersion: kubeproxy.config.k8s.io/v1alpha1
+	...
+	kind: KubeProxyConfiguration
+	...
+	#将 mode: "" 修改为 mode: "ipvs"
+	mode: "ipvs"
+	...
+```
 
 2. 配置生效
 
-    ```sh
-    # 由于 kube-proxy 是以 Pod 形式运行的，修改完 ConfigMap 后，Kubernetes 将自动重新启动 kube-proxy Pod 以应用新的配置。
-    kubectl get pods -n kube-system --show-labels |grep kube-proxy    #筛选
-    # 或者手动删除 kube-proxy 的 Pod ，使其立即以应用新的配置重新创建，如下：
-    kubectl delete pods -n kube-system -l k8s-app=kube-proxy    #删除
-    ```
+```sh
+# 由于 kube-proxy 是以 Pod 形式运行的，修改完 ConfigMap 后，Kubernetes 将自动重新启动 kube-proxy Pod 以应用新的配置。
+kubectl get pods -n kube-system --show-labels |grep kube-proxy    #筛选
+
+# 或者手动删除 kube-proxy 的 Pod ，使其立即以应用新的配置重新创建，如下：
+kubectl delete pods -n kube-system -l k8s-app=kube-proxy    #删除
+```
 
 3. 验证功能
 
-    检查日志，以 `kube-proxy-7wxcn` 为例：
+检查日志，以 `kube-proxy-7wxcn` 为例：
 
-    `kubectl logs -n kube-system kube-proxy-7wxcn |grep ipvs`
+`kubectl logs -n kube-system kube-proxy-7wxcn |grep ipvs`
 
-    ```sh
-    I0821 03:07:27.736909       1 server others.go:269] "Using ipvs Proxier"
-    I0821 03:07:27.736956       1 server others.go:271] "Creating dualstackProxier for ipvs"
-    ```
+```sh
+I0821 03:07:27.736909       1 server others.go:269] "Using ipvs Proxier"
+I0821 03:07:27.736956       1 server others.go:271] "Creating dualstackProxier for ipvs"
+```
 
-    日志中出现此内容，则表示已经使用并创建了ipvs。
+日志中出现此内容，则表示已经使用并创建了ipvs。
 
-    验证 ipvs 功能是否正常
+验证 ipvs 功能是否正常
 
-    `sudo ipvsadm -Ln`
+`sudo ipvsadm -Ln`
 
-    ```sh
-    ...
-    TCP  10.96.0.1:443 rr
-    TCP  10.96.0.10:53 rr
-    ```
+```sh
+...
+TCP  10.96.0.1:443 rr
+TCP  10.96.0.10:53 rr
+```
 
 ### 3.2 加入工作节点（node）
 
@@ -459,48 +460,48 @@ kubeadm join 192.168.31.110:6443 --token abcdef.0123456789abcdef \
 
 - 添加工作节点
 
-    ```sh
-    #加入集群，在工作节点（node）上，分别执行 master 初始化日志中 join 命令
-    sudo kubeadm join 192.168.31.110:6443 --token abcdef.0123456789abcdef \
-            --discovery-token-ca-cert-hash sha256:ea128656e12b2a88328158686d071907785599f0ed82f0e18f9603b7690b11f7 
+```sh
+#加入集群，在工作节点（node）上，分别执行 master 初始化日志中 join 命令
+sudo kubeadm join 192.168.31.110:6443 --token abcdef.0123456789abcdef \
+	--discovery-token-ca-cert-hash sha256:ea128656e12b2a88328158686d071907785599f0ed82f0e18f9603b7690b11f7 
 
-    #如果 join 命令忘记了，或者 token 过期，则去控制节点（master）重新创建新 token， 命令如下：
-    sudo kubeadm token create --print-join-command
-    ## 此结果与 master 初始化日志中的 join 命令同理（token有效期为24h）
-    ```
+#如果 join 命令忘记了，或者 token 过期，则去控制节点（master）重新创建新 token， 命令如下：
+sudo kubeadm token create --print-join-command
+## 此结果与 master 初始化日志中的 join 命令同理（token有效期为24h）
+```
 
 - 配置工作节点 kubectl 工具环境（选配）
 
-    ```sh
-    #1. 将 master节点的 /etc/kubernetes/admin.conf 分别发送到工作节点（node）中，以 node01为例：
-    sudo scp root@master:/etc/kubernetes/admin.conf /etc/kubernetes/
+```sh
+#1. 将 master节点的 /etc/kubernetes/admin.conf 分别发送到工作节点（node）中，以 node01为例：
+sudo scp root@master:/etc/kubernetes/admin.conf /etc/kubernetes/
 
-    #2. 配置 kubectl 工具环境
-    echo "export KUBECONFIG=/etc/kubernetes/admin.conf" >> $HOME/.bashrc
+#2. 配置 kubectl 工具环境
+echo "export KUBECONFIG=/etc/kubernetes/admin.conf" >> $HOME/.bashrc
 
-    #3. 配置 admin.conf 文件权限
-    sudo chown $USER /etc/kubernetes/admin.conf
+#3. 配置 admin.conf 文件权限
+sudo chown $USER /etc/kubernetes/admin.conf
 
-    #4. 激活环境
-    source $HOME/.bashrc
-    ```
+#4. 激活环境
+source $HOME/.bashrc
+```
 
 - 移除工作节点
 
-    ```sh
-    # Step 1：列出所有nodes
-    kubectl get node -o wide
+```sh
+# Step 1：列出所有nodes
+kubectl get node -o wide
 
-    # Step 2：删除节点 node02 （在控制平面节点 master 上）
-    kubectl drain node02 --delete-emptydir-data --force --ignore-daemonsets
-    #该命令的主要目的是安全地将 node02 节点上的 Pod 驱逐到集群中的其他节点，以便对该节点进行维护或升级。
-    kubectl delete node node02
+# Step 2：删除节点 node02 （在控制平面节点 master 上）
+kubectl drain node02 --delete-emptydir-data --force --ignore-daemonsets
+#该命令的主要目的是安全地将 node02 节点上的 Pod 驱逐到集群中的其他节点，以便对该节点进行维护或升级。
+kubectl delete node node02
 
-    # Step 3：重置配置（在移除的节点上执行）
-    sudo kubeadm reset
+# Step 3：重置配置（在移除的节点上执行）
+sudo kubeadm reset
 
-    # Step 4：重新加入集群（join）
-    ```
+# Step 4：重新加入集群（join）
+```
 
   - --delete-emptydir-data：删除使用 emptyDir 卷的 Pod 的数据
     - 默认情况下，drain 会保留 emptyDir 卷的数据
