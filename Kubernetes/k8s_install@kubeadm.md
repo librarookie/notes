@@ -339,14 +339,14 @@ kind: KubeProxyConfiguration
 mode: "ipvs"
 EOF
 
-#3. 检验配置文件，--dry-run 试运行
+#3. 初始化控制面板（master）
+#3.1 检验配置文件，--dry-run 试运行（可选）
 sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml --dry-run --v=5
 
-#4. 提前下载镜像文件
+#3.2 提前下载镜像文件（可选）
 # kubeadm config images list --config $HOME/kube-home/kubeadm-config.yaml   #查看镜像
 sudo kubeadm config images pull --config $HOME/kube-home/kubeadm-config.yaml
 
-#5. 初始化控制面板（master）
 sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml
 ```
 
