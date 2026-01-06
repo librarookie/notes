@@ -339,8 +339,6 @@ kind: KubeProxyConfiguration
 mode: "ipvs"
 EOF
 
-## 从 v1.22 开始，kubeadm创建集群默认 cgroupDriver: systemd；systemd配置：<https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/>
-
 #3. 检验配置文件，--dry-run 试运行
 sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml --dry-run --v=5
 
@@ -371,6 +369,8 @@ sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml
 - Kubernetes v1.28 支持自动检测 cgroup 驱动程序。
 - Kubernetes官方推荐使用cgroup driver 为 systemd 。
 - 从 v1.22 开始，在使用 kubeadm 创建集群时，如果用户没有在 KubeletConfiguration 下设置 cgroupDriver 字段，kubeadm 默认使用 systemd。
+## 从 v1.22 开始，kubeadm创建集群默认 cgroupDriver: systemd；systemd配置：<https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/>
+
 
 日志如下：
 
