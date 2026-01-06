@@ -157,8 +157,6 @@ sudo yum -y install containerd.io-1.6.32
 sudo systemctl enable --now containerd
 ```
 
-[Containerd 离线安装](https://www.cnblogs.com/nolenlinux/articles/18437173)
-
 #### 2.1.2 初始化 containerd 配置
 
 > <https://github.com/containerd/containerd/blob/main/docs/cri/config.md>
