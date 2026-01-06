@@ -320,14 +320,14 @@ mkdir -p $HOME/kube-home
 kubeadm config print init-defaults > $HOME/kube-home/kubeadm-config.yaml
 
 #2. 初始化配置
-## 指定初始化参数
+#2.1 指定初始化参数
 sed -i -e '/advertiseAddress/s/1.2.3.4/192.168.31.110/' \
     -e '/name: node/s/node/master/' \
     -e '/imageRepository/s|registry.k8s.io|registry.aliyuncs.com/google_containers|' \
     -e '/kubernetesVersion/c\kubernetesVersion: 1.28.15' \
     -e '/serviceSubnet/a\ \ podSubnet: 10.244.0.0\/16' $HOME/kube-home/kubeadm-config.yaml
 
-## 指定 CgroupDriver (从 v1.22 开始，kubeadm创建集群默认 cgroupDriver: systemd)
+#2.2 指定 CgroupDriver
 tee -a $HOME/kube-home/kubeadm-config.yaml <<-EOF
 ---
 apiVersion: kubelet.config.k8s.io/v1beta1
@@ -339,7 +339,7 @@ kind: KubeProxyConfiguration
 mode: "ipvs"
 EOF
 
-## systemd配置：<https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/>
+## 从 v1.22 开始，kubeadm创建集群默认 cgroupDriver: systemd)systemd配置：<https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/>
 
 #3. 检验配置文件，--dry-run 试运行
 sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml --dry-run --v=5
