@@ -611,22 +611,24 @@ kubeadm join 192.168.31.99:16443 --token abcdef.0123456789abcdef \
 sudo kubeadm join 192.168.31.99:16443 --token abcdef.0123456789abcdef \
         --discovery-token-ca-cert-hash sha256:c86def262486917457d9e7a4b47962a390270130613e53ca91d69104c6cd5661 \
         --control-plane --certificate-key 28af77afc066211ce24b30114d92f018204e56172b1057fa504ed3feccfef597
-        
-sudo kubeadm join 192.168.31.99:16443 --token xk51i6.ln78yf08ohv5c4m1 \
-		--discovery-token-ca-cert-hash sha256:5e640140a2085f495bf42b6d2771869d40a19a3f3f9ab92b5688b3f3a0eb9523 \
-		--control-plane --certificate-key 30821e99cf7577cb1ba6687a7f4ef338e611120c362147f48423ebe3b1c11073
-
-sudo kubeadm join 192.168.31.99:16443 --token cgmslc.vt4a7sueg9h86h90 \
- --discovery-token-ca-cert-hash sha256:5e640140a2085f495bf42b6d2771869d40a19a3f3f9ab92b5688b3f3a0eb9523 \
- --control-plane --certificate-key d2140d458764cf4f0611a80f96d574176de74393326789e3414ca547d43fd3a6
 
 #如果需要，可以使用来重新加载证书。
 sudo kubeadm init phase upload-certs --upload-certs
 #请注意，证书密钥可访问群集敏感数据，因此请保密！作为一种保障措施，上传的证书将在两小时后删除；
 
 # 如果 join 命令忘记了，或者 token 过期，则重新创建新 token， 命令如下：
-sudo kubeadm token create --print-join-command
-## 此结果与 master 初始化日志中的 join 命令同理（token有效期为24h）
+
+
+# 如果上面日志的命令忘记了，则在已存在的控制平面节点上执行：
+# 生成新的 token
+sudo kubeadm token create [--ttl 24h] --print-join-command
+# 创建新token，有效期可以设置长一些（默认24小时，可用--ttl）
+
+# 生成证书密钥（如果要做控制平面节点）
+kubeadm init phase upload-certs --upload-certs
+
+# 或者一次性生成完整的join命令（包括证书密钥）
+kubeadm token create --print-join-command && kubeadm init phase upload-certs --upload-certs
 ```
 
 日志如下：
