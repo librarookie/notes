@@ -618,8 +618,7 @@ sudo kubeadm join 192.168.31.99:16443 --token xk51i6.ln78yf08ohv5c4m1 \
 
 sudo kubeadm join 192.168.31.99:16443 --token cgmslc.vt4a7sueg9h86h90 \
  --discovery-token-ca-cert-hash sha256:5e640140a2085f495bf42b6d2771869d40a19a3f3f9ab92b5688b3f3a0eb9523 \
- --control-plane --certificate-key 
-d2140d458764cf4f0611a80f96d574176de74393326789e3414ca547d43fd3a6
+ --control-plane --certificate-key d2140d458764cf4f0611a80f96d574176de74393326789e3414ca547d43fd3a6
 
 #如果需要，可以使用来重新加载证书。
 sudo kubeadm init phase upload-certs --upload-certs
