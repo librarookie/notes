@@ -611,6 +611,10 @@ kubeadm join 192.168.31.99:16443 --token abcdef.0123456789abcdef \
 sudo kubeadm join 192.168.31.99:16443 --token abcdef.0123456789abcdef \
         --discovery-token-ca-cert-hash sha256:c86def262486917457d9e7a4b47962a390270130613e53ca91d69104c6cd5661 \
         --control-plane --certificate-key 28af77afc066211ce24b30114d92f018204e56172b1057fa504ed3feccfef597
+        
+sudo kubeadm join 192.168.31.99:16443 --token xk51i6.ln78yf08ohv5c4m1 \
+		--discovery-token-ca-cert-hash sha256:5e640140a2085f495bf42b6d2771869d40a19a3f3f9ab92b5688b3f3a0eb9523 \
+		--control-plane --certificate-key 30821e99cf7577cb1ba6687a7f4ef338e611120c362147f48423ebe3b1c11073
 
 #如果需要，可以使用来重新加载证书。
 sudo kubeadm init phase upload-certs --upload-certs
