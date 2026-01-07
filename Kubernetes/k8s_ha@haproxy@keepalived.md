@@ -612,7 +612,7 @@ sudo kubeadm join 192.168.31.99:16443 --token abcdef.0123456789abcdef \
         --discovery-token-ca-cert-hash sha256:c86def262486917457d9e7a4b47962a390270130613e53ca91d69104c6cd5661 \
         --control-plane --certificate-key 28af77afc066211ce24b30114d92f018204e56172b1057fa504ed3feccfef597
 
-#如果需要，可以使用 来重新加载证书。
+#如果需要，可以使用来重新加载证书。
 sudo kubeadm init phase upload-certs --upload-certs
 #请注意，证书密钥可访问群集敏感数据，因此请保密！作为一种保障措施，上传的证书将在两小时后删除；
 
