@@ -169,7 +169,6 @@ mkdir -p /etc/containerd
 在线安装：
 
 ```sh
-
 # Step 1: 安装必要的一些系统工具
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 

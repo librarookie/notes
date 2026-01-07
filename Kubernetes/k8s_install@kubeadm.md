@@ -133,13 +133,19 @@ Kubernetes、containerd 与 pause 镜像版本对照表
 
 [Docker CE 镜像](https://developer.aliyun.com/mirror/docker-ce "阿里云镜像")
 
+离线安装：
+
 ```sh
-#离线安装：
+#下载并解压
 wget https://github.com/containerd/containerd/releases/download/v1.6.32/cri-containerd-1.6.32-linux-amd64.tar.gz
 tar -zxvf cri-containerd-cni-1.6.32-linux-amd64.tar.gz -C /
+#手动创建配置目录
 mkdir -p /etc/containerd
+```
 
-#在线安装：
+在线安装：
+
+```sh
 # Step 1: 安装必要的一些系统工具
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 
