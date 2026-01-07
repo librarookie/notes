@@ -184,7 +184,7 @@ containerd config dump
 
 > 参考链接：<https://www.orchome.com/17176>
 
-`sudo sed -i '0,/config_path/s|""|"/etc/containerd/certs.d"|' /etc/containerd/config.toml`
+`sudo sed -i '/registry/,+1s|config_path = ""|config_path = "/etc/containerd/certs.d"|' /etc/containerd/config.toml`
 
 ```sh
 # docker.io 镜像
