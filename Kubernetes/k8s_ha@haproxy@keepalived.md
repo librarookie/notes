@@ -181,10 +181,11 @@ sudo yum makecache fast
 # yum list containerd.io --showduplicates |sort -V
 #安装指定版本
 sudo yum -y install containerd.io-1.6.32
-
-# Step 4: 设置开机自启并启动
-sudo systemctl enable --now containerd
 ```
+
+设置开机自启并启动
+
+`sudo systemctl enable --now containerd`
 
 #### 2.1.2 初始化 containerd 配置
 
