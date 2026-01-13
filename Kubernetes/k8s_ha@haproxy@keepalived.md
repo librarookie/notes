@@ -517,7 +517,7 @@ EOF
 mkdir -p $HOME/kube-home
 
 #1. 生成初始化配置文件
-kubeadm config print init-defaults > $HOME/kube-home/kubeadm-config.yaml
+kubeadm config print init-hlui  > $HOME/kube-home/kubeadm-config.yaml
 
 #2. 初始化配置
 #2.1 指定初始化参数
