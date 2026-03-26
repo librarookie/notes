@@ -68,15 +68,15 @@ echo "Date: $(date +%F)"    --> Date: 2022-06-16
 2. 以彩色进行echo打印
 
 ```sh
-echo -e "\033[1;37mWHITE"     –打印白色 WHITE
-echo -e "\033[0;30mBLACK"     –打印黑色 BLACK
-echo -e "\033[0;34mBLUE"      –打印蓝色 BLUE
-echo -e "\033[0;32mGREEN"     –打印绿色 GREEN
-echo -e "\033[0;36mCYAN"      –打印青蓝色 CYAN
-echo -e "\033[0;31mRED"       –打印红色 RED
-echo -e "\033[0;35mPURPLE"    –打印紫色 PURPLE
-echo -e "\033[0;33mYELLOW"    –打印黄色 YELLOW
-echo -e "\033[1;30mGRAY"      –打印灰色 GRAY
+echo -e "\033[1;37mWHITE"     #打印白色 WHITE
+echo -e "\033[0;30mBLACK"     #打印黑色 BLACK
+echo -e "\033[0;34mBLUE"      #打印蓝色 BLUE
+echo -e "\033[0;32mGREEN"     #打印绿色 GREEN
+echo -e "\033[0;36mCYAN"      #打印青蓝色 CYAN
+echo -e "\033[0;31mRED"       #打印红色 RED
+echo -e "\033[0;35mPURPLE"    #打印紫色 PURPLE
+echo -e "\033[0;33mYELLOW"    #打印黄色 YELLOW
+echo -e "\033[1;30mGRAY"      #打印灰色 GRAY
 ```
 
 
