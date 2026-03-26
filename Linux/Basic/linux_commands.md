@@ -75,7 +75,7 @@ echo -e "\033[0;32mGREEN"     #打印绿色 GREEN
 echo -e "\033[0;36mCYAN"      #打印青蓝色 CYAN
 echo -e "\033[0;31mRED"       #打印红色 RED
 echo -e "\033[0;35mPURPLE"    #打印紫色 PURPLE
-echo -e "\033[0;33mYELLOW"    #Nginx验证陈旧缓存依然有效 打印黄色 YELLOW
+echo -e "\033[0;33mYELLOW"    #打印黄色 YELLOW
 echo -e "\033[1;30mGRAY"      #打印灰色 GRAY
 ```
 
