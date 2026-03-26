@@ -87,16 +87,23 @@ echo -e "\033[1;30mGRAY"      –打印灰色 GRAY
 > 添加别名 alias [-p] [name[=value] ...]
 > 删除别名 unalias [-a] name [name ...]
 
--p 列出所有alias
-
 1. 临时配置alias
 
 > 此操作只有当前窗口生效，重新打开则失效；
 
-- 新增/修改别名：`alias la='ls -a'`
-- 删除别名：`unalias la ll`
+```sh
+# 列出所有别名
+alias -p
 
-Tips: `unalias -a` 临时删除所有别名
+# 新增/修改别名
+alias la='ls -a'
+
+# 删除别名
+unalias la ll
+
+# 临时删除所有别名
+unalias -a
+```
 
 2. 永久配置alias
 
