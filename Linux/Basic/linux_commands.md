@@ -80,6 +80,10 @@ echo -e "\033[1;30mGRAY"      –打印灰色 GRAY
 ```
 
 
+## sed
+
+[sed命令请前往](https://www.cnblogs.com/librarookie/p/18504458)<https://www.cnblogs.com/librarookie/p/18504458>
+
 ## alias（别名）
 
 - Usage
