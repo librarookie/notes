@@ -8,6 +8,11 @@
 2. bash 能从文件中读取 Linux命令，称之为“脚本”；
 3. bash 支持通配符、管道、命令替换、条件判断等逻辑控制语句；
 
+## $'...'（ANSI-C 引用）
+
+> # $'...'（ANSI-C 引用）
+基本语法：`$'string'`
+
 
 ## echo
 
@@ -63,8 +68,6 @@ echo "This is the content" > file.txt      --> cat file.txt      --> This is the
 echo $USER                  --> root
 # 打印命令的输出
 echo "Date: $(date +%F)"    --> Date: 2022-06-16
-
-# $ 初始化数据
 ```
 
 2. 以彩色进行echo打印
