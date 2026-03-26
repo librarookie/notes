@@ -132,7 +132,7 @@ sed -i '/lsa/d' $HOME/.bashrc
 source $HOME/.bashrc
 ```
 
-# path的目录层级； 
+# 表示默认 
 
 ## history
 
