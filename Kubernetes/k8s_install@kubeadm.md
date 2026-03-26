@@ -531,9 +531,9 @@ yes | sudo kubeadm reset
 ```sh
 #1. 清理残留文件（可选但推荐）
 sudo rm -rf /etc/cni/net.d        #清理 CNI 配置
-sudo rm -rf /var/lib/kubelet      #清理 kubelet 数据
+#sudo rm -rf /var/lib/kubelet      #清理 kubelet 数据
 sudo rm -rf /var/lib/etcd         #如果节点曾是 etcd 成员
-sudo rm -rf /etc/kubernetes       #清理 kubeconfig 等配置
+#sudo rm -rf /etc/kubernetes       #清理 kubeconfig 等配置
 sudo rm -rf $HOME/.kube           #清理 kubectl 配置
 
 #2. 清理 IPVS 表（如果使用 IPVS）
