@@ -33,13 +33,10 @@ $'string'
 ```sh
 # 1. 处理特殊字符或单引号
 
-# 输出两行内容
-echo $'第一行\n第二行'
-
 # 输出制表符分隔的内容
 echo $'姓名:\t张三\n年龄:\t25'
 
-# 输出：It's a test
+# 单引号转义，输出：It's a test
 echo $'It\'s a test'
 
 # 在grep模式中使用制表符进行匹配
