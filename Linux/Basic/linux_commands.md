@@ -10,9 +10,18 @@
 
 ## $'...'（ANSI-C 引用）
 
-> # $'...'（ANSI-C 引用）
-基本语法：`$'string'`
+> 基本语法：$'string'，解释 string 的内容后，再输出
 
+```sh
+# 在字符串中，反斜杠序列会被解释
+echo $'Line1\nLine2'
+echo 'Line3\nLine4'
+
+# 输出：
+Line1
+Line2
+Line3\nLine4
+```
 
 ## echo
 
@@ -83,7 +92,6 @@ echo -e "\033[0;35mPURPLE"    # 打印紫色 PURPLE
 echo -e "\033[0;33mYELLOW"    # 打印黄色 YELLOW
 echo -e "\033[1;30mGRAY"      # 打印灰色 GRAY
 ```
-
 
 ## sed（流编辑器）
 
