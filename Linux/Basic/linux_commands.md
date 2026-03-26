@@ -63,6 +63,8 @@ echo "This is the content" > file.txt      --> cat file.txt      --> This is the
 echo $USER                  --> root
 # 打印命令的输出
 echo "Date: $(date +%F)"    --> Date: 2022-06-16
+
+# $ 初始化数据
 ```
 
 2. 以彩色进行echo打印
