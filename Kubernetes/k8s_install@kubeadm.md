@@ -260,7 +260,7 @@ setenforce 0
 #安装指定版本
 sudo yum install -y kubelet-1.28.15 kubeadm-1.28.15 kubectl-1.28.15
 
-# Step 3: 配置 kubelet
+# Step 3: 配置 kubelet (1.22及以上的默认值)
 #debain: /etc/default/kubelet
 #centos: /etc/sysconfig/kubelet
 #KUBELET_EXTRA_ARGS="--cgroup-driver systemd"
