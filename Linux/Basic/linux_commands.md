@@ -80,9 +80,11 @@ echo -e "\033[1;30mGRAY"      –打印灰色 GRAY
 ```
 
 
-## sed
+## sed（流编辑器）
 
-[sed命令请前往](https://www.cnblogs.com/librarookie/p/18504458)<https://www.cnblogs.com/librarookie/p/18504458>
+>sed是一种流编辑器，能高效地完成各种替换、删除、插入等操作，按照文件数据行顺序，重复处理满足条件的每一行数据，然后把结果展示打印，且不会改变原文件内容。
+
+[sed命令请前往](https://www.cnblogs.com/librarookie/p/18504458)：<https://www.cnblogs.com/librarookie/p/18504458>
 
 ## alias（别名）
 
