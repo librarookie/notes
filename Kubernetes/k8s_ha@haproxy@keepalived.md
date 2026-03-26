@@ -526,10 +526,10 @@ sed -i -e '/advertiseAddress/s/1.2.3.4/192.168.31.110/' \
     -e '/name: node/s/node/k8s-m1/' \
     -e '/imageRepository/s|registry.k8s.io|registry.aliyuncs.com/google_containers|' \
     -e '/kubernetesVersion/c\kubernetesVersion: 1.28.15' \
-    -e '/serviceSubnet/a\ \ podSubnet: 10.244.0.0\/16' $HOME/kube-home/kubeadm-config.yaml
+    -e '/serviceSubnet/a\ \ podSubnet: 10.244.0.0\/16' $HOME/kube-home/ha-kubeadm-config.yaml
 
 #2.2 指定CgroupDriver
-tee -a $HOME/kube-home/kubeadm-config.yaml <<-EOF
+tee -a $HOME/kube-home/ha-kubeadm-config.yaml <<-EOF
 ---
 apiVersion: kubelet.config.k8s.io/v1beta1
 kind: KubeletConfiguration
@@ -542,12 +542,12 @@ EOF
 
 #3. 初始化控制面板（master）
 #3.1 检验配置文件，--dry-run 试运行（可选）
-sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml --upload-certs --dry-run --v=5
+sudo kubeadm init --config $HOME/kube-home/ha-kubeadm-config.yaml --upload-certs --dry-run --v=5
 
 #3.2 提前下载镜像文件，list/pull：查看/下载（可选）
-sudo kubeadm config images pull --config $HOME/kube-home/kubeadm-config.yaml
+sudo kubeadm config images pull --config $HOME/kube-home/ha-kubeadm-config.yaml
 
-sudo kubeadm init --config $HOME/kube-home/kubeadm-config.yaml --upload-certs
+sudo kubeadm init --config $HOME/kube-home/ha-kubeadm-config.yaml --upload-certs
 ```
 
   - Kubernetes v1.28 支持自动检测 cgroup 驱动程序。
