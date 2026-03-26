@@ -44,7 +44,8 @@ Line3\nLine4
 
 ## echo
 
-> echo命令是Linux中最基本和最常用的命令之一。传递参数给echo将打印到标准输出。echo通常在shell脚本中用于打印消息或输出其他命令的结果。Linxu还有一个独立的/usr/bin/echo程序，但它们的行为与shell之间略有不同。通常shell内置版本将优先。
+> echo命令是Linux中最基本和最常用的命令之一，通常在shell脚本中用于打印消息或输出其他命令的结果。
+> Linxu还有一个独立的/usr/bin/echo程序，但它们的行为与shell之间略有不同。通常shell内置版本将优先。
 
 `echo [-neE]... [STRING]...`
 
@@ -115,8 +116,6 @@ echo -e "\033[1;30mGRAY"      # 打印灰色 GRAY
 [sed命令介绍请前往](https://www.cnblogs.com/librarookie/p/18504458 “传送装”)：<https://www.cnblogs.com/librarookie/p/18504458>
 
 ## alias（别名）
-
-- Usage
 
 > 添加别名 alias [-p] [name[=value] ...]
 > 删除别名 unalias [-a] name [name ...]
