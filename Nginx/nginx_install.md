@@ -39,7 +39,7 @@ make
 sudo make install
 ```
 
-`./configure --help` 查看./configure 支持哪些参数
+`./configure --help` 查看./configure 支持哪些参数z
 
 - --with-xxx_xxx：  #表示默认`不安装`该模块。如果需要安装，则添加到 ./configure 参数中；
 - --without-xxx_xxx： #表示默认`会安装`该模块。如果不需要安装，则添加到 ./configure 参数中。
