@@ -9,60 +9,60 @@
 
 1. 准备源代码包
 
-    ```sh
-    #从项目的官方网站或代码仓库（如 GitHub）下载源代码
-    wget https://nginx.org/download/nginx-1.24.0.tar.gz     #下载
-    tar -xzvf nginx-1.24.0.tar.gz       #解压
-    cd nginx-1.24.0
-    ```
+```sh
+#从项目的官方网站或代码仓库（如 GitHub）下载源代码
+wget https://nginx.org/download/nginx-1.24.0.tar.gz     #下载
+tar -xzvf nginx-1.24.0.tar.gz       #解压
+cd nginx-1.24.0
+```
 
 2. 安装编译工具和依赖项
 
-    ```sh
-    #正则表达式库（pcre-devel）、 数据压缩库（zlib-devel）和 https模块库（openssl-devel）
-    sudo yum install pcre pcre-devel zlib zlib-devel openssl openssl-devel
-    ```
+```sh
+#正则表达式库（pcre-devel）、 数据压缩库（zlib-devel）和 https模块库（openssl-devel）
+sudo yum install pcre pcre-devel zlib zlib-devel openssl openssl-devel
+```
 
-    zlib与zlib-devel关系：zlib-devel提供编译环境，zlib提供运行时环境。其他同理，*-devel 库只支持编译，并不支持运行。
+zlib与zlib-devel关系：zlib-devel提供编译环境，zlib提供运行时环境。其他同理，*-devel 库只支持编译，并不支持运行。
 
 3. 安装（3步曲）
 
-    ```sh
-    #配置构建环境
-    ./configure --prefix=/usr/local/nginx \
-                --with-http_ssl_module
+```sh
+#配置构建环境
+./configure --prefix=/usr/local/nginx \
+			--with-http_ssl_module
 
-    #编译
-    make
+#编译
+make
 
-    #安装
-    sudo make install
-    ```
+#安装
+sudo make install
+```
 
-    `./configure --help` 查看./configure 支持哪些参数
+`./configure --help` 查看./configure 支持哪些参数
 
-    - --with-xxx_xxx：  #表示默认`不安装`该模块。如果需要安装，则添加到 ./configure 参数中；
-    - --without-xxx_xxx： #表示默认`会安装`该模块。如果不需要安装，则添加到 ./configure 参数中。
-    - --prefix    #指定了Nginx的安装目录；
-    - --with-http_ssl_module    #启用 SSL 支持，确保Nginx编译时包含SSL模块；
-    - --with-http_stub_status_module    #启用Nginx状态信息模块（监控 Nginx 的性能和健康状态）
+- --with-xxx_xxx：  #表示默认`不安装`该模块。如果需要安装，则添加到 ./configure 参数中；
+- --without-xxx_xxx： #表示默认`会安装`该模块。如果不需要安装，则添加到 ./configure 参数中。
+- --prefix    #指定了Nginx的安装目录；
+- --with-http_ssl_module    #启用 SSL 支持，确保Nginx编译时包含SSL模块；
+- --with-http_stub_status_module    #启用Nginx状态信息模块（监控 Nginx 的性能和健康状态）
 
 4. 验证
 
-    ```sh
-    #启动验证
-    sudo /usr/local/nginx/sbin/nginx
-    /usr/local/nginx/sbin/nginx -version
-    ```
+```sh
+#启动验证
+sudo /usr/local/nginx/sbin/nginx
+/usr/local/nginx/sbin/nginx -version
+```
 
 5. 卸载
 
-    ```sh
-    sudo rm -rf /usr/local/nginx
-    #编译安装只需清理编译目录即可，即删除 --prefix 参数目录。    
-    ```
+```sh
+sudo rm -rf /usr/local/nginx
+#编译安装只需清理编译目录即可，即删除 --prefix 参数目录。    
+```
 
-    更多配置内容查看这篇：《[Nginx 配置与实战](https://www.cnblogs.com/librarookie/p/18773209)》
+更多配置内容查看这篇：《[Nginx 配置与实战](https://www.cnblogs.com/librarookie/p/18773209)》
 
 ### 1.2 升级（安装缺失模块）
 
