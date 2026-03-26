@@ -335,7 +335,7 @@ sed -i -e '/advertiseAddress/s/1.2.3.4/192.168.31.110/' \
     -e '/serviceSubnet/a\ \ podSubnet: 10.244.0.0\/16' $HOME/kube-home/kubeadm-config.yaml
 
 #2.2 指定集群的CgroupDriver（1.22及以上默认值systemd，只要容器运行时的 cgroup 驱动也配置为systemd，则可省略此配置）
-#2.3 指定集群kube-proxy 的 mode 字段（默认值是 iptables，此处没指定，则手动修改代理模式）
+#2.3 指定集群kube-proxy 的 mode 字段（默认值是 iptables，未指定则可转手动修改代理模式）
 tee -a $HOME/kube-home/kubeadm-config.yaml <<-EOF
 ---
 apiVersion: kubelet.config.k8s.io/v1beta1
