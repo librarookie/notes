@@ -30,16 +30,43 @@ $'string'
 其工作原理是，Bash会将 `$'string'` 展开为一个新的字符串，其中的转义序列被替换为对应的字符
 
 
-
 ```sh
-# 在字符串中，反斜杠序列会被解释
-echo $'Line1\nLine2'
-echo 'Line3\nLine4'
+# 1. 预转义处理
 
-# 输出：
-Line1
-Line2
-Line3\nLine4
+### 1. 处理特殊字符或单引号
+
+# 输出两行内容
+echo $'第一行\n第二行'
+
+# 输出制表符分隔的内容
+echo $'姓名:\t张三\n年龄:\t25'
+
+# 输出：It's a test
+echo $'It\'s a test'
+
+# 在grep模式中使用制表符进行匹配
+grep $'\t' file.txt
+
+# 在sed脚本中使用换行符作为模式
+sed $'s/old/new\\\n/g' file.txt  # 注意这里的\\\n，第一个\\转义为\，然后与n组合成\n
+
+
+### 4. 构建复杂的提示字符串或彩色输出
+
+# 输出绿色的“Success”并重置颜色
+echo $'\e[32mSuccess\e[0m'
+# 定义一个包含换行和颜色的变量
+PROMPT=$'\n\e[1;34m请输入选项: \e[0m'
+
+结合ANSI转义码（`\e[`），可以方便地设置终端文本颜色和样式
+
+### 5. 在参数扩展等高级用法中精确匹配
+
+# 删除变量值中的第一个制表符及其前的内容
+var="name\tvalue"
+echo "${var#*$'\t'}"  # 输出: value
+
+在Bash的参数扩展（如 `${parameter#pattern}`）或字符串匹配中，需要精确表示制表符等字符时，ANSI-C引用是标准方法
 ```
 
 ## echo
