@@ -734,13 +734,13 @@ proxy_cache_key     #默认值 $scheme$proxy_host$request_uri;
 
 `upstream_cache_status` 变量，设置在响应头信息中，在调试中非常有用，它存储了缓存是否命中的信息，如下：
 
-- `MISS`:  #未命中缓存
-- `HIT：`:  #命中缓存
-- `EXPIRED`:  #缓存过期
-- `STALE`:  #命中了陈旧缓存
-- `REVALIDDATED`:  #Nginx验证陈旧缓存依然有效
-- `UPDATING`:  #内容陈旧，但正在更新
-- `BYPASS`:  #响应从原始服务器获取
+- `MISS`:  未命中缓存
+- `HIT：`:  命中缓存
+- `EXPIRED`:  缓存过期
+- `STALE`:  命中了陈旧缓存
+- `REVALIDDATED`:  Nginx验证陈旧缓存依然有效
+- `UPDATING`:  内容陈旧，但正在更新
+- `BYPASS`:  响应从原始服务器获取
 
 #### 1.8.4 缓存配置实例
 
