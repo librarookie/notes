@@ -329,7 +329,7 @@ kubeadm config print init-defaults > $HOME/kube-home/kubeadm-config.yaml
 #2. 初始化配置
 #2.1 指定初始化参数
 sed -i -e '/advertiseAddress/s/1.2.3.4/192.168.31.110/' \
-    -e '/name: node/s/node/master/' \
+    -e '/name: node/s/node/k8s-m1/' \
     -e '/imageRepository/s|registry.k8s.io|registry.aliyuncs.com/google_containers|' \
     -e '/kubernetesVersion/c\kubernetesVersion: 1.28.15' \
     -e '/serviceSubnet/a\ \ podSubnet: 10.244.0.0\/16' $HOME/kube-home/kubeadm-config.yaml
