@@ -41,8 +41,8 @@ sudo make install
 
 `./configure --help` 查看./configure 支持哪些参数z
 
-- --with-xxx_xxx：  #表示默认`不安装`该模块。如果需要安装，则添加到 ./configure 参数中；
-- --without-xxx_xxx： #表示默认`会安装`该模块。如果不需要安装，则添加到 ./configure 参数中。
+- --with-xxx_xxx：  #  表示默认`不安装`该模块。如果需要安装，则添加到 ./configure 参数中；
+- --without-xxx_xxx： # 表示默认`会安装`该模块。如果不需要安装，则添加到 ./configure 参数中。
 - --prefix    #指定了Nginx的安装目录；
 - --with-http_ssl_module    #启用 SSL 支持，确保Nginx编译时包含SSL模块；
 - --with-http_stub_status_module    #启用Nginx状态信息模块（监控 Nginx 的性能和健康状态）
