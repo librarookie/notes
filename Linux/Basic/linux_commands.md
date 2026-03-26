@@ -107,18 +107,23 @@ unalias -a
 
 2. 永久配置alias
 
-> 永久生效分用户级和系统级，用户级是将alias写入 ~/.bashrc 文件， 系统级是将alias写入 /etc/bashrc 文件（推荐使用用户级）
+> 永久生效分用户级和系统级
+> 用户级是将alias写入 `~/.bashrc` `$HOME/.bashrc` 文件；（推荐）
+> 系统级是将alias写入 `/etc/bashrc` 文件。
 
-- 更新配置文件（~/.bashrc）
-  - 添加alias
-> echo "alias la='ls -a'" >> ~/.bashrc
+- 更新配置文件
+```sh
+# 添加别名
+echo "alias la='ls -a'" >> $HOME/.bashrc
 
-  - 修改 |删除alias
-	打开并编辑 ~/.bashrc 文件
+# 修改/删除别名
+打开并编辑 ~/.bashrc 文件
 	  1. 打开配置文件
 > vim ~/.bashrc （不习惯用vim的，可以使用自己习惯的工具）
 
 	  2. 找到配置的alias，更新或删除该alias
+```
+  
 
 - 使配置生效
 > source ~/.bashrc
