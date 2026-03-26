@@ -132,7 +132,6 @@ sed -i '/lsa/d' $HOME/.bashrc
 source $HOME/.bashrc
 ```
 
-# 表示默认 
 
 ## history
 

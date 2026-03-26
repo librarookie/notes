@@ -16,9 +16,9 @@ X.509 是密码学里公钥证书的格式标准。
 应用场景如电子签名服务。X.509证书里含有公钥、身份信息（比如网络主机名，组织的名称或个体名称等）和签名信息（可以是证书签发机构CA的签名，也可以是自签名）。
 
 1. 常用加密标准：
-    - PKCS #7： 密码讯息语法标准（Cryptographic Message Syntax Standard），规范了以公开金钥基础设施（PKI）所产生之签章/密文之格式。其目的一样是为了拓展数位证书的应用。
-    - PKCS #10： 证书申请标准（Certification Request Standard），英语：PKCS_10，规范了向证书中心申请证书之CSR（certificate signing request）的格式。
-    - PKCS #12： 个人讯息交换标准（Personal Information Exchange Syntax Standard），定义了包含私钥与公钥证书（public key certificate）的文件格式。私钥采密码(password)保护。常见的PFX就履行了PKCS#12。
+    - `PKCS #7`： 密码讯息语法标准（Cryptographic Message Syntax Standard），规范了以公开金钥基础设施（PKI）所产生之签章/密文之格式。其目的一样是为了拓展数位证书的应用。
+    - `PKCS #10`： 证书申请标准（Certification Request Standard），英语：PKCS_10，规范了向证书中心申请证书之CSR（certificate signing request）的格式。
+    - `PKCS #12`： 个人讯息交换标准（Personal Information Exchange Syntax Standard），定义了包含私钥与公钥证书（public key certificate）的文件格式。私钥采密码(password)保护。常见的PFX就履行了PKCS#12。
 
 2. 常用扩展名：
     - JKS格式： .jks .keystore .truststore

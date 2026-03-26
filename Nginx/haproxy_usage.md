@@ -219,8 +219,8 @@ haproxy官网：<https://www.haproxy.org/>
     EOF
     ```
 
-    - `local2`  #基础设施服务，如：Nginx、Apache、数据库
-    - `local2.*`  #记录local4设施的所有优先级（生产环境通常记录到 `info` 级别，调试时临时开启 `debug` 级别）
+    - `local2`  基础设施服务，如：Nginx、Apache、数据库
+    - `local2.*`  记录local4设施的所有优先级（生产环境通常记录到 `info` 级别，调试时临时开启 `debug` 级别）
     - imup 是模块名，支持UDP协议
     - 第二行准许 514端口接收使用 UDP和 TCP协议转发过来的日志（rsyslog默认 514端口监听UDP）
 

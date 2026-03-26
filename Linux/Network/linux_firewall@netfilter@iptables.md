@@ -352,14 +352,14 @@ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
     - --log-prefix：添加日志前缀。用于在日志消息前添加自定义前缀，便于区分不同的日志来源
     - --log-level：设置日志级别。指定日志的级别（优先级）。默认级别是 warning（4），可以根据需要调整
-      - `emerg` `0` #紧急情况（系统不可用）
-      - `alert` `1` #需要立即采取行动
-      - `crit`  `2` #严重情况
-      - `error` `3` #错误情况
-      - `warn`  `4` #警告情况（默认级别）
-      - `notice` `5` #正常但重要的情况
-      - `info`  `6` #一般信息
-      - `debug` `7` #调试信息
+      - `emerg` `0` 紧急情况（系统不可用）
+      - `alert` `1` 需要立即采取行动
+      - `crit`  `2` 严重情况
+      - `error` `3` 错误情况
+      - `warn`  `4` 警告情况（默认级别）
+      - `notice` `5` 正常但重要的情况
+      - `info`  `6` 一般信息
+      - `debug` `7` 调试信息
 
     - -m limit --limit 5/min
       - --limit 5/min：每分钟最多记录 5 条日志。

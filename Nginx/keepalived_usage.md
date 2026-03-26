@@ -188,8 +188,8 @@ vrrp_script check_haproxy {    #自定义脚本并设定脚本名称，脚本可
     sudo sed -i '/KEEPALIVED_OPTIONS/c\KEEPALIVED_OPTIONS="-D -S 4"' /etc/sysconfig/keepalived
     ```
 
-    - `-D, --log-detail`    #详细日志信息。
-    - `-S, --log-facility`  #设置本地系统日志设备0-7，即 -S 4 为 local4（默认值：LOG_DAEMON）
+    - `-D, --log-detail`    详细日志信息。
+    - `-S, --log-facility`  设置本地系统日志设备0-7，即 -S 4 为 local4（默认值：LOG_DAEMON）
 
 2. 配置 rsyslog 日志规则
 
@@ -206,14 +206,14 @@ vrrp_script check_haproxy {    #自定义脚本并设定脚本名称，脚本可
     sudo sed -i '/RULES/a\\n\local4.*    /var/log/keepalived.log' /etc/rsyslog.conf
     ```
 
-    - `local4`  #网络设备，如：路由器、交换机日志
+    - `local4`  网络设备，如：路由器、交换机日志
     - `local0-local2`：核心业务应用，`local3-local5`：基础设施/中间件，`local6-local7`：开发调试/临时日志
-    - `local4.*`  #记录local4设施的所有优先级（生产环境通常记录到 `info` 级别，调试时临时开启 `debug` 级别）
-      - `local4.error`  #错误情况，如：应用程序错误、IO操作失败
-      - `local4.warning`  #警告情况，如：磁盘空间不足、非关键故障
-      - `local4.notice`  #正常但重要的情况，如：服务启动/停止、配置变更
-      - `local4.info`  #一般信息性消息，如：运行状态信息、统计数据
-      - `local4.debug`  #调试级信息，如：开发调试信息、详细流程跟踪
+    - `local4.*`  记录local4设施的所有优先级（生产环境通常记录到 `info` 级别，调试时临时开启 `debug` 级别）
+      - `local4.error`  错误情况，如：应用程序错误、IO操作失败
+      - `local4.warning`  警告情况，如：磁盘空间不足、非关键故障
+      - `local4.notice`  正常但重要的情况，如：服务启动/停止、配置变更
+      - `local4.info`  一般信息性消息，如：运行状态信息、统计数据
+      - `local4.debug`  调试级信息，如：开发调试信息、详细流程跟踪
 
 3. 重启生效
 
