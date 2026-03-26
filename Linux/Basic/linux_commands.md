@@ -113,23 +113,18 @@ unalias -a
 
 - 更新配置文件
 ```sh
-# 添加别名
+# 添加别名：在 bashrc 文件中添加一条别名规则
 echo "alias la='ls -a'" >> $HOME/.bashrc
 
-# 修改/删除别名
-打开并编辑 ~/.bashrc 文件
-	  1. 打开配置文件
-> vim ~/.bashrc （不习惯用vim的，可以使用自己习惯的工具）
+# 更新别名‘la’ -> ‘lsa’：在 bashrc 文件中找到目标别名‘la’，并修改
+sed -i 's/la/lsa/' $HOME/.bashrc
 
-	  2. 找到配置的alias，更新或删除该alias
+# 更新别名‘lsa’：在 bashrc 文件中找到目标别名‘lsa’，并删除
+sed -i '/lsa/d' $HOME/.bashrc
+
+# 使配置生效
+source $HOME/.bashrc
 ```
-  
-
-- 使配置生效
-> source ~/.bashrc
-
-3. 查看别名
-> alias -p
 
 
 ## history
