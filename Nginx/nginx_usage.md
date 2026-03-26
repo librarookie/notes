@@ -692,10 +692,10 @@ proxy_cache_path path [level=levels] ...    #默认值：proxy_cache off;
 
 参数含义：
 
-- path  #缓存文件的存放路径；
-- level  #path的目录层级；
-- keys_zone  #设置共享内存；
-- inactive  #在指定时间内没有被访问，缓存会被清理，默认10分钟；
+- path  缓存文件的存放路径；
+- level  path的目录层级；
+- keys_zone  设置共享内存；
+- inactive  在指定时间内没有被访问，缓存会被清理，默认10分钟；
 
 #### 1.8.2 缓存条件设置
 
