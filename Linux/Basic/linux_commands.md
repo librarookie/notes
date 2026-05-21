@@ -84,7 +84,7 @@ echo "${var#*$'\t'}"  # 输出: value
 \xHH    十六进制值HH的字节（1到2位）
 ```
 
-### echo栗子
+### echo例子
 
 1. 常用打印
 
@@ -169,8 +169,18 @@ sed -i '/lsa/d' $HOME/.bashrc
 source $HOME/.bashrc
 ```
 
+## find（查找文件）
 
-## history
+
+### find例子
+
+1. 递归处理所有子目录
+
+对当前目录及所有子目录中的文件进行操作，将文件名中的‘@’改为‘#’
+
+`$ find . -type f -name "*@*" -exec bash -c 'mv "$0" "${0//@/#}"' {} \;`
+
+## history（历史记录）
 
 TODO history
 
